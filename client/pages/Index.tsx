@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, LineChart, Megaphone, PenTool, ShieldCheck } from "lucide-react";
+import { HeroSlider } from "@/components/site/HeroSlider";
 
 export default function Index() {
   return (
