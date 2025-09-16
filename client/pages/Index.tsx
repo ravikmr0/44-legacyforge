@@ -1,62 +1,215 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { CheckCircle2, LineChart, Megaphone, PenTool, ShieldCheck } from "lucide-react";
 
 export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
-  useEffect(() => {
-    fetchDemo();
-  }, []);
-
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
+    <div className="bg-background text-foreground">
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-200/60 via-amber-100/40 to-transparent" />
+          <div className="absolute -inset-x-20 -top-40 h-[32rem] bg-gradient-to-b from-orange-500/15 via-rose-500/10 to-transparent blur-2xl" />
+        </div>
+        <div className="container py-20 md:py-28">
+          <div className="mx-auto max-w-3xl text-center space-y-6">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
+              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-orange-500 to-rose-500" />
+              Smarter growth starts here
+            </span>
+            <h1 className="text-4xl font-extrabold tracking-tight md:text-6xl">
+              Forge Your Legacy with Smarter Marketing & IT Solutions
+            </h1>
+            <p className="text-muted-foreground text-lg md:text-xl">
+              Helping businesses scale with cutting-edge IT services, data-driven marketing strategies, and powerful social media management.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button asChild className="h-12 px-6 text-base bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 hover:from-orange-600 hover:via-amber-600 hover:to-rose-600 text-white shadow-lg">
+                <a href="#contact">Book a free consultation</a>
+              </Button>
+              <Button asChild variant="outline" className="h-12 px-6 text-base">
+                <a href="#services">Explore services</a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="container py-16 md:py-24">
+        <div className="grid gap-10 md:grid-cols-12 md:gap-12 items-start">
+          <div className="md:col-span-5">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">About LegacyForge Marketing</h2>
+            <div className="mt-4 h-1 w-24 bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 rounded" />
+          </div>
+          <div className="md:col-span-7 text-muted-foreground text-lg leading-relaxed">
+            <p>
+              At LegacyForge Marketing, we don’t just market — we build legacies. Our team of tech-driven marketers and IT specialists combine creativity with strategy to help your business grow faster and smarter. Whether you need performance marketing campaigns that deliver measurable ROI, robust IT support to keep operations smooth, or engaging social media management to connect with your audience, we’ve got you covered.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Services */}
+      <section id="services" className="container py-16 md:py-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Core Services</h2>
+          <p className="mt-3 text-muted-foreground">Outcomes-first solutions tailored to your growth.</p>
+        </div>
+        <div className="mt-10 grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <ServiceCard
+            icon={<ShieldCheck className="h-6 w-6" />}
+            title="IT Services & Support"
+            desc="Streamline your tech infrastructure, improve cybersecurity, and keep your business running without disruption."
+          />
+          <ServiceCard
+            icon={<LineChart className="h-6 w-6" />}
+            title="Performance Marketing"
+            desc="Leverage data-driven ads and campaigns to maximize conversions and reduce wasted ad spend."
+          />
+          <ServiceCard
+            icon={<Megaphone className="h-6 w-6" />}
+            title="Social Media Management"
+            desc="Build an authentic online presence, engage your audience, and boost brand loyalty."
+          />
+          <ServiceCard
+            icon={<PenTool className="h-6 w-6" />}
+            title="Content Strategy & Branding"
+            desc="Tell your story the right way and stand out from the competition."
+          />
+        </div>
+      </section>
+
+      {/* Why Choose */}
+      <section id="why" className="container py-16 md:py-24">
+        <div className="grid md:grid-cols-12 gap-10 md:gap-12 items-center">
+          <div className="md:col-span-6 space-y-6">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Why Choose LegacyForge</h2>
+            <ul className="space-y-4">
+              {[
+                "Data-Driven Strategies for Measurable Growth",
+                "End-to-End IT & Marketing Solutions in One Place",
+                "Proven Track Record of ROI-Focused Campaigns",
+                "Dedicated Team that Understands Your Business",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-lg">
+                  <CheckCircle2 className="mt-1 h-5 w-5 text-orange-500" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="md:col-span-6">
+            <div className="relative rounded-xl border bg-gradient-to-br from-orange-500/10 via-amber-500/10 to-rose-500/10 p-8">
+              <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 opacity-30 blur-lg" aria-hidden />
+              <div className="relative">
+                <p className="font-semibold">Our approach</p>
+                <p className="mt-2 text-muted-foreground">
+                  We connect strategy with execution. From infrastructure and security to acquisition and retention, we ship systems that compound results.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <Badge>Performance-first</Badge>
+                  <Badge>Full-funnel</Badge>
+                  <Badge>Secure-by-design</Badge>
+                  <Badge>Transparent reporting</Badge>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="container py-16 md:py-24">
+        <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-orange-500 via-amber-500 to-rose-500 p-[1px]">
+          <div className="relative rounded-2xl bg-background p-10 md:p-16">
+            <div className="grid gap-6 md:grid-cols-12 md:items-center">
+              <div className="md:col-span-8 space-y-3">
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight">
+                  Let’s build your business legacy together.
+                </h3>
+                <p className="text-muted-foreground">
+                  Book a free consultation today and take the first step toward smarter growth.
+                </p>
+              </div>
+              <div className="md:col-span-4 flex md:justify-end">
+                <Button asChild className="h-12 px-6 text-base bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 hover:from-orange-600 hover:via-amber-600 hover:to-rose-600 text-white shadow-lg">
+                  <a href="#contact">Book a free consultation</a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="container py-16 md:py-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Contact Us</h2>
+          <p className="mt-3 text-muted-foreground">Tell us about your goals and we’ll get in touch.</p>
+        </div>
+        <div className="mx-auto mt-10 max-w-2xl">
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            className="grid gap-4"
           >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
+            <input type="hidden" name="form-name" value="contact" />
+            <p className="hidden">
+              <label>
+                Don’t fill this out: <input name="bot-field" />
+              </label>
+            </p>
+            <div className="grid gap-2">
+              <label htmlFor="name" className="text-sm font-medium">Name</label>
+              <input id="name" name="name" required className="h-11 rounded-md border bg-background px-3 outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring" />
+            </div>
+            <div className="grid gap-2">
+              <label htmlFor="email" className="text-sm font-medium">Email</label>
+              <input id="email" name="email" type="email" required className="h-11 rounded-md border bg-background px-3 outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring" />
+            </div>
+            <div className="grid gap-2">
+              <label htmlFor="message" className="text-sm font-medium">Message</label>
+              <textarea id="message" name="message" rows={5} required className="rounded-md border bg-background px-3 py-2 outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring" />
+            </div>
+            <div className="flex items-center gap-3">
+              <Button type="submit" className="h-11 px-6 bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 hover:from-orange-600 hover:via-amber-600 hover:to-rose-600 text-white shadow">
+                Send message
+              </Button>
+              <a
+                href="mailto:hello@legacyforge.marketing?subject=Consultation%20Request"
+                className="text-sm text-muted-foreground hover:text-foreground underline"
+              >
+                Or email us directly
+              </a>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function ServiceCard({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
+  return (
+    <div className="group relative overflow-hidden rounded-xl border bg-card p-6">
+      <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-orange-500/0 via-amber-500/0 to-rose-500/0 opacity-0 blur transition group-hover:opacity-30 group-hover:from-orange-500/30 group-hover:via-amber-500/20 group-hover:to-rose-500/30" aria-hidden />
+      <div className="relative space-y-3">
+        <div className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-gradient-to-br from-orange-500/15 via-amber-500/15 to-rose-500/15 text-orange-600">
+          {icon}
+        </div>
+        <h3 className="font-semibold text-lg">{title}</h3>
+        <p className="text-sm text-muted-foreground">{desc}</p>
       </div>
     </div>
+  );
+}
+
+function Badge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center rounded-full border border-border bg-background px-3 py-1 text-xs text-muted-foreground">
+      {children}
+    </span>
   );
 }
