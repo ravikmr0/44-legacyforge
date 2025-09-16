@@ -19,7 +19,7 @@ const NotFound = () => {
         <div className="mt-6">
           <a
             href="/"
-            className="inline-flex h-11 items-center justify-center rounded-md bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 px-6 text-white shadow hover:from-orange-600 hover:via-amber-600 hover:to-rose-600"
+            className="inline-flex h-11 items-center justify-center rounded-md bg-gradient-to-r from-[#5170FF] to-[#5D17EB] px-6 text-white shadow hover:from-[#3C72FC] hover:to-[#5D17EB]"
           >
             Back to home
           </a>
