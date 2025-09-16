@@ -24,10 +24,10 @@ export default function Index() {
             </p>
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button asChild className="h-12 px-6 text-base bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow-lg">
-                <a href="#contact">Book a free consultation</a>
+                <a href="/contact">Book a free consultation</a>
               </Button>
               <Button asChild variant="outline" className="h-12 px-6 text-base">
-                <a href="#services">Explore services</a>
+                <a href="/services">Explore services</a>
               </Button>
             </div>
           </div>
@@ -133,7 +133,7 @@ export default function Index() {
               </div>
               <div className="md:col-span-4 flex md:justify-end">
                 <Button asChild className="h-12 px-6 text-base bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow-lg">
-                  <a href="#contact">Book a free consultation</a>
+                  <a href="/contact">Book a free consultation</a>
                 </Button>
               </div>
             </div>
