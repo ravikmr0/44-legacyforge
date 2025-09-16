@@ -7,13 +7,13 @@ export default function Index() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-200/60 via-amber-100/40 to-transparent" />
-          <div className="absolute -inset-x-20 -top-40 h-[32rem] bg-gradient-to-b from-orange-500/15 via-rose-500/10 to-transparent blur-2xl" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#5170FF33] via-[#5D17EB22] to-transparent" />
+          <div className="absolute -inset-x-20 -top-40 h-[32rem] bg-gradient-to-b from-[#5170FF26] via-[#5D17EB1a] to-transparent blur-2xl" />
         </div>
         <div className="container py-20 md:py-28">
           <div className="mx-auto max-w-3xl text-center space-y-6">
             <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
-              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-orange-500 to-rose-500" />
+              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]" />
               Smarter growth starts here
             </span>
             <h1 className="text-4xl font-extrabold tracking-tight md:text-6xl">
@@ -23,7 +23,7 @@ export default function Index() {
               Helping businesses scale with cutting-edge IT services, data-driven marketing strategies, and powerful social media management.
             </p>
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button asChild className="h-12 px-6 text-base bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 hover:from-orange-600 hover:via-amber-600 hover:to-rose-600 text-white shadow-lg">
+              <Button asChild className="h-12 px-6 text-base bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow-lg">
                 <a href="#contact">Book a free consultation</a>
               </Button>
               <Button asChild variant="outline" className="h-12 px-6 text-base">
@@ -39,7 +39,7 @@ export default function Index() {
         <div className="grid gap-10 md:grid-cols-12 md:gap-12 items-start">
           <div className="md:col-span-5">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">About LegacyForge Marketing</h2>
-            <div className="mt-4 h-1 w-24 bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 rounded" />
+            <div className="mt-4 h-1 w-24 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] rounded" />
           </div>
           <div className="md:col-span-7 text-muted-foreground text-lg leading-relaxed">
             <p>
@@ -92,15 +92,15 @@ export default function Index() {
                 "Dedicated Team that Understands Your Business",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-lg">
-                  <CheckCircle2 className="mt-1 h-5 w-5 text-orange-500" />
+                  <CheckCircle2 className="mt-1 h-5 w-5 text-[#5170FF]" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
           <div className="md:col-span-6">
-            <div className="relative rounded-xl border bg-gradient-to-br from-orange-500/10 via-amber-500/10 to-rose-500/10 p-8">
-              <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 opacity-30 blur-lg" aria-hidden />
+            <div className="relative rounded-xl border bg-gradient-to-br from-[#5170FF14] to-[#5D17EB14] p-8">
+              <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-[#5170FF] to-[#5D17EB] opacity-30 blur-lg" aria-hidden />
               <div className="relative">
                 <p className="font-semibold">Our approach</p>
                 <p className="mt-2 text-muted-foreground">
@@ -120,7 +120,7 @@ export default function Index() {
 
       {/* CTA */}
       <section className="container py-16 md:py-24">
-        <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-orange-500 via-amber-500 to-rose-500 p-[1px]">
+        <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-[#5170FF] to-[#5D17EB] p-[1px]">
           <div className="relative rounded-2xl bg-background p-10 md:p-16">
             <div className="grid gap-6 md:grid-cols-12 md:items-center">
               <div className="md:col-span-8 space-y-3">
@@ -132,7 +132,7 @@ export default function Index() {
                 </p>
               </div>
               <div className="md:col-span-4 flex md:justify-end">
-                <Button asChild className="h-12 px-6 text-base bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 hover:from-orange-600 hover:via-amber-600 hover:to-rose-600 text-white shadow-lg">
+                <Button asChild className="h-12 px-6 text-base bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow-lg">
                   <a href="#contact">Book a free consultation</a>
                 </Button>
               </div>
@@ -174,7 +174,7 @@ export default function Index() {
               <textarea id="message" name="message" rows={5} required className="rounded-md border bg-background px-3 py-2 outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring" />
             </div>
             <div className="flex items-center gap-3">
-              <Button type="submit" className="h-11 px-6 bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 hover:from-orange-600 hover:via-amber-600 hover:to-rose-600 text-white shadow">
+              <Button type="submit" className="h-11 px-6 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow">
                 Send message
               </Button>
               <a
@@ -194,9 +194,9 @@ export default function Index() {
 function ServiceCard({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
   return (
     <div className="group relative overflow-hidden rounded-xl border bg-card p-6">
-      <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-orange-500/0 via-amber-500/0 to-rose-500/0 opacity-0 blur transition group-hover:opacity-30 group-hover:from-orange-500/30 group-hover:via-amber-500/20 group-hover:to-rose-500/30" aria-hidden />
+      <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-[#5170FF00] via-[#5170FF00] to-[#5D17EB00] opacity-0 blur transition group-hover:opacity-30 group-hover:from-[#5170FF30] group-hover:via-[#5170FF20] group-hover:to-[#5D17EB30]" aria-hidden />
       <div className="relative space-y-3">
-        <div className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-gradient-to-br from-orange-500/15 via-amber-500/15 to-rose-500/15 text-orange-600">
+        <div className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-gradient-to-br from-[#5170FF14] to-[#5D17EB14] text-[#5170FF]">
           {icon}
         </div>
         <h3 className="font-semibold text-lg">{title}</h3>
