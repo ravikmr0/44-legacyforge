@@ -142,50 +142,23 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="container py-16 md:py-24">
+      {/* Services Offers Carousel */}
+      <section className="container py-16 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Contact Us</h2>
-          <p className="mt-3 text-muted-foreground">Tell us about your goals and we’ll get in touch.</p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Service Offers</h2>
+          <p className="mt-3 text-muted-foreground">Explore curated packages designed for faster, smarter growth.</p>
         </div>
-        <div className="mx-auto mt-10 max-w-2xl">
-          <form
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            className="grid gap-4"
-          >
-            <input type="hidden" name="form-name" value="contact" />
-            <p className="hidden">
-              <label>
-                Don’t fill this out: <input name="bot-field" />
-              </label>
-            </p>
-            <div className="grid gap-2">
-              <label htmlFor="name" className="text-sm font-medium">Name</label>
-              <input id="name" name="name" required className="h-11 rounded-md border bg-background px-3 outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring" />
-            </div>
-            <div className="grid gap-2">
-              <label htmlFor="email" className="text-sm font-medium">Email</label>
-              <input id="email" name="email" type="email" required className="h-11 rounded-md border bg-background px-3 outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring" />
-            </div>
-            <div className="grid gap-2">
-              <label htmlFor="message" className="text-sm font-medium">Message</label>
-              <textarea id="message" name="message" rows={5} required className="rounded-md border bg-background px-3 py-2 outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring" />
-            </div>
-            <div className="flex items-center gap-3">
-              <Button type="submit" className="h-11 px-6 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow">
-                Send message
-              </Button>
-              <a
-                href="mailto:hello@legacyforge.marketing?subject=Consultation%20Request"
-                className="text-sm text-muted-foreground hover:text-foreground underline"
-              >
-                Or email us directly
-              </a>
-            </div>
-          </form>
+        <div className="mt-10">
+          <ServicesCarousel
+            items={[
+              { title: "IT Infrastructure Audit", desc: "Comprehensive review of systems, security, and performance with prioritized fixes.", image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?q=80&w=1600&auto=format&fit=crop", ctaHref: "/services", ctaLabel: "Get audit" },
+              { title: "Managed IT Support", desc: "Proactive monitoring, helpdesk, and maintenance to keep ops seamless.", image: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop", ctaHref: "/services", ctaLabel: "View plans" },
+              { title: "Performance Ads Sprint", desc: "4-week sprint to launch, test, and scale high-ROI ad campaigns.", image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1600&auto=format&fit=crop", ctaHref: "/services", ctaLabel: "Start sprint" },
+              { title: "Social Growth Engine", desc: "Content + community management to build an authentic presence.", image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop", ctaHref: "/services", ctaLabel: "See details" },
+              { title: "Content & Brand Kit", desc: "Messaging, visual system, and content calendar aligned to goals.", image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1600&auto=format&fit=crop", ctaHref: "/services", ctaLabel: "Build brand" },
+              { title: "Analytics & Attribution", desc: "Tracking architecture and reporting for crystal-clear ROI.", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1600&auto=format&fit=crop", ctaHref: "/services", ctaLabel: "Get insights" },
+            ]}
+          />
         </div>
       </section>
     </div>
