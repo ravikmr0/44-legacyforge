@@ -28,7 +28,7 @@ export function Header() {
     >
       <div className="container flex h-16 items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-md bg-gradient-to-br from-orange-500 via-amber-500 to-rose-500 shadow-sm" />
+          <div className="h-8 w-8 rounded-md bg-gradient-to-br from-[#5170FF] to-[#5D17EB] shadow-sm" />
           <span className="font-extrabold tracking-tight text-lg">LegacyForge</span>
         </a>
 
@@ -45,7 +45,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button asChild className="hidden sm:inline-flex bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 hover:from-orange-600 hover:via-amber-600 hover:to-rose-600 text-white shadow-md">
+          <Button asChild className="hidden sm:inline-flex bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow-md">
             <a href="#contact">Book Consultation</a>
           </Button>
         </div>
