@@ -4,35 +4,35 @@ import { CheckCircle2, LineChart, Megaphone, PenTool, ShieldCheck } from "lucide
 export default function Index() {
   return (
     <div className="bg-background text-foreground">
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#5170FF33] via-[#5D17EB22] to-transparent" />
-          <div className="absolute -inset-x-20 -top-40 h-[32rem] bg-gradient-to-b from-[#5170FF26] via-[#5D17EB1a] to-transparent blur-2xl" />
+      {/* Hero with image slider */}
+      <HeroSlider
+        images={[
+          { src: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1920&auto=format&fit=crop", alt: "Team collaborating" },
+          { src: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1920&auto=format&fit=crop", alt: "Marketing analytics dashboard" },
+          { src: "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?q=80&w=1920&auto=format&fit=crop", alt: "Developer operations" },
+          { src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1920&auto=format&fit=crop", alt: "Social media planning" },
+        ]}
+        intervalMs={5000}
+      >
+        <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs text-white backdrop-blur">
+          <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]" />
+          Smarter growth starts here
+        </span>
+        <h1 className="text-4xl font-extrabold tracking-tight md:text-6xl text-white">
+          Forge Your Legacy with Smarter Marketing & IT Solutions
+        </h1>
+        <p className="text-white/90 text-lg md:text-xl">
+          Helping businesses scale with cutting-edge IT services, data-driven marketing strategies, and powerful social media management.
+        </p>
+        <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Button asChild className="h-12 px-6 text-base bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow-lg">
+            <a href="/contact">Book a free consultation</a>
+          </Button>
+          <Button asChild variant="outline" className="h-12 px-6 text-base border-white text-white hover:bg-white/10">
+            <a href="/services">Explore services</a>
+          </Button>
         </div>
-        <div className="container py-20 md:py-28">
-          <div className="mx-auto max-w-3xl text-center space-y-6">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
-              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]" />
-              Smarter growth starts here
-            </span>
-            <h1 className="text-4xl font-extrabold tracking-tight md:text-6xl">
-              Forge Your Legacy with Smarter Marketing & IT Solutions
-            </h1>
-            <p className="text-muted-foreground text-lg md:text-xl">
-              Helping businesses scale with cutting-edge IT services, data-driven marketing strategies, and powerful social media management.
-            </p>
-            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button asChild className="h-12 px-6 text-base bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow-lg">
-                <a href="/contact">Book a free consultation</a>
-              </Button>
-              <Button asChild variant="outline" className="h-12 px-6 text-base">
-                <a href="/services">Explore services</a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      </HeroSlider>
 
       {/* About */}
       <section id="about" className="container py-16 md:py-24">
