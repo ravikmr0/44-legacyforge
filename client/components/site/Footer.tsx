@@ -71,12 +71,12 @@ export function Footer() {
               placeholder="you@company.com"
               required
             />
-            <button
-              type="submit"
-              className="inline-flex h-10 items-center justify-center rounded-md bg-gradient-to-r from-[#5170FF] to-[#5D17EB] px-4 text-sm font-medium text-white shadow hover:from-[#3C72FC] hover:to-[#5D17EB]"
-            >
-              Sub
-            </button>
+            // <button
+            //   type="submit"
+            //   className="inline-flex h-10 items-center justify-center rounded-md bg-gradient-to-r from-[#5170FF] to-[#5D17EB] px-4 text-sm font-medium text-white shadow hover:from-[#3C72FC] hover:to-[#5D17EB]"
+            // >
+            //   Subscribe
+            // </button>
           </form>
           <div className="mt-4 text-sm text-muted-foreground">
             Email: <a className="underline hover:text-foreground" href="mailto:hello@legacyforge.marketing">hello@legacyforge.marketing</a>
