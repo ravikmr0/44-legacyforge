@@ -27,7 +27,7 @@ export function Header() {
       )}
     >
       <div className="container flex h-16 items-center justify-between">
-        <a href="#top" className="flex items-center gap-2">
+        <a href="/" className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-md bg-gradient-to-br from-[#5170FF] to-[#5D17EB] shadow-sm" />
           <span className="font-extrabold tracking-tight text-lg">LegacyForge</span>
         </a>
