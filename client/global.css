@@ -12,7 +12,7 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
-    --background: 0 0% 100%;
+    --background: 210 60% 97%;
     --foreground: 222.2 47.4% 11.2%;
 
     --card: 0 0% 100%;
@@ -21,8 +21,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 47.4% 11.2%;
 
-    --primary: 18 92% 52%; /* forge orange */
-    --primary-foreground: 210 40% 98%;
+    --primary: 223 97% 61%; /* #3C72FC */
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 220 14% 96%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -30,7 +30,7 @@
     --muted: 220 14% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 24 95% 95%;
+    --accent: 198 69% 66%; /* #6EC1E4 */
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -38,18 +38,18 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 18 92% 52%;
+    --ring: 223 97% 61%;
 
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 18 92% 52%;
+    --sidebar-primary: 223 97% 61%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 24 95% 95%;
+    --sidebar-accent: 198 69% 97%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 18 92% 52%;
+    --sidebar-ring: 223 97% 61%;
   }
 
   .dark {
