@@ -1,36 +1,100 @@
+import { Mail, Twitter, Linkedin, Facebook } from "lucide-react";
+
 export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="border-t border-border bg-background/80">
-      <div className="container py-10 grid gap-6 md:grid-cols-3">
-        <div className="space-y-3">
+      {/* CTA ribbon */}
+      <div className="container py-10">
+        <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-[#5170FF] to-[#5D17EB] p-[1px]">
+          <div className="relative rounded-2xl bg-background/80 p-6 md:p-10 backdrop-blur">
+            <div className="grid items-center gap-6 md:grid-cols-12">
+              <div className="md:col-span-8">
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight">Ready to build your legacy?</h3>
+                <p className="mt-2 text-muted-foreground">
+                  Book a free consultation and discover how our IT and marketing experts can accelerate your growth.
+                </p>
+              </div>
+              <div className="md:col-span-4 md:justify-self-end">
+                <a
+                  href="/contact"
+                  className="inline-flex h-11 items-center justify-center rounded-md bg-gradient-to-r from-[#5170FF] to-[#5D17EB] px-6 text-white shadow hover:from-[#3C72FC] hover:to-[#5D17EB]"
+                >
+                  Book Consultation
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main footer */}
+      <div className="container pb-10 grid gap-10 md:grid-cols-4">
+        <div className="space-y-4">
           <a href="/" className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-md bg-gradient-to-br from-[#5170FF] to-[#5D17EB]" />
+            <div className="h-9 w-9 rounded-md bg-gradient-to-br from-[#5170FF] to-[#5D17EB]" />
             <span className="font-extrabold tracking-tight text-lg">LegacyForge</span>
           </a>
           <p className="text-sm text-muted-foreground max-w-sm">
             Smarter marketing and IT solutions to help you forge a lasting legacy.
           </p>
         </div>
-        <div className="space-y-2">
-          <p className="font-semibold">Explore</p>
-          <nav className="flex flex-col text-sm gap-2 text-muted-foreground">
-            <a className="hover:text-foreground" href="/services">Services</a>
+
+        <div>
+          <p className="font-semibold">Services</p>
+          <nav className="mt-3 flex flex-col text-sm gap-2 text-muted-foreground">
+            <a className="hover:text-foreground" href="/services">IT Services & Support</a>
+            <a className="hover:text-foreground" href="/services">Performance Marketing</a>
+            <a className="hover:text-foreground" href="/services">Social Media Management</a>
+            <a className="hover:text-foreground" href="/services">Content Strategy & Branding</a>
+          </nav>
+        </div>
+
+        <div>
+          <p className="font-semibold">Company</p>
+          <nav className="mt-3 flex flex-col text-sm gap-2 text-muted-foreground">
             <a className="hover:text-foreground" href="/about">About</a>
             <a className="hover:text-foreground" href="/why-us">Why Us</a>
             <a className="hover:text-foreground" href="/contact">Contact</a>
           </nav>
         </div>
-        <div className="space-y-2">
-          <p className="font-semibold">Get in touch</p>
-          <div className="text-sm text-muted-foreground space-y-1">
-            <p>Email: <a className="underline hover:text-foreground" href="mailto:hello@legacyforge.marketing">hello@legacyforge.marketing</a></p>
-            <p>Hours: Mon–Fri, 9am–6pm</p>
+
+        <div>
+          <p className="font-semibold">Stay in the loop</p>
+          <form name="newsletter" method="POST" data-netlify="true" className="mt-3 grid grid-cols-[1fr_auto] gap-2">
+            <input type="hidden" name="form-name" value="newsletter" />
+            <input
+              aria-label="Email address"
+              className="h-10 rounded-md border bg-background px-3 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
+              name="email"
+              type="email"
+              placeholder="you@company.com"
+              required
+            />
+            <button
+              type="submit"
+              className="inline-flex h-10 items-center justify-center rounded-md bg-gradient-to-r from-[#5170FF] to-[#5D17EB] px-4 text-sm font-medium text-white shadow hover:from-[#3C72FC] hover:to-[#5D17EB]"
+            >
+              Subscribe
+            </button>
+          </form>
+          <div className="mt-4 text-sm text-muted-foreground">
+            Email: <a className="underline hover:text-foreground" href="mailto:hello@legacyforge.marketing">hello@legacyforge.marketing</a>
           </div>
         </div>
       </div>
-      <div className="border-t border-border py-6 text-center text-xs text-muted-foreground">
-        © {year} LegacyForge Marketing. All rights reserved.
+
+      {/* Bottom bar */}
+      <div className="border-t border-border py-6">
+        <div className="container flex flex-col items-center justify-between gap-4 text-xs text-muted-foreground md:flex-row">
+          <p>© {year} LegacyForge Marketing. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <a aria-label="Email" href="mailto:hello@legacyforge.marketing" className="hover:text-foreground"><Mail className="h-4 w-4" /></a>
+            <a aria-label="Twitter" href="#" className="hover:text-foreground"><Twitter className="h-4 w-4" /></a>
+            <a aria-label="LinkedIn" href="#" className="hover:text-foreground"><Linkedin className="h-4 w-4" /></a>
+            <a aria-label="Facebook" href="#" className="hover:text-foreground"><Facebook className="h-4 w-4" /></a>
+          </div>
+        </div>
       </div>
     </footer>
   );
