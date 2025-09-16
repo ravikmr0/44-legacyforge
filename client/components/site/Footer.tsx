@@ -4,7 +4,7 @@ export function Footer() {
     <footer className="border-t border-border bg-background/80">
       <div className="container py-10 grid gap-6 md:grid-cols-3">
         <div className="space-y-3">
-          <a href="#top" className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-md bg-gradient-to-br from-[#5170FF] to-[#5D17EB]" />
             <span className="font-extrabold tracking-tight text-lg">LegacyForge</span>
           </a>
