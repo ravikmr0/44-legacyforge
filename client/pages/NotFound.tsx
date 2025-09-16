@@ -15,7 +15,9 @@ const NotFound = () => {
     <div className="container py-24">
       <div className="mx-auto max-w-xl text-center">
         <h1 className="text-6xl font-extrabold tracking-tight">404</h1>
-        <p className="mt-3 text-lg text-muted-foreground">This page doesn’t exist or was moved.</p>
+        <p className="mt-3 text-lg text-muted-foreground">
+          This page doesn’t exist or was moved.
+        </p>
         <div className="mt-6">
           <a
             href="/"
