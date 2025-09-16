@@ -15,10 +15,10 @@ export function Footer() {
         <div className="space-y-2">
           <p className="font-semibold">Explore</p>
           <nav className="flex flex-col text-sm gap-2 text-muted-foreground">
-            <a className="hover:text-foreground" href="#services">Services</a>
-            <a className="hover:text-foreground" href="#about">About</a>
-            <a className="hover:text-foreground" href="#why">Why Us</a>
-            <a className="hover:text-foreground" href="#contact">Contact</a>
+            <a className="hover:text-foreground" href="/services">Services</a>
+            <a className="hover:text-foreground" href="/about">About</a>
+            <a className="hover:text-foreground" href="/why-us">Why Us</a>
+            <a className="hover:text-foreground" href="/contact">Contact</a>
           </nav>
         </div>
         <div className="space-y-2">

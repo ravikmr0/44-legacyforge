@@ -3,10 +3,10 @@ import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 const nav = [
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Why Us", href: "#why" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/services" },
+  { label: "About", href: "/about" },
+  { label: "Why Us", href: "/why-us" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Header() {
