@@ -21,17 +21,25 @@ export default function WhyUs() {
 
   return (
     <div className="bg-background text-foreground">
-      {/* Hero */}
+      {/* Hero with background image */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#5170FF22] via-[#5D17EB11] to-transparent" />
+        <div className="absolute inset-0 -z-10">
+          <img
+            src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
+            alt="Professional partnership handshake in office"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,12,28,0.60)_0%,rgba(10,12,28,0.45)_40%,rgba(10,12,28,0.25)_100%)]" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#5170FF29] via-transparent to-[#5D17EB29]" />
+        </div>
         <div className="container py-16 md:py-24">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
+          <div className="max-w-3xl text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-3 py-1 text-xs backdrop-blur">
               <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]" />
               Why choose us
             </span>
             <h1 className="mt-4 text-3xl md:text-5xl font-extrabold tracking-tight">Results, reliability, and real partnership</h1>
-            <p className="mt-4 text-muted-foreground text-lg">We connect strategy with execution — and prove it with data.</p>
+            <p className="mt-4 text-white/90 text-lg">We connect strategy with execution — and prove it with data.</p>
           </div>
         </div>
       </section>
