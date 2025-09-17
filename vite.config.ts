@@ -9,6 +9,8 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    // @ts-ignore
+    allowedHosts: process.env.TEMPO === "true" ? true : undefined,
     fs: {
       // Allow Vite to serve files from the repo root so index.html can be served
       allow: ["./", "./client", "./shared"],
