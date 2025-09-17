@@ -190,30 +190,30 @@ export default function About() {
         
         <div className="grid gap-8 md:grid-cols-3">
           <TeamMember
-            name="Sarah Chen"
+            name="Himanshu Shekhar"
             role="Founder & CEO"
-            image="https://api.dicebear.com/7.x/avataaars/svg?seed=sarah&backgroundColor=5170FF"
-            bio="Former tech lead at Google with 12+ years in scaling digital products. Sarah founded LegacyForge to bridge the gap between technical excellence and marketing performance."
-            linkedin="https://linkedin.com/in/sarahchen"
-            email="sarah@legacyforge.com"
+            image="/images/himanshu.png"
+            bio="Driving force behind Legacyforge Marketing Pvt. Ltd., believes that with the right strategy, every brand deserves to reach pan India and grow their business."
+            linkedin="https://www.linkedin.com/in/himanshu-shekhar-5bab6910b/"
+            email="himanshu@legacyforgegroup.com"
           />
           
           <TeamMember
-            name="Marcus Rodriguez"
+            name="Ishita Bansal"
             role="Head of Marketing"
-            image="https://api.dicebear.com/7.x/avataaars/svg?seed=marcus&backgroundColor=5D17EB"
+            image="/images/ishita.png"
             bio="Growth marketing expert with proven track record at startups and Fortune 500 companies. Specializes in data-driven campaigns that deliver measurable ROI."
-            linkedin="https://linkedin.com/in/marcusrodriguez"
-            email="marcus@legacyforge.com"
+            linkedin="https://www.linkedin.com/in/ishita-bansal-0859652a7/"
+            email="ishita@legacyforgegroup.com"
           />
           
           <TeamMember
-            name="Jennifer Park"
-            role="Head of Sales"
-            image="https://api.dicebear.com/7.x/avataaars/svg?seed=jennifer&backgroundColor=3C72FC"
-            bio="Sales leader with 10+ years building high-performing teams. Expert in consultative selling and long-term client relationship management."
-            linkedin="https://linkedin.com/in/jenniferpark"
-            email="jennifer@legacyforge.com"
+            name="Ravi Kumar"
+            role="Website Development Lead"
+            image="/images/ravi.png"
+            bio="IT with 1+ years building high-performing website. Expert in consulting and implementing scalable web solutions."
+            linkedin="https://www.linkedin.com/in/ravi-kumar0/"
+            email="ravi@legacyforgegroup.com"
           />
         </div>
       </section>
