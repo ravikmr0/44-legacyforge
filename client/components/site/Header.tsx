@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
+import { Search } from "lucide-react";
 
 const nav = [
   { label: "Services", href: "/services" },
@@ -46,12 +47,23 @@ export function Header() {
           ))}
         </nav>
 
+        <form action="/services" method="GET" className="hidden md:flex items-center relative w-56 lg:w-72 mr-2">
+          <Search className="pointer-events-none absolute left-3 h-4 w-4 text-muted-foreground" />
+          <input
+            type="search"
+            name="q"
+            placeholder="Search services..."
+            aria-label="Search services"
+            className="h-10 w-full rounded-md border bg-background pl-9 pr-3 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
+          />
+        </form>
+
         <div className="flex items-center gap-2">
           <Button
             asChild
             className="hidden sm:inline-flex bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow-md"
           >
-            <a href="#contact">Book Consultation</a>
+            <a href="/contact">Book Consultation</a>
           </Button>
         </div>
       </div>
