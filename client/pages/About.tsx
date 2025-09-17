@@ -1,11 +1,26 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Shield, Rocket, Users } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function About() {
   return (
     <div className="bg-background text-foreground">
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#5170FF22] via-[#5D17EB11] to-transparent" />
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#5170FF22] via-[#5D17EB11] to-transparent" />
+          <motion.div
+            aria-hidden
+            className="absolute -top-10 -left-10 h-64 w-64 rounded-full bg-gradient-to-br from-[#5170FF] to-[#5D17EB] blur-3xl opacity-25"
+            animate={{ x: [-30, 30, -20], y: [0, -25, 10] }}
+            transition={{ duration: 12, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }}
+          />
+          <motion.div
+            aria-hidden
+            className="absolute top-20 right-0 h-72 w-72 rounded-full bg-gradient-to-tr from-[#5D17EB] to-[#5170FF] blur-3xl opacity-20"
+            animate={{ x: [20, -20, 15], y: [10, 20, -15] }}
+            transition={{ duration: 14, ease: "easeInOut", repeat: Infinity, repeatType: "mirror", delay: 1 }}
+          />
+        </div>
         <div className="container py-16 md:py-24">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
