@@ -47,7 +47,11 @@ export function Header() {
           ))}
         </nav>
 
-        <form action="/services" method="GET" className="hidden md:flex items-center relative w-56 lg:w-72 mr-2">
+        <form
+          action="/services"
+          method="GET"
+          className="hidden md:flex items-center relative w-56 lg:w-72 mr-2"
+        >
           <Search className="pointer-events-none absolute left-3 h-4 w-4 text-muted-foreground" />
           <input
             type="search"

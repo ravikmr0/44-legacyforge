@@ -12,13 +12,24 @@ export default function About() {
             aria-hidden
             className="absolute -top-10 -left-10 h-64 w-64 rounded-full bg-gradient-to-br from-[#5170FF] to-[#5D17EB] blur-3xl opacity-25"
             animate={{ x: [-30, 30, -20], y: [0, -25, 10] }}
-            transition={{ duration: 12, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }}
+            transition={{
+              duration: 12,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "mirror",
+            }}
           />
           <motion.div
             aria-hidden
             className="absolute top-20 right-0 h-72 w-72 rounded-full bg-gradient-to-tr from-[#5D17EB] to-[#5170FF] blur-3xl opacity-20"
             animate={{ x: [20, -20, 15], y: [10, 20, -15] }}
-            transition={{ duration: 14, ease: "easeInOut", repeat: Infinity, repeatType: "mirror", delay: 1 }}
+            transition={{
+              duration: 14,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "mirror",
+              delay: 1,
+            }}
           />
         </div>
         <div className="container py-16 md:py-24">
@@ -27,12 +38,19 @@ export default function About() {
               <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]" />
               Who we are
             </span>
-            <h1 className="mt-4 text-3xl md:text-5xl font-extrabold tracking-tight">About LegacyForge Marketing</h1>
+            <h1 className="mt-4 text-3xl md:text-5xl font-extrabold tracking-tight">
+              About LegacyForge Marketing
+            </h1>
             <p className="mt-4 text-muted-foreground text-lg">
-              We blend IT expertise with data-driven marketing to build brands that last. Strategy, execution, and relentless optimization — all under one roof.
+              We blend IT expertise with data-driven marketing to build brands
+              that last. Strategy, execution, and relentless optimization — all
+              under one roof.
             </p>
             <div className="mt-6">
-              <Button asChild className="h-11 px-6 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white hover:from-[#3C72FC] hover:to-[#5D17EB]">
+              <Button
+                asChild
+                className="h-11 px-6 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white hover:from-[#3C72FC] hover:to-[#5D17EB]"
+              >
                 <a href="/contact">Work with us</a>
               </Button>
             </div>
@@ -45,15 +63,24 @@ export default function About() {
           <div className="md:col-span-6">
             <div className="relative overflow-hidden rounded-xl border bg-gradient-to-br from-[#5170FF] to-[#5D17EB] p-[1px] shadow-sm">
               <div className="relative rounded-xl">
-                <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop" alt="Team working together" className="h-72 w-full object-cover md:h-96" />
+                <img
+                  src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop"
+                  alt="Team working together"
+                  className="h-72 w-full object-cover md:h-96"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
               </div>
             </div>
           </div>
           <div className="md:col-span-6">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Our story</h2>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+              Our story
+            </h2>
             <p className="mt-3 text-muted-foreground">
-              Founded by engineers and growth leaders, LegacyForge was created to close the gap between IT foundations and marketing performance. We design systems that are measurable, resilient, and primed to scale.
+              Founded by engineers and growth leaders, LegacyForge was created
+              to close the gap between IT foundations and marketing performance.
+              We design systems that are measurable, resilient, and primed to
+              scale.
             </p>
             <ul className="mt-4 space-y-2">
               {[
@@ -61,7 +88,10 @@ export default function About() {
                 "Secure-by-design infrastructure",
                 "Transparent reporting and measurable ROI",
               ].map((p) => (
-                <li key={p} className="flex items-start gap-3 text-sm md:text-base">
+                <li
+                  key={p}
+                  className="flex items-start gap-3 text-sm md:text-base"
+                >
                   <CheckCircle2 className="mt-0.5 h-5 w-5 text-[#5170FF]" />
                   <span>{p}</span>
                 </li>
@@ -76,10 +106,26 @@ export default function About() {
           <div className="md:col-span-6 space-y-6">
             <h3 className="text-2xl font-bold tracking-tight">Our values</h3>
             <div className="grid gap-4 sm:grid-cols-2">
-              <Value icon={<Shield className="h-5 w-5" />} title="Trust & Security" desc="Privacy-first systems and battle-tested practices." />
-              <Value icon={<Rocket className="h-5 w-5" />} title="Performance" desc="We optimize for business outcomes, not vanity metrics." />
-              <Value icon={<Users className="h-5 w-5" />} title="Partnership" desc="We embed with your team and move as one." />
-              <Value icon={<CheckCircle2 className="h-5 w-5" />} title="Clarity" desc="Clear plans, clear reporting, clear wins." />
+              <Value
+                icon={<Shield className="h-5 w-5" />}
+                title="Trust & Security"
+                desc="Privacy-first systems and battle-tested practices."
+              />
+              <Value
+                icon={<Rocket className="h-5 w-5" />}
+                title="Performance"
+                desc="We optimize for business outcomes, not vanity metrics."
+              />
+              <Value
+                icon={<Users className="h-5 w-5" />}
+                title="Partnership"
+                desc="We embed with your team and move as one."
+              />
+              <Value
+                icon={<CheckCircle2 className="h-5 w-5" />}
+                title="Clarity"
+                desc="Clear plans, clear reporting, clear wins."
+              />
             </div>
           </div>
           <div className="md:col-span-6">
@@ -96,7 +142,15 @@ export default function About() {
   );
 }
 
-function Value({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
+function Value({
+  icon,
+  title,
+  desc,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+}) {
   return (
     <div className="rounded-lg border p-4">
       <div className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-gradient-to-br from-[#5170FF14] to-[#5D17EB14] text-[#5170FF]">
