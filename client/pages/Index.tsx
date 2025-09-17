@@ -20,7 +20,7 @@ export default function Index() {
             alt: "Team collaborating",
           },
           {
-            src: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1920&auto=format&fit=crop",
+            src: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             alt: "Marketing analytics dashboard",
           },
           {
@@ -42,8 +42,7 @@ export default function Index() {
           Forge Your Legacy with Smarter Marketing & IT Solutions
         </h1>
         <p className="text-white/90 text-lg md:text-xl">
-          Helping businesses scale with cutting-edge IT services, data-driven
-          marketing strategies, and powerful social media management.
+          B2B Digital Marketing & Lead Generation Partner
         </p>
         <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button
@@ -55,7 +54,7 @@ export default function Index() {
           <Button
             asChild
             variant="outline"
-            className="h-12 px-6 text-base border-white text-white hover:bg-white/10"
+            className="h-12 px-6 text-base border-white text-slate-900 hover:bg-white/10"
           >
             <a href="/services">Explore services</a>
           </Button>
@@ -73,13 +72,7 @@ export default function Index() {
           </div>
           <div className="md:col-span-7 text-muted-foreground text-lg leading-relaxed">
             <p>
-              At LegacyForge Marketing, we don’t just market — we build
-              legacies. Our team of tech-driven marketers and IT specialists
-              combine creativity with strategy to help your business grow faster
-              and smarter. Whether you need performance marketing campaigns that
-              deliver measurable ROI, robust IT support to keep operations
-              smooth, or engaging social media management to connect with your
-              audience, we’ve got you covered.
+              LegacyForge Marketing Pvt Ltd is an industry-focused marketing and growth solutions company, dedicated to empowering B2B businesses, manufacturers, and brands with strategic, result-driven services. Our strength lies in delivering performance-oriented solutions—ranging from lead generation  and sales enablement to brand communication—tailored specifically for sectors like building materials, real estate, manufacturing, and services.
             </p>
           </div>
         </div>
@@ -98,13 +91,13 @@ export default function Index() {
         <div className="mt-10 grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <ServiceCard
             icon={<ShieldCheck className="h-6 w-6" />}
-            title="IT Services & Support"
-            desc="Streamline your tech infrastructure, improve cybersecurity, and keep your business running without disruption."
+            title="Digital Marketing"
+            desc="Google & Meta Ads, Search Engine Optimisation Social Media Management."
           />
           <ServiceCard
             icon={<LineChart className="h-6 w-6" />}
-            title="Performance Marketing"
-            desc="Leverage data-driven ads and campaigns to maximize conversions and reduce wasted ad spend."
+            title="Lead Generation"
+            desc="Building Material Manufacturer Interior Designer, Architect & Contractor."
           />
           <ServiceCard
             icon={<Megaphone className="h-6 w-6" />}
@@ -113,8 +106,13 @@ export default function Index() {
           />
           <ServiceCard
             icon={<PenTool className="h-6 w-6" />}
-            title="Content Strategy & Branding"
-            desc="Tell your story the right way and stand out from the competition."
+            title="Sales & Telecalling"
+            desc="Dedicated Calling Teams, Follow-up Systems, Sales calling."
+          />
+           <ServiceCard
+            icon={<PenTool className="h-6 w-6" />}
+            title="Website Development"
+            desc="Responsive Websites, Landing Pages, Hosting Setup."
           />
         </div>
       </section>

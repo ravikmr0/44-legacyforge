@@ -1,3 +1,4 @@
+// ...existing code...
 import { defineConfig, Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -9,7 +10,8 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
     fs: {
-      allow: ["./client", "./shared"],
+      // Allow Vite to serve files from the repo root so index.html can be served
+      allow: ["./", "./client", "./shared"],
       deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "server/**"],
     },
   },
@@ -37,3 +39,4 @@ function expressPlugin(): Plugin {
     },
   };
 }
+// ...existing code...
