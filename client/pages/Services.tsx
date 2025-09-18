@@ -22,8 +22,8 @@ export default function Services() {
       <div className="mt-10 grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
         <ServiceCard
           icon={<ShieldCheck className="h-6 w-6" />}
-          title="IT Services & Support"
-          desc="Streamline your tech infrastructure, improve cybersecurity, and keep your business running without disruption."
+          title="LEAD GENERATION"
+          desc="We help you get real leads, not just random inquiries. By running targeted Meta Ads in your region, we collect fresh leads and personally connect with them to understand their needs."
         />
         <ServiceCard
           icon={<LineChart className="h-6 w-6" />}
@@ -33,12 +33,17 @@ export default function Services() {
         <ServiceCard
           icon={<Megaphone className="h-6 w-6" />}
           title="Social Media Management"
-          desc="Build an authentic online presence, engage your audience, and boost brand loyalty."
+          desc="We manage your Facebook, Instagram, and LinkedIn to build a strong and credible brand presence. Our team consistently creates engaging graphics, motion posts, and product reels to boost visibility and connect with your audience."
         />
         <ServiceCard
           icon={<PenTool className="h-6 w-6" />}
-          title="Content Strategy & Branding"
-          desc="Tell your story the right way and stand out from the competition."
+          title="PAID ADVERTISEMENTS"
+          desc="We manage and run Meta Ads and Google Ads directly from your social media accounts and website—helping your brand reach the right audience at the right time. Whether it’s for leads, sales, or simply growing your brand presence, we create campaigns that actually deliver."
+        />
+        <ServiceCard
+          icon={<PenTool className="h-6 w-6" />}
+          title="Social Media Marketing"
+          desc="We manage your Facebook, Instagram, and LinkedIn to build a strong and credible brand presence. Our team consistently creates engaging graphics, motion posts, and product reels to boost visibility and connect with your audience."
         />
       </div>
 
@@ -47,39 +52,39 @@ export default function Services() {
         <ServiceSection
           eyebrow="Social Media Marketing"
           title="Grow, engage, and convert your audience"
-          desc="We build content engines and engagement systems that create authentic connections across platforms — from strategy and creative to community and analytics."
+          desc="Our team designs visually engaging posts, motion graphics, and product reels to increase visibility, connect with your audience, and keep your brand active across platforms."
           points={[
-            "Full-funnel content calendar",
-            "Community management",
-            "UGC + creator collaborations",
-            "Monthly growth reporting",
+            "Supports Brand Loyalty",
+            "Real-Time Engagement Tracking",
+            "Boosts Overall Brand Credibility",
+            "Professional Brand Presence",
           ]}
-          image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop"
+          image="https://images.unsplash.com/photo-1683721003111-070bcc053d8b?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         />
         <ServiceSection
           right
           eyebrow="Performance Marketing"
           title="Acquisition you can measure — and scale"
-          desc="Rapid experimentation, creative iteration, and data-driven bidding to maximize ROAS across Google, Meta, LinkedIn, and more."
+          desc="Supercharge your sales pipeline with targeted lead generation tailored to your industry. From ad to inbox, we capture the right audience for your business."
           points={[
-            "Rapid test sprints",
-            "Creative and landing page iteration",
-            "Attribution & LTV modeling",
-            "Transparent dashboards",
+            "Audience Targeting with Paid Ads",
+            "Conversion-Focused Design",
+            "Lead Segmentation & Nurturing",
+            "End-to-End Campaign Execution",
           ]}
-          image="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1600&auto=format&fit=crop"
+          image="https://media.istockphoto.com/id/1817679369/photo/hospital-monitor-medical-equipment-displaying-vital-signs-like-heart-rate-blood-pressure-and.webp?a=1&s=612x612&w=0&k=20&c=iyxgUAl0ftZlYu89MNCt6zXV1acWzHDaXLW6yOW5q1Q="
         />
         <ServiceSection
-          eyebrow="SEO"
+          eyebrow="Sales Support Service That Drives Results"
           title="Compound traffic with technical + content SEO"
-          desc="From technical fixes and IA to content clusters and link acquisition — we align SEO with business impact."
+          desc="Bridge the gap between leads and deals with our powerful sales calling team—trained to sell, follow up, and build trust."
           points={[
-            "Technical & Core Web Vitals",
-            "Keyword & topic clustering",
-            "On-page + internal linking",
-            "Link outreach",
+            "Daily Follow-Ups & Reminders",
+            "Demo Scheduling & Qualification",
+            "Customized Call Scripts",
+            "Call Reporting & Lead Feedback",
           ]}
-          image="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop"
+          image="https://plus.unsplash.com/premium_photo-1661510222198-2c15ce11a644?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1pbi1zYW1lLXNlcmllc3wxfHx8ZW58MHx8fHx8"
         />
         <ServiceSection
           right
@@ -91,20 +96,36 @@ export default function Services() {
             "CRO & A/B testing",
             "Analytics & tracking architecture",
             "Performance reporting",
+            "Strategy & consulting",
           ]}
-          image="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1600&auto=format&fit=crop"
+          image="https://media.istockphoto.com/id/1333702051/photo/digital-marketing-hexagonal-touch-screen-concept.webp?a=1&b=1&s=612x612&w=0&k=20&c=hihuRTM3Dejh-lLpspJ51fVN2z0CaBtzpxFwG-kRoEk="
         />
         <ServiceSection
-          eyebrow="Website Development Service"
-          title="Fast, secure, and beautiful web experiences"
-          desc="We design and build responsive, high-performance websites that convert — with rock-solid foundations."
+          eyebrow="Media & Visual Production"
+          title="Vidio Production & Photography"
+          desc="Bring your brand to life with professional visuals that captivate and convert. From product shoots to event coverage, we create content that tells your story with impact."
           points={[
-            "Design systems & UI",
-            "Headless CMS & integrations",
-            "Performance & accessibility",
-            "QA & SEO best practices",
+            "Product Photography & Reels",
+            "Expo & Event Coverage",
+            "Promotional & Corporate Videos",
+            "Editing, Motion Graphics & AI Videos",
+            "Social Media-Ready Visuals",
           ]}
-          image="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1600&auto=format&fit=crop"
+          image="https://media.istockphoto.com/id/171583296/photo/media-student-being-interviewed.webp?a=1&b=1&s=612x612&w=0&k=20&c=luc82TC1_YtLbOiVijeCWCN8L3dUj2aqkzP8gQAfk4g="
+        />
+        <ServiceSection
+          right
+          eyebrow="Website Design & Development"
+          title="Modern, responsive websites that convert"
+          desc="We build fast, responsive, and conversion-focused websites that reflect your brand and drive results."
+          points={[
+            "Mobile-Friendly Websites",
+            "Landing Pages for Campaigns",
+            "Domain & Hosting Setup",
+            "Custom Design & User Experience",
+            "SEO-Ready Structure",
+          ]}
+          image="https://media.istockphoto.com/id/1201166649/photo/office-responsive-devices-web-design-website.webp?a=1&b=1&s=612x612&w=0&k=20&c=xwyXVLCiuigRsT65xjq6LtrOoUGPwZXbafmHRjQKLE0="
         />
       </div>
     </div>

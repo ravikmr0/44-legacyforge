@@ -91,13 +91,13 @@ export default function Index() {
         <div className="mt-10 grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <ServiceCard
             icon={<ShieldCheck className="h-6 w-6" />}
-            title="Digital Marketing"
-            desc="Google & Meta Ads, Search Engine Optimisation Social Media Management."
+            title="Website Development"
+            desc="We design and develop fast, mobile-optimized, and conversion-focused websites that reflect your brand and"
           />
           <ServiceCard
             icon={<LineChart className="h-6 w-6" />}
-            title="Lead Generation"
-            desc="Building Material Manufacturer Interior Designer, Architect & Contractor."
+            title="Paid Advertising (PPC)"
+            desc="Drive high-quality leads and fast results with our data-driven PPC campaigns. We create and manage targeted ads on Google, Meta (Facebook/Instagram)"
           />
           <ServiceCard
             icon={<Megaphone className="h-6 w-6" />}
@@ -107,12 +107,22 @@ export default function Index() {
           <ServiceCard
             icon={<PenTool className="h-6 w-6" />}
             title="Sales & Telecalling"
-            desc="Dedicated Calling Teams, Follow-up Systems, Sales calling."
+            desc="Boost your brand with engaging content, regular graphic posts, and consistent presence across Instagram, Facebook and LinkedIn."
           />
            <ServiceCard
             icon={<PenTool className="h-6 w-6" />}
-            title="Website Development"
-            desc="Responsive Websites, Landing Pages, Hosting Setup."
+            title="Content Marketing"
+            desc="We create consistent blogs and content around your business and products to boost visibility and authority on Google."
+          />
+           <ServiceCard
+            icon={<PenTool className="h-6 w-6" />}
+            title="Creative & Branding"
+            desc="We bring your brand to life with impactful logos, ad creatives, social media visuals, and complete brand identity design."
+          />
+           <ServiceCard
+            icon={<PenTool className="h-6 w-6" />}
+            title="Search Engine Optimization"
+            desc="Rank higher on search engines with our proven SEO strategies —covering on-page, off-page, local SEO, and technical audits"
           />
         </div>
       </section>
@@ -126,10 +136,12 @@ export default function Index() {
             </h2>
             <ul className="space-y-4">
               {[
-                "Data-Driven Strategies for Measurable Growth",
-                "End-to-End IT & Marketing Solutions in One Place",
-                "Proven Track Record of ROI-Focused Campaigns",
-                "Dedicated Team that Understands Your Business",
+                "Based in Noida, Uttar Pradesh",
+                "Experts in uPVC windows & doors Industry.",
+                "Pan-India lead generation for uPVC & aluminium fabricators.",
+                "Deliver qualified, ready-to-convert leads to partners.",
+                "Engage retail customers to gather real-time project needs.",
+                "Support partners in turning leads into orders and business growth."
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-lg">
                   <CheckCircle2 className="mt-1 h-5 w-5 text-[#5170FF]" />
@@ -204,50 +216,58 @@ export default function Index() {
           <ServicesCarousel
             items={[
               {
-                title: "IT Infrastructure Audit",
-                desc: "Comprehensive review of systems, security, and performance with prioritized fixes.",
+                title: "Lead Generation",
+                desc: "We run Meta & Google Ads to get fresh leads, collect their requirements like window type and quantity",
                 image:
-                  "https://images.unsplash.com/photo-1535223289827-42f1e9919769?q=80&w=1600&auto=format&fit=crop",
+                  "https://plus.unsplash.com/premium_photo-1733306503329-7a8c701fa9ad?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 ctaHref: "/services",
                 ctaLabel: "Get audit",
               },
               {
-                title: "Managed IT Support",
-                desc: "Proactive monitoring, helpdesk, and maintenance to keep ops seamless.",
+                title: "Website Design",
+                desc: "With our experience in the window and door business, we build dynamic, product-focused websites",
                 image:
-                  "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop",
+                  "https://plus.unsplash.com/premium_photo-1661338857151-779ee51362c6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 ctaHref: "/services",
                 ctaLabel: "View plans",
               },
               {
-                title: "Performance Ads Sprint",
-                desc: "4-week sprint to launch, test, and scale high-ROI ad campaigns.",
+                title: "SEO Services",
+                desc: "We offer SEO services that boost your Google rankings, drive quality traffic, improve online visibility.",
                 image:
-                  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1600&auto=format&fit=crop",
+                  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=815&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 ctaHref: "/services",
                 ctaLabel: "Start sprint",
               },
               {
-                title: "Social Growth Engine",
-                desc: "Content + community management to build an authentic presence.",
+                title: "Social Media Management",
+                desc: "We manage your Facebook, Instagram, and LinkedIn to build brand credibility. Our team creates engaging posts",
                 image:
-                  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop",
+                  "https://images.unsplash.com/photo-1690883794145-e96486fbe66b?q=80&w=832&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 ctaHref: "/services",
                 ctaLabel: "See details",
               },
               {
-                title: "Content & Brand Kit",
-                desc: "Messaging, visual system, and content calendar aligned to goals.",
+                title: "Paid Advertising",
+                desc: "We run strategic Meta and Google Ads campaigns to reach customers faster, build brand recognition.",
                 image:
-                  "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1600&auto=format&fit=crop",
+                  "https://media.istockphoto.com/id/1492180527/photo/digital-marketing-commerce-online-sale-concept-promotion-of-products-or-services-through.webp?a=1&b=1&s=612x612&w=0&k=20&c=Y7ckfHqeILZYTunLLf2SQksvdA7YNzEXiUj4Kvz2vBA=",
                 ctaHref: "/services",
                 ctaLabel: "Build brand",
               },
               {
-                title: "Analytics & Attribution",
-                desc: "Tracking architecture and reporting for crystal-clear ROI.",
+                title: "Print Design",
+                desc: "We offer Catalogue, Brochure, PPT, Trifold, Sample box, and other print designs.",
                 image:
-                  "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1600&auto=format&fit=crop",
+                  "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                ctaHref: "/services",
+                ctaLabel: "Get insights",
+              },
+              {
+                title: "Media Production",
+                desc: "We offer corporate, expo, product, and site completion shoots to help you professionally showcase your business.",
+                image:
+                  "https://plus.unsplash.com/premium_photo-1663040316559-8684ca45d7e9?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 ctaHref: "/services",
                 ctaLabel: "Get insights",
               },
