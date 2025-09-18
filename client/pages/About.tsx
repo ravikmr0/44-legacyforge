@@ -127,9 +127,7 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
             >
-              We blend IT expertise with data-driven marketing to build brands
-              that last. Strategy, execution, and relentless optimization — all
-              under one roof.
+              Helping manufacturing businesses grow online—expanding their reach, generating leads, and boosting sales with smart, data-driven marketing.
             </motion.p>
             
             <motion.div 
@@ -147,7 +145,7 @@ export default function About() {
               <Button
                 asChild
                 variant="outline"
-                className="h-12 px-8 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm text-lg font-semibold"
+                className="h-12 px-8 border-white/30 text-slate-900 hover:bg-white/10 backdrop-blur-sm text-lg font-semibold"
               >
                 <a href="/services">Our Services</a>
               </Button>
@@ -200,9 +198,9 @@ export default function About() {
           
           <TeamMember
             name="Ishita Bansal"
-            role="Head of Marketing"
+            role="Head of Sales"
             image="/images/ishita.png"
-            bio="Ishita brings extensive experience in building material sales and entrepreneurial insights from running her own business. She excels at customer interaction, building trust."
+            bio="Ishita brings strong expertise in building material sales, excelling at customer interaction and trust-building, with added insight from her entrepreneurial journey."
             linkedin="https://www.linkedin.com/in/ishita-bansal-0859652a7/"
             email="ishita@legacyforgegroup.com"
           />
@@ -211,7 +209,7 @@ export default function About() {
             name="Ravi Kumar"
             role="Website Development Lead"
             image="/images/ravi.png"
-            bio="Ravi is an expert in HTML, CSS, React.js, Node.js, and Express, crafting customized, dynamic website solutions that meet each client’s unique needs. He combines technical skill with creativity."
+            bio="Ravi is an expert in HTML, CSS, React.js, Node.js, and Express, crafting customized, dynamic website solutions that meet each client’s unique needs"
             linkedin="https://www.linkedin.com/in/ravi-kumar0/"
             email="ravi@legacyforgegroup.com"
           />
