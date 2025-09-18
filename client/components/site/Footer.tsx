@@ -35,11 +35,15 @@ export function Footer() {
       <div className="container pb-10 grid gap-10 md:grid-cols-4">
         <div className="space-y-4">
           <a href="/" className="flex items-center gap-2">
-            <div className="h-9 w-9 rounded-md bg-gradient-to-br from-[#5170FF] to-[#5D17EB]" />
-            <span className="font-extrabold tracking-tight text-lg">
-              LegacyForge
-            </span>
-          </a>
+          <img
+            src="/favicon.ico"
+            alt="LegacyForge logo"
+            className="h-8 w-8 rounded-md object-cover shadow-sm"
+          />
+          <span className="font-extrabold tracking-tight text-lg">
+            LegacyForge
+          </span>
+        </a>
           <p className="text-sm text-muted-foreground max-w-sm">
             Smarter marketing and IT solutions to help you forge a lasting
             legacy.

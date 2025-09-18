@@ -29,7 +29,11 @@ export function Header() {
     >
       <div className="container flex h-16 items-center justify-between">
         <a href="/" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-md bg-gradient-to-br from-[#5170FF] to-[#5D17EB] shadow-sm" />
+          <img
+            src="/favicon.ico"
+            alt="LegacyForge logo"
+            className="h-8 w-8 rounded-md object-cover shadow-sm"
+          />
           <span className="font-extrabold tracking-tight text-lg">
             LegacyForge
           </span>

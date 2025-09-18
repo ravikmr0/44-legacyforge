@@ -202,7 +202,7 @@ export default function About() {
             name="Ishita Bansal"
             role="Head of Marketing"
             image="/images/ishita.png"
-            bio="Growth marketing expert with proven track record at startups and Fortune 500 companies. Specializes in data-driven campaigns that deliver measurable ROI."
+            bio="Ishita brings extensive experience in building material sales and entrepreneurial insights from running her own business. She excels at customer interaction, building trust."
             linkedin="https://www.linkedin.com/in/ishita-bansal-0859652a7/"
             email="ishita@legacyforgegroup.com"
           />
@@ -211,7 +211,7 @@ export default function About() {
             name="Ravi Kumar"
             role="Website Development Lead"
             image="/images/ravi.png"
-            bio="IT with 1+ years building high-performing website. Expert in consulting and implementing scalable web solutions."
+            bio="Ravi is an expert in HTML, CSS, React.js, Node.js, and Express, crafting customized, dynamic website solutions that meet each client’s unique needs. He combines technical skill with creativity."
             linkedin="https://www.linkedin.com/in/ravi-kumar0/"
             email="ravi@legacyforgegroup.com"
           />
