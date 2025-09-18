@@ -1,4 +1,4 @@
-import { Mail, Twitter, Linkedin, Facebook } from "lucide-react";
+import { Mail, Twitter, Linkedin, Facebook, Instagram, Phone } from "lucide-react";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -114,9 +114,18 @@ export function Footer() {
             Email:{" "}
             <a
               className="underline hover:text-foreground"
-              href="mailto:hello@legacyforge.marketing"
+              href="mailto:info@legacyforgegroup.com"
             >
-              hello@legacyforge.marketing
+              info@legacyforgegroup.com
+            </a>
+          </div>
+          <div className="mt-4 text-sm text-muted-foreground">
+            Phone:{" "}
+            <a
+              className="underline hover:text-foreground"
+              href="tel:+918860575836"
+            >
+              +91 8860575836
             </a>
           </div>
         </div>
@@ -129,19 +138,29 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <a
               aria-label="Email"
-              href="mailto:hello@legacyforge.marketing"
+              href="mailto: info@legacyforgegroup.com"
               className="hover:text-foreground"
             >
               <Mail className="h-4 w-4" />
             </a>
-            <a aria-label="Twitter" href="#" className="hover:text-foreground">
-              <Twitter className="h-4 w-4" />
+            <a
+              aria-label="Phone"
+              href="tel:+918860575836" // replace with the real phone number
+              className="hover:text-foreground"
+            >
+              <Phone className="h-4 w-4" />
             </a>
-            <a aria-label="LinkedIn" href="#" className="hover:text-foreground">
+            {/* <a aria-label="Twitter" href="#" className="hover:text-foreground">
+              <Twitter className="h-4 w-4" />
+            </a> */}
+            <a aria-label="LinkedIn" href="https://www.linkedin.com/company/legacyforge-marketing-pvt-ltd/posts/?feedView=all" className="hover:text-foreground">
               <Linkedin className="h-4 w-4" />
             </a>
-            <a aria-label="Facebook" href="#" className="hover:text-foreground">
+            <a aria-label="Facebook" href="https://www.facebook.com/profile.php?id=61574885485332#" className="hover:text-foreground">
               <Facebook className="h-4 w-4" />
+            </a>
+            <a aria-label="Instagram" href="https://www.instagram.com/legacyforge.marketing/" className="hover:text-foreground">
+              <Instagram className="h-4 w-4" />
             </a>
           </div>
         </div>
