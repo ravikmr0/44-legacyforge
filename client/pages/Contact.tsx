@@ -119,16 +119,16 @@ export default function Contact() {
                     className="underline hover:text-foreground"
                     href="mailto:hello@legacyforge.marketing"
                   >
-                    hello@legacyforge.marketing
+                    info@legacyforgegroup.com 
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="h-4 w-4 text-[#5170FF]" />
-                  <span>+1 (555) 000-0000</span>
+                  <span>+91 8860575836</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Clock className="h-4 w-4 text-[#5170FF]" />
-                  <span>Mon–Fri, 9am–6pm</span>
+                  <span>Mon–Fri, 10am–6pm</span>
                 </div>
               </div>
             </div>
