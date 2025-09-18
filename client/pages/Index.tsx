@@ -36,10 +36,10 @@ export default function Index() {
       >
         <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs text-white backdrop-blur">
           <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]" />
-          Smarter growth starts here
+          Smarter growth 
         </span>
         <h1 className="text-4xl font-extrabold tracking-tight md:text-6xl text-white">
-          Forge Your Legacy with Smarter Marketing & IT Solutions
+          Your Growth Partner in Digital Marketing & Business Growth
         </h1>
         <p className="text-white/90 text-lg md:text-xl">
           B2B Digital Marketing & Lead Generation Partner
