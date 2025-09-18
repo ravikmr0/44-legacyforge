@@ -74,6 +74,9 @@ export function Footer() {
             <a className="hover:text-foreground" href="/about">
               About
             </a>
+            <a className="hover:text-foreground" href="/services">
+              Services
+            </a>
             <a className="hover:text-foreground" href="/why-us">
               Why Us
             </a>
