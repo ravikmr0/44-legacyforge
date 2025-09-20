@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next';
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { PropsWithChildren } from "react";
@@ -8,6 +9,7 @@ export function Layout({ children }: PropsWithChildren) {
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
+       <Analytics />
     </div>
   );
 }
