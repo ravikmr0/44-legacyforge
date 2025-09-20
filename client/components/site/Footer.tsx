@@ -11,7 +11,7 @@ export function Footer() {
             <div className="grid items-center gap-6 md:grid-cols-12">
               <div className="md:col-span-8">
                 <h3 className="text-2xl md:text-3xl font-bold tracking-tight">
-                  Ready to build your legacy?
+                  Improving your Business Growth 
                 </h3>
                 <p className="mt-2 text-muted-foreground">
                   Book a free consultation and discover how our IT and marketing
