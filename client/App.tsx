@@ -15,7 +15,6 @@ import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import Projects from "./pages/Projects";
 import NotFound from "./pages/NotFound";
-import { Analytics } from "@vercel/analytics/next";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -38,9 +37,8 @@ const App = () => (
   <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <Analytics />
+  <Toaster />
+  <Sonner />
         <BrowserRouter>
           <Layout>
             <Routes>
