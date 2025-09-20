@@ -45,7 +45,7 @@ export function Footer() {
           </span>
         </a>
           <p className="text-sm text-muted-foreground max-w-sm">
-            Smarter marketing and IT solutions to help you forge a lasting
+            Smarter marketing and Business growth to help you forge a lasting
             legacy.
           </p>
         </div>
@@ -54,7 +54,10 @@ export function Footer() {
           <p className="font-semibold">Services</p>
           <nav className="mt-3 flex flex-col text-sm gap-2 text-muted-foreground">
             <a className="hover:text-foreground" href="/services">
-              IT Services & Support
+              Digital Marketing
+            </a>
+            <a className="hover:text-foreground" href="/services">
+              Website Development
             </a>
             <a className="hover:text-foreground" href="/services">
               Performance Marketing
