@@ -77,6 +77,12 @@ export function Footer() {
             <a className="hover:text-foreground" href="/services">
               Services
             </a>
+            <a className="hover:text-foreground" href="/projects">
+              Projects
+            </a>
+            <a className="hover:text-foreground" href="/blog">
+              Blog
+            </a>
             <a className="hover:text-foreground" href="/why-us">
               Why Us
             </a>
