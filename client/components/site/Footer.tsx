@@ -66,6 +66,9 @@ export function Footer() {
               Social Media Management
             </a>
             <a className="hover:text-foreground" href="/services">
+              Advertisement
+            </a>
+            <a className="hover:text-foreground" href="/services">
               Content Strategy & Branding
             </a>
           </nav>
