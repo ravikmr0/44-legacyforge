@@ -10,7 +10,7 @@ const projects = [
     client: "Premium Windows Co.",
     industry: "Manufacturing",
     description: "Complete digital marketing overhaul for a leading uPVC windows manufacturer, including website redesign, lead generation campaigns, and social media management.",
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1200&auto=format&fit=crop",
+    image: "https://media.istockphoto.com/id/2190916511/photo/factory-worker-cleaning-pvc-windows-in-production-line.webp?a=1&b=1&s=612x612&w=0&k=20&c=kRqHs0fFhZKHs1-ec6cQJMCGJwF9nrJNeL1OxeAk6Gs=",
     results: [
       { metric: "Lead Generation", value: "300%", description: "increase in qualified leads" },
       { metric: "Website Traffic", value: "250%", description: "growth in organic traffic" },
@@ -29,7 +29,7 @@ const projects = [
     client: "Modern Aluminium Solutions",
     industry: "Construction",
     description: "Targeted lead generation campaign for an aluminium fabricator focusing on residential and commercial projects across North India.",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1624841970647-87dce8628d72?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     results: [
       { metric: "Qualified Leads", value: "180", description: "leads generated in 3 months" },
       { metric: "Conversion Rate", value: "25%", description: "lead to customer conversion" },
@@ -48,7 +48,7 @@ const projects = [
     client: "BuildMart Supplies",
     industry: "Retail",
     description: "Development of a comprehensive e-commerce platform for building materials with integrated inventory management and customer portal.",
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1200&auto=format&fit=crop",
+    image: "https://plus.unsplash.com/premium_photo-1682129210416-53fabe5b08da?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     results: [
       { metric: "Online Sales", value: "500%", description: "growth in online revenue" },
       { metric: "Customer Base", value: "1000+", description: "new registered customers" },
@@ -67,7 +67,7 @@ const projects = [
     client: "Elegant Interiors",
     industry: "Design",
     description: "Complete brand identity development and social media strategy for a premium interior design firm targeting high-end residential projects.",
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1200&auto=format&fit=crop",
+    image: "https://media.istockphoto.com/id/1340683883/photo/large-office-interior-a-reception-desk-a-lounge-corner-with-copy-space-and-wordesks-behind.webp?a=1&b=1&s=612x612&w=0&k=20&c=WH91H5D0inDh4lKoO-cuKSjNHuXwkhbJxhuQI5B_3Ug=",
     results: [
       { metric: "Brand Recognition", value: "300%", description: "increase in brand mentions" },
       { metric: "Instagram Followers", value: "5000+", description: "organic follower growth" },
@@ -86,7 +86,7 @@ const projects = [
     client: "BuildRight Construction",
     industry: "Construction",
     description: "Comprehensive digital marketing strategy for a mid-size construction company focusing on residential and commercial projects.",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
+    image: "https://media.istockphoto.com/id/2187596750/photo/construction-worker-shaking-hands-with-foreman.webp?a=1&b=1&s=612x612&w=0&k=20&c=TkDOdNDoDI4ej1dVAKiQCgSKmjhVKLdu7ZBE5C4kHSY=",
     results: [
       { metric: "Project Leads", value: "200%", description: "increase in project inquiries" },
       { metric: "Website Visitors", value: "350%", description: "growth in monthly visitors" },
@@ -105,7 +105,7 @@ const projects = [
     client: "Prime Properties",
     industry: "Real Estate",
     description: "Implementation of automated lead nurturing system with CRM integration for a real estate developer focusing on premium residential projects.",
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1200&auto=format&fit=crop",
+    image: "https://media.istockphoto.com/id/2155457708/photo/group-of-businessmen-and-investors-discuss-investing-in-real-estate-and-jointly-plan.webp?a=1&b=1&s=612x612&w=0&k=20&c=JpzfGjeQBQNiYdcGMGB7CQpKUs5YACqLQO-9PgvmEo0=",
     results: [
       { metric: "Lead Conversion", value: "45%", description: "improvement in conversion rate" },
       { metric: "Sales Cycle", value: "30%", description: "reduction in average sales time" },
