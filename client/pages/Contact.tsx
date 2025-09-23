@@ -135,15 +135,22 @@ export default function Contact() {
 
             <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-[#5170FF] to-[#5D17EB] p-[1px]">
               <div className="relative rounded-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1600&auto=format&fit=crop"
-                  alt="Office location"
-                  className="h-56 w-full object-cover"
-                />
+                <a
+                  href="https://share.google/kVrdQuCNVbR4XyW7c"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open office location in Google Maps"
+                >
+                  <img
+                    src="/images/office.jpg"
+                    alt="Office location map preview"
+                    className="h-56 w-full object-cover rounded-md"
+                  />
+                </a>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
                 <div className="absolute bottom-3 left-3 right-3 flex items-center gap-2 rounded-md bg-white/90 p-2 text-sm text-[#0e0e0e] shadow">
                   <MapPin className="h-4 w-4" />
-                  <span>LegacyForge HQ — 123 Market St, San Francisco, CA</span>
+                  <span>LegacyForge Office — Tower B Unit No: 331A</span>
                 </div>
               </div>
             </div>
