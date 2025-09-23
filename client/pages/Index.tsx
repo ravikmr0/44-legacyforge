@@ -62,21 +62,53 @@ export default function Index() {
       </HeroSlider>
 
       {/* About */}
-      <section id="about" className="container py-16 md:py-24">
-        <div className="grid gap-10 md:grid-cols-12 md:gap-12 items-start">
-          <div className="md:col-span-5">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              About LegacyForge Marketing
-            </h2>
-            <div className="mt-4 h-1 w-24 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] rounded" />
-          </div>
-          <div className="md:col-span-7 text-muted-foreground text-lg leading-relaxed">
-            <p>
-              LegacyForge Marketing Pvt Ltd is an industry-focused marketing and growth solutions company, dedicated to empowering B2B businesses, manufacturers, and brands with strategic, result-driven services. Our strength lies in delivering performance-oriented solutions—ranging from lead generation  and sales enablement to brand communication—tailored specifically for sectors like building materials, real estate, manufacturing, and services.
-            </p>
+<section id="about" className="container py-16 md:py-24">
+  <div className="grid gap-10 md:grid-cols-12 md:gap-12 items-start">
+    {/* Heading */}
+    <div className="md:col-span-5">
+      <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+        About LegacyForge Marketing
+      </h2>
+      <div className="mt-4 h-1 w-24 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] rounded" />
+      {/* About Image */}
+      <div className="mt-8 relative">
+        <div className="rounded-2xl overflow-hidden shadow-2xl">
+          {/* Use a local public image as a reliable fallback while external assets may be blocked */}
+          <img
+            src="https://ideogram.ai/assets/image/lossless/response/IoLZpezhTaG6xgtQKUgKXw"
+            alt="LegacyForge marketing — team and work"
+            className="w-full h-64 md:h-[360px] object-cover bg-white"
+            loading="lazy"
+            decoding="async"
+            width={1200}
+            height={1000}
+          />
+        </div>
+
+        {/* subtle badge */}
+        <div className="absolute -bottom-3 -right-3 hidden md:block">
+          <div className="rounded-lg bg-gradient-to-r from-[#5170FF] to-[#5D17EB] p-[1px]">
+            <div className="bg-white rounded-md px-3 py-1 text-sm font-medium text-slate-900">
+              Trusted by B2B brands
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+
+    {/* Text Content */}
+    <div className="md:col-span-7 text-muted-foreground text-lg leading-relaxed">
+      <p>
+        LegacyForge Marketing Pvt Ltd is an industry-focused marketing and growth
+        solutions company, dedicated to empowering B2B businesses, manufacturers,
+        and brands with strategic, result-driven services. Our strength lies in
+        delivering performance-oriented solutions—ranging from lead generation and
+        sales enablement to brand communication—tailored specifically for sectors
+        like building materials, real estate, manufacturing, and services.
+      </p>
+    </div>
+  </div>
+</section>
 
       {/* Core Services */}
       <section id="services" className="container py-16 md:py-24">
