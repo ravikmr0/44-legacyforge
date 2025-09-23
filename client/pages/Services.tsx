@@ -22,7 +22,7 @@ export default function Services() {
       <div className="mt-10 grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
         <ServiceCard
           icon={<ShieldCheck className="h-6 w-6" />}
-          title="LEAD GENERATION"
+          title="Lead Generation"
           desc="We help you get real leads, not just random inquiries. By running targeted Meta Ads in your region, we collect fresh leads and personally connect with them to understand their needs."
         />
         <ServiceCard
@@ -37,7 +37,7 @@ export default function Services() {
         />
         <ServiceCard
           icon={<PenTool className="h-6 w-6" />}
-          title="PAID ADVERTISEMENTS"
+          title="Paid Advertisements"
           desc="We manage and run Meta Ads and Google Ads directly from your social media accounts and website—helping your brand reach the right audience at the right time. Whether it’s for leads, sales, or simply growing your brand presence, we create campaigns that actually deliver."
         />
         <ServiceCard
