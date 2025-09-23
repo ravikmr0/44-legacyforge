@@ -8,9 +8,9 @@ const nav = [
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
   { label: "Blog", href: "/blog" },
-  { label: "About", href: "/about" },
+  { label: "About US", href: "/about" },
   { label: "Why Us", href: "/why-us" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact US", href: "/contact" },
 ];
 
 export function Header() {
