@@ -39,10 +39,10 @@ export default function Index() {
           Smarter growth 
         </span>
         <h1 className="text-4xl font-extrabold tracking-tight md:text-6xl text-white">
-          Your Growth Partner in Digital Marketing & Business Growth
+          Your Partner in Digital Marketing & Business Growth
         </h1>
         <p className="text-white/90 text-lg md:text-xl">
-          B2B Digital Marketing & Lead Generation Partner
+          Digital Marketing & Lead Generation Partner
         </p>
         <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button
@@ -75,7 +75,7 @@ export default function Index() {
         <div className="rounded-2xl overflow-hidden shadow-2xl">
           {/* Use a local public image as a reliable fallback while external assets may be blocked */}
           <img
-            src="https://ideogram.ai/assets/image/lossless/response/IoLZpezhTaG6xgtQKUgKXw"
+            src="/images/office.png"
             alt="LegacyForge marketing — team and work"
             className="w-full h-64 md:h-[360px] object-cover bg-white"
             loading="lazy"
@@ -99,62 +99,63 @@ export default function Index() {
     {/* Text Content */}
     <div className="md:col-span-7 text-muted-foreground text-lg leading-relaxed">
       <p>
-        LegacyForge Marketing Pvt Ltd is an industry-focused marketing and growth
-        solutions company, dedicated to empowering B2B businesses, manufacturers,
-        and brands with strategic, result-driven services. Our strength lies in
-        delivering performance-oriented solutions—ranging from lead generation and
-        sales enablement to brand communication—tailored specifically for sectors
-        like building materials, real estate, manufacturing, and services.
+         LegacyForge Marketing specializes in helping B2B and D2C businesses, manufacturers, and brands achieve measurable growth through data-driven digital strategies. We don’t just deliver marketing services—we craft strategic, results-oriented solutions that empower businesses to scale faster. From lead generation, performance marketing, and sales enablement to brand building and customer engagement, our approach ensures every campaign is designed for maximum impact. With a focus on industries that demand precision and trust, we provide end-to-end marketing solutions tailored to businesses in building materials, uPVC profile manufacturing, system aluminium windows manufacturing, real estate, and interior solutions.
+         Our expertise lies in understanding the unique challenges of manufacturing and construction-driven businesses, where decision-making cycles are complex and competition is intense. LegacyForge Marketing builds SEO-friendly, content-rich campaigns that improve online visibility, generate qualified leads, and strengthen long-term brand equity. Whether you’re a uPVC or aluminium window manufacturer, a real estate developer, or an interior solutions brand, we combine digital performance marketing, content strategy, and storytelling to help you attract the right audience, convert prospects into customers, and establish your presence as an industry leader. With us, your business doesn’t just grow—it thrives with measurable, sustainable results.
       </p>
     </div>
   </div>
 </section>
 
-      {/* Core Services */}
+      {/* Explore Our Services */}
       <section id="services" className="container py-16 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Core Services
+            Explore Our Services
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Outcomes-first solutions tailored to your growth.
+            Custom Strategies to Grow Your Brand, Increase Traffic, and Maximize Revenue
           </p>
         </div>
         <div className="mt-10 grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <ServiceCard
             icon={<ShieldCheck className="h-6 w-6" />}
-            title="Website Development"
-            desc="We design and develop fast, mobile-optimized, and conversion-focused websites that reflect your brand and"
+            title="Paid Advertising (Meta & Google)"
+            desc="Our data-driven PPC campaigns generate qualified leads and maximize ROI, targeting the right audience to scale your business."
           />
           <ServiceCard
             icon={<LineChart className="h-6 w-6" />}
-            title="Paid Advertising (PPC)"
-            desc="Drive high-quality leads and fast results with our data-driven PPC campaigns. We create and manage targeted ads on Google, Meta (Facebook/Instagram)"
+            title="Website Development (Custom Coded)"
+            desc="We develop custom websites that are SEO-friendly and strategically built to attract your ideal audience and convert them into valuable leads."
           />
           <ServiceCard
             icon={<Megaphone className="h-6 w-6" />}
-            title="Social Media Management"
-            desc="Build an authentic online presence, engage your audience, and boost brand loyalty."
+            title="Social Media Management (FB | INSTA | LI | PIN)"
+            desc="We craft engaging content and run strategic campaigns to build your brand authority and generate leads across key platforms."
+          />
+          <ServiceCard
+            icon={<Megaphone className="h-6 w-6" />}
+            title="Search Engine Optimization(ON PAGE | OFF PAGE | GMB)"
+            desc="We implement proven SEO strategies to improve online visibility, ensuring you rank higher and attract qualified organic traffic."
           />
           <ServiceCard
             icon={<PenTool className="h-6 w-6" />}
-            title="Sales & Telecalling"
-            desc="Boost your brand with engaging content, regular graphic posts, and consistent presence across Instagram, Facebook and LinkedIn."
+            title="Sales SUPPORT(CALL | WHATSAPP | EMAIL)"
+            desc="We handle end-to-end sales on calls qualifying, nurturing, and converting prospects into customers to help you close more deals."
           />
            <ServiceCard
             icon={<PenTool className="h-6 w-6" />}
-            title="Content Marketing"
-            desc="We create consistent blogs and content around your business and products to boost visibility and authority on Google."
+            title="Content Marketing(WEB & SOCIAL)"
+            desc="We create SEO-optimized blogs and content to boost visibility and authority, attracting qualified leads and establishing your brand as a leader."
           />
            <ServiceCard
             icon={<PenTool className="h-6 w-6" />}
-            title="Creative & Branding"
-            desc="We bring your brand to life with impactful logos, ad creatives, social media visuals, and complete brand identity design."
+            title="Creative & Branding(DESIGN | PRINT)"
+            desc="We provide end-to-end creative and branding, including unique logos, digital assets, and print collateral like brochures and sample boxes."
           />
            <ServiceCard
             icon={<PenTool className="h-6 w-6" />}
-            title="Search Engine Optimization"
-            desc="Rank higher on search engines with our proven SEO strategies —covering on-page, off-page, local SEO, and technical audits"
+            title="Media Production(PHOTOSHOOT | VIDEOSHOOT)"
+            desc="We create high-quality product, factory, and office photoshoots and videoshoots to visually showcase your business and brand."
           />
         </div>
       </section>
@@ -168,12 +169,12 @@ export default function Index() {
             </h2>
             <ul className="space-y-4">
               {[
-                "Based in Noida, Uttar Pradesh",
-                "Experts in uPVC windows & doors Industry.",
-                "Pan-India lead generation for uPVC & aluminium fabricators.",
-                "Deliver qualified, ready-to-convert leads to partners.",
-                "Engage retail customers to gather real-time project needs.",
-                "Support partners in turning leads into orders and business growth."
+                "Your trusted B2B & D2C partner.",
+                "Proven expertise in the uPVC & aluminium window industry.",
+                "Strategic lead generation to acquire your ideal customers.",
+                "We deliver qualified, ready-to-convert leads for you.",
+                "We engage your audience to discover real-time project needs.",
+                "We help you turn leads into orders and significant business growth."
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-lg">
                   <CheckCircle2 className="mt-1 h-5 w-5 text-[#5170FF]" />
@@ -191,15 +192,13 @@ export default function Index() {
               <div className="relative">
                 <p className="font-semibold">Our approach</p>
                 <p className="mt-2 text-muted-foreground">
-                  We connect strategy with execution. From infrastructure and
-                  security to acquisition and retention, we ship systems that
-                  compound results.
+                  From strategy to execution, we build end-to-end digital systems that attract your ideal customers and drive measurable business growth.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <Badge>Performance-first</Badge>
-                  <Badge>Full-funnel</Badge>
-                  <Badge>Secure-by-design</Badge>
-                  <Badge>Transparent reporting</Badge>
+                  <Badge>Qualified Leads</Badge>
+                  <Badge>Revenue Growth</Badge>
+                  <Badge>Brand Authority</Badge>
+                  <Badge>Market Expansion</Badge>
                 </div>
               </div>
             </div>

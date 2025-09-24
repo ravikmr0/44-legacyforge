@@ -5,11 +5,11 @@ import { Search, Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const nav = [
+  { label: "About US", href: "/about" },
   { label: "Services", href: "/services" },
+  { label: "Why Us", href: "/why-us" },
   { label: "Projects", href: "/projects" },
   { label: "Blog", href: "/blog" },
-  { label: "About US", href: "/about" },
-  { label: "Why Us", href: "/why-us" },
   { label: "Contact US", href: "/contact" },
 ];
 

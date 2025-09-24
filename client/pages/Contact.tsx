@@ -45,7 +45,7 @@ export default function Contact() {
 
                 <div className="grid gap-2">
                   <label htmlFor="name" className="text-sm font-medium">
-                    Full name
+                    Full Name
                   </label>
                   <input
                     id="name"
@@ -124,11 +124,11 @@ export default function Contact() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="h-4 w-4 text-[#5170FF]" />
-                  <span>+91 8860575836</span>
+                  <span>+91 9599782925</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Clock className="h-4 w-4 text-[#5170FF]" />
-                  <span>Mon–Fri, 10am–6pm</span>
+                  <span>Mon–Sat, 10am–6pm</span>
                 </div>
               </div>
             </div>
@@ -142,7 +142,7 @@ export default function Contact() {
                   aria-label="Open office location in Google Maps"
                 >
                   <img
-                    src="/images/office.jpg"
+                    src="/images/office.png"
                     alt="Office location map preview"
                     className="h-56 w-full object-cover rounded-md"
                   />
@@ -150,7 +150,9 @@ export default function Contact() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
                 <div className="absolute bottom-3 left-3 right-3 flex items-center gap-2 rounded-md bg-white/90 p-2 text-sm text-[#0e0e0e] shadow">
                   <MapPin className="h-4 w-4" />
-                  <span>LegacyForge Office — Tower B Unit No: 331A</span>
+                  <a href="https://share.google/Gp61LwXaKENg9tm54">
+                    <span>LegacyForge Office — Tower B Unit No: 331A</span>
+                  </a>
                 </div>
               </div>
             </div>
