@@ -128,7 +128,7 @@ export default function Contact() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Clock className="h-4 w-4 text-[#5170FF]" />
-                  <span>Mon–Sat, 10am–6pm</span>
+                  <span>Mon–Sat, 10am– 6pm</span>
                 </div>
               </div>
             </div>
