@@ -91,9 +91,7 @@ export default function Index() {
         {/* subtle badge */}
         <div className="absolute -bottom-3 -right-3 hidden md:block">
           <div className="rounded-lg bg-gradient-to-r from-[#5170FF] to-[#5D17EB] p-[1px]">
-            <div className="bg-white rounded-md px-3 py-1 text-sm font-medium text-slate-900">
-              Trusted by B2B brands
-            </div>
+            
           </div>
         </div>
       </div>

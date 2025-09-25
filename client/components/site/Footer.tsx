@@ -152,7 +152,7 @@ export function Footer() {
             </a>
             <a
               aria-label="Phone"
-              href="tel:+918860575836" // replace with the real phone number
+              href="tel:+919599782925" // replace with the real phone number
               className="hover:text-foreground"
             >
               <Phone className="h-4 w-4" />
