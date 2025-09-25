@@ -38,8 +38,11 @@ export default function Index() {
           <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]" />
           Smarter growth 
         </span>
-        <h1 className="text-4xl font-extrabold tracking-tight md:text-6xl text-white">
-          Your Partner in Digital Marketing & Business Growth
+        <h1 className="text-4xl font-extrabold tracking-tight md:text-6xl text-indigo-700">
+          Your Partner in 
+        </h1>
+        <h1 className="text-8xl font-extrabold tracking-tight md:text-6xl text-white">
+          Digital Marketing & Business Growth
         </h1>
         <p className="text-white/90 text-lg md:text-xl">
           Digital Marketing & Lead Generation Partner
@@ -119,42 +122,42 @@ export default function Index() {
         <div className="mt-10 grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <ServiceCard
             icon={<ShieldCheck className="h-6 w-6" />}
-            title="Paid Advertising (Meta & Google)"
+            title="PAID ADVERTISING"
             desc="Our data-driven PPC campaigns generate qualified leads and maximize ROI, targeting the right audience to scale your business."
           />
           <ServiceCard
             icon={<LineChart className="h-6 w-6" />}
-            title="Website Development (Custom Coded)"
+            title="WEBSITE DEVELOPMENT"
             desc="We develop custom websites that are SEO-friendly and strategically built to attract your ideal audience and convert them into valuable leads."
           />
           <ServiceCard
             icon={<Megaphone className="h-6 w-6" />}
-            title="Social Media Management (FB | INSTA | LI | PIN)"
+            title=" SOCIAL MEDIA MANAGEMENT"
             desc="We craft engaging content and run strategic campaigns to build your brand authority and generate leads across key platforms."
           />
           <ServiceCard
             icon={<Megaphone className="h-6 w-6" />}
-            title="Search Engine Optimization(ON PAGE | OFF PAGE | GMB)"
+            title="SEARCH ENGINE OPTIMIZATION"
             desc="We implement proven SEO strategies to improve online visibility, ensuring you rank higher and attract qualified organic traffic."
           />
           <ServiceCard
             icon={<PenTool className="h-6 w-6" />}
-            title="Sales SUPPORT(CALL | WHATSAPP | EMAIL)"
+            title="SALES SUPPORT"
             desc="We handle end-to-end sales on calls qualifying, nurturing, and converting prospects into customers to help you close more deals."
           />
            <ServiceCard
             icon={<PenTool className="h-6 w-6" />}
-            title="Content Marketing(WEB & SOCIAL)"
+            title="CONTENT WRITING & MARKETING"
             desc="We create SEO-optimized blogs and content to boost visibility and authority, attracting qualified leads and establishing your brand as a leader."
           />
            <ServiceCard
             icon={<PenTool className="h-6 w-6" />}
-            title="Creative & Branding(DESIGN | PRINT)"
+            title="CREATIVE BRANDING"
             desc="We provide end-to-end creative and branding, including unique logos, digital assets, and print collateral like brochures and sample boxes."
           />
            <ServiceCard
             icon={<PenTool className="h-6 w-6" />}
-            title="Media Production(PHOTOSHOOT | VIDEOSHOOT)"
+            title="MEDIA PRODUCTION"
             desc="We create high-quality product, factory, and office photoshoots and videoshoots to visually showcase your business and brand."
           />
         </div>
