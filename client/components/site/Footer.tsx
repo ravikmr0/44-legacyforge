@@ -136,9 +136,9 @@ export function Footer() {
             Phone:{" "}
             <a
               className="underline hover:text-foreground"
-              href="tel:+918860575836"
+              href="tel:+919599782925"
             >
-              +91 8860575836
+              +91 9599782925
             </a>
           </div>
           <div className="mt-4 flex space-x-4">
