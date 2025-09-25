@@ -44,7 +44,10 @@ export function Footer() {
           </span>
         </a>
           <p className="text-sm text-muted-foreground max-w-sm">
-            At Legacyforge, we help your business reach its full potential through smart digital marketing solutions. From lead generation to brand building, we combine creativity, technology, and strategy to turn clicks into real results for your business.
+            At Legacyforge, we help your business reach its full potential through smart digital marketing solutions.
+          </p>
+          <p className="text-sm text-muted-foreground max-w-sm">
+            From lead generation to brand building, we combine creativity, technology, and strategy to turn clicks into real results for your business.
           </p>
         </div>
 
@@ -52,28 +55,25 @@ export function Footer() {
           <p className="font-semibold">Services</p>
           <nav className="mt-3 flex flex-col text-sm gap-2 text-muted-foreground">
             <a className="hover:text-foreground" href="/services">
-              PAID ADVERTISING
+              Paid advertising
             </a>
             <a className="hover:text-foreground" href="/services">
-              WEBSITE DEVELOPMENT
+              Website development
             </a>
             <a className="hover:text-foreground" href="/services">
-              SOCIAL MEDIA MANAGEMENT
+              Search engine optimisation
             </a>
             <a className="hover:text-foreground" href="/services">
-              SEO OPTIMIZATION
+              Social media management
             </a>
             <a className="hover:text-foreground" href="/services">
-              SALES SUPPORT
+              Content writing & graphics
             </a>
             <a className="hover:text-foreground" href="/services">
-              CONTENT WRITING & DESIGN
+              Creative branding
             </a>
             <a className="hover:text-foreground" href="/services">
-              CREATIVE BRANDING
-            </a>
-            <a className="hover:text-foreground" href="/services">
-              MEDIA PRODUCTION
+              Media production
             </a>
           </nav>
         </div>
@@ -141,14 +141,8 @@ export function Footer() {
               +91 8860575836
             </a>
           </div>
-        </div>
-      </div>
-
-      {/* Bottom bar */}
-      <div className="border-t border-border py-6">
-        <div className="container flex flex-col items-center justify-between gap-4 text-xs text-muted-foreground md:flex-row">
-          <p>© {year} LegacyForge Marketing. All rights reserved.</p>
-          <div className="flex items-center gap-4">
+          <div className="mt-4 flex space-x-4">
+            <div className="flex items-center gap-4">
             <a
               aria-label="Email"
               href="mailto: info@legacyforgegroup.com"
@@ -176,6 +170,15 @@ export function Footer() {
               <Instagram className="h-4 w-4" />
             </a>
           </div>
+            </div>           
+        </div>  
+      </div>
+
+      {/* Bottom bar */}
+      <div className="border-t border-border py-6">
+        <div className="container flex flex-col items-center justify-between gap-4 text-xs text-muted-foreground md:flex-row">
+          <p>© {year} All rights reserved- Legacyforge Marketing Pvt. Ltd.</p>
+          
         </div>
       </div>
     </footer>

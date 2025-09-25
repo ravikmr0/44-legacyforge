@@ -38,10 +38,10 @@ export default function Index() {
           <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]" />
           Smarter growth 
         </span>
-        <h1 className="text-4xl font-extrabold tracking-tight md:text-6xl text-indigo-700">
+        <h1 className="text-4xl font-extrabold tracking-tight md:text-3xl text-white">
           Your Partner in 
         </h1>
-        <h1 className="text-8xl font-extrabold tracking-tight md:text-6xl text-white">
+        <h1 className="text-8xl font-extrabold tracking-tight md:text-3xl text-white">
           Digital Marketing & Business Growth
         </h1>
         <p className="text-white/90 text-lg md:text-xl">
@@ -103,6 +103,8 @@ export default function Index() {
     <div className="md:col-span-7 text-muted-foreground text-lg leading-relaxed">
       <p>
          LegacyForge Marketing specializes in helping B2B and D2C businesses, manufacturers, and brands achieve measurable growth through data-driven digital strategies. We don’t just deliver marketing services—we craft strategic, results-oriented solutions that empower businesses to scale faster. From lead generation, performance marketing, and sales enablement to brand building and customer engagement, our approach ensures every campaign is designed for maximum impact. With a focus on industries that demand precision and trust, we provide end-to-end marketing solutions tailored to businesses in building materials, uPVC profile manufacturing, system aluminium windows manufacturing, real estate, and interior solutions.
+      </p>
+      <p>
          Our expertise lies in understanding the unique challenges of manufacturing and construction-driven businesses, where decision-making cycles are complex and competition is intense. LegacyForge Marketing builds SEO-friendly, content-rich campaigns that improve online visibility, generate qualified leads, and strengthen long-term brand equity. Whether you’re a uPVC or aluminium window manufacturer, a real estate developer, or an interior solutions brand, we combine digital performance marketing, content strategy, and storytelling to help you attract the right audience, convert prospects into customers, and establish your presence as an industry leader. With us, your business doesn’t just grow—it thrives with measurable, sustainable results.
       </p>
     </div>
