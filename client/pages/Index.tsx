@@ -132,12 +132,12 @@ export default function Index() {
           />
           <ServiceCard
             icon={<Megaphone className="h-6 w-6" />}
-            title=" SOCIAL MEDIA MANAGEMENT"
+            title=" SOCIAL MEDIA MGMT"
             desc="We craft engaging content and run strategic campaigns to build your brand authority and generate leads across key platforms."
           />
           <ServiceCard
             icon={<Megaphone className="h-6 w-6" />}
-            title="SEARCH ENGINE OPTIMIZATION"
+            title="SEO OPTIMIZATION"
             desc="We implement proven SEO strategies to improve online visibility, ensuring you rank higher and attract qualified organic traffic."
           />
           <ServiceCard
@@ -147,7 +147,7 @@ export default function Index() {
           />
            <ServiceCard
             icon={<PenTool className="h-6 w-6" />}
-            title="CONTENT WRITING & MARKETING"
+            title="CONTENT WRITING"
             desc="We create SEO-optimized blogs and content to boost visibility and authority, attracting qualified leads and establishing your brand as a leader."
           />
            <ServiceCard
@@ -250,23 +250,23 @@ export default function Index() {
           <ServicesCarousel
             items={[
               {
-                title: "Lead Generation",
-                desc: "We run Meta & Google Ads to get fresh leads, collect their requirements like window type and quantity",
+                title: "Website Development",
+                desc: "We build dynamic sites with full-stack development and custom coding, for your brand.",
                 image:
                   "https://plus.unsplash.com/premium_photo-1733306503329-7a8c701fa9ad?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 ctaHref: "/services",
                 ctaLabel: "Get audit",
               },
               {
-                title: "Website Design",
-                desc: "With our experience in the window and door business, we build dynamic, product-focused websites",
+                title: "SEO SERVICES",
+                desc: "Our expert SEO services boost your visibility and improve search rankings.",
                 image:
                   "https://plus.unsplash.com/premium_photo-1661338857151-779ee51362c6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 ctaHref: "/services",
                 ctaLabel: "View plans",
               },
               {
-                title: "SEO Services",
+                title: "Paid ADVERTISING",
                 desc: "We offer SEO services that boost your Google rankings, drive quality traffic, improve online visibility.",
                 image:
                   "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=815&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -274,7 +274,7 @@ export default function Index() {
                 ctaLabel: "Start sprint",
               },
               {
-                title: "Social Media Management",
+                title: "SOCIAL MEDIA MGMT",
                 desc: "We manage your Facebook, Instagram, and LinkedIn to build brand credibility. Our team creates engaging posts",
                 image:
                   "https://images.unsplash.com/photo-1690883794145-e96486fbe66b?q=80&w=832&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -282,15 +282,15 @@ export default function Index() {
                 ctaLabel: "See details",
               },
               {
-                title: "Paid Advertising",
-                desc: "We run strategic Meta and Google Ads campaigns to reach customers faster, build brand recognition.",
+                title: "LEAD GENERATION",
+                desc: "We generate high-quality leads for building material and manufacturing businesses.",
                 image:
                   "https://media.istockphoto.com/id/1492180527/photo/digital-marketing-commerce-online-sale-concept-promotion-of-products-or-services-through.webp?a=1&b=1&s=612x612&w=0&k=20&c=Y7ckfHqeILZYTunLLf2SQksvdA7YNzEXiUj4Kvz2vBA=",
                 ctaHref: "/services",
                 ctaLabel: "Build brand",
               },
               {
-                title: "Print Design",
+                title: "PRINT DESIGNING",
                 desc: "We offer Catalogue, Brochure, PPT, Trifold, Sample box, and other print designs.",
                 image:
                   "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -298,7 +298,7 @@ export default function Index() {
                 ctaLabel: "Get insights",
               },
               {
-                title: "Media Production",
+                title: "MEDIA PRODUCTION",
                 desc: "We offer corporate, expo, product, and site completion shoots to help you professionally showcase your business.",
                 image:
                   "https://plus.unsplash.com/premium_photo-1663040316559-8684ca45d7e9?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",

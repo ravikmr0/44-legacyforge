@@ -11,11 +11,10 @@ export function Footer() {
             <div className="grid items-center gap-6 md:grid-cols-12">
               <div className="md:col-span-8">
                 <h3 className="text-2xl md:text-3xl font-bold tracking-tight">
-                  Improving your Business Growth
+                  Lets Grow Your Business Together
                 </h3>
                 <p className="mt-2 text-muted-foreground">
-                  Book a free consultation and discover how our IT and marketing
-                  experts can accelerate your growth.
+                  Book a free consultation and discuss how we can accelerate your business growth.
                 </p>
               </div>
               <div className="md:col-span-4 md:justify-self-end">
@@ -45,8 +44,7 @@ export function Footer() {
           </span>
         </a>
           <p className="text-sm text-muted-foreground max-w-sm">
-            Smarter marketing and Business growth to help you forge a lasting
-            legacy.
+            At Legacyforge, we help your business reach its full potential through smart digital marketing solutions. From lead generation to brand building, we combine creativity, technology, and strategy to turn clicks into real results for your business.
           </p>
         </div>
 
@@ -54,22 +52,28 @@ export function Footer() {
           <p className="font-semibold">Services</p>
           <nav className="mt-3 flex flex-col text-sm gap-2 text-muted-foreground">
             <a className="hover:text-foreground" href="/services">
-              Digital Marketing
+              PAID ADVERTISING
             </a>
             <a className="hover:text-foreground" href="/services">
-              Website Development
+              WEBSITE DEVELOPMENT
             </a>
             <a className="hover:text-foreground" href="/services">
-              Performance Marketing
+              SOCIAL MEDIA MANAGEMENT
             </a>
             <a className="hover:text-foreground" href="/services">
-              Social Media Management
+              SEO OPTIMIZATION
             </a>
             <a className="hover:text-foreground" href="/services">
-              Advertisement
+              SALES SUPPORT
             </a>
             <a className="hover:text-foreground" href="/services">
-              Content Strategy & Branding
+              CONTENT WRITING & DESIGN
+            </a>
+            <a className="hover:text-foreground" href="/services">
+              CREATIVE BRANDING
+            </a>
+            <a className="hover:text-foreground" href="/services">
+              MEDIA PRODUCTION
             </a>
           </nav>
         </div>
@@ -78,19 +82,16 @@ export function Footer() {
           <p className="font-semibold">Company</p>
           <nav className="mt-3 flex flex-col text-sm gap-2 text-muted-foreground">
             <a className="hover:text-foreground" href="/about">
-              About
+              About Us
             </a>
-            <a className="hover:text-foreground" href="/services">
-              Services
+            <a className="hover:text-foreground" href="/why-us">
+              Why Us
             </a>
             <a className="hover:text-foreground" href="/projects">
               Projects
             </a>
             <a className="hover:text-foreground" href="/blog">
               Blog
-            </a>
-            <a className="hover:text-foreground" href="/why-us">
-              Why Us
             </a>
             <a className="hover:text-foreground" href="/contact">
               Contact
