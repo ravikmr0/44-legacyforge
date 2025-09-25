@@ -1,10 +1,18 @@
 import { Button } from "@/components/ui/button";
 import {
+  Activity,
+  BanknoteArrowUp,
+  Camera,
   CheckCircle2,
+  ChevronsLeftRightEllipsis,
+  Headset,
   LineChart,
   Megaphone,
+  NotebookPen,
   PenTool,
   ShieldCheck,
+  Target,
+  TextSelect,
 } from "lucide-react";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { ServicesCarousel } from "@/components/site/ServicesCarousel";
@@ -113,7 +121,7 @@ export default function Index() {
       <section id="services" className="container py-16 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Explore Our Services
+            Our Expertise
           </h2>
           <p className="mt-3 text-muted-foreground">
             Custom Strategies to Grow Your Brand, Increase Traffic, and Maximize Revenue
@@ -121,42 +129,42 @@ export default function Index() {
         </div>
         <div className="mt-10 grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <ServiceCard
-            icon={<ShieldCheck className="h-6 w-6" />}
+            icon={<BanknoteArrowUp className="h-6 w-6" />}
             title="PAID ADVERTISING"
             desc="Our data-driven PPC campaigns generate qualified leads and maximize ROI, targeting the right audience to scale your business."
           />
           <ServiceCard
-            icon={<LineChart className="h-6 w-6" />}
+            icon={<ChevronsLeftRightEllipsis className="h-6 w-6" />}
             title="WEBSITE DEVELOPMENT"
             desc="We develop custom websites that are SEO-friendly and strategically built to attract your ideal audience and convert them into valuable leads."
           />
           <ServiceCard
-            icon={<Megaphone className="h-6 w-6" />}
+            icon={<Activity className="h-6 w-6" />}
             title=" SOCIAL MEDIA MGMT"
             desc="We craft engaging content and run strategic campaigns to build your brand authority and generate leads across key platforms."
           />
           <ServiceCard
-            icon={<Megaphone className="h-6 w-6" />}
+            icon={<TextSelect className="h-6 w-6" />}
             title="SEO OPTIMIZATION"
             desc="We implement proven SEO strategies to improve online visibility, ensuring you rank higher and attract qualified organic traffic."
           />
           <ServiceCard
-            icon={<PenTool className="h-6 w-6" />}
+            icon={<Headset className="h-6 w-6" />}
             title="SALES SUPPORT"
             desc="We handle end-to-end sales on calls qualifying, nurturing, and converting prospects into customers to help you close more deals."
           />
            <ServiceCard
-            icon={<PenTool className="h-6 w-6" />}
+            icon={<NotebookPen className="h-6 w-6" />}
             title="CONTENT WRITING"
             desc="We create SEO-optimized blogs and content to boost visibility and authority, attracting qualified leads and establishing your brand as a leader."
           />
            <ServiceCard
-            icon={<PenTool className="h-6 w-6" />}
+            icon={<Target className="h-6 w-6" />}
             title="CREATIVE BRANDING"
             desc="We provide end-to-end creative and branding, including unique logos, digital assets, and print collateral like brochures and sample boxes."
           />
            <ServiceCard
-            icon={<PenTool className="h-6 w-6" />}
+            icon={<Camera className="h-6 w-6" />}
             title="MEDIA PRODUCTION"
             desc="We create high-quality product, factory, and office photoshoots and videoshoots to visually showcase your business and brand."
           />
@@ -240,7 +248,7 @@ export default function Index() {
       <section className="container py-16 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Service Offers
+            Our services
           </h2>
           <p className="mt-3 text-muted-foreground">
             Explore curated packages designed for faster, smarter growth.
@@ -255,7 +263,7 @@ export default function Index() {
                 image:
                   "https://plus.unsplash.com/premium_photo-1733306503329-7a8c701fa9ad?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 ctaHref: "/services",
-                ctaLabel: "Get audit",
+                ctaLabel: "See Details",
               },
               {
                 title: "SEO SERVICES",
@@ -263,7 +271,7 @@ export default function Index() {
                 image:
                   "https://plus.unsplash.com/premium_photo-1661338857151-779ee51362c6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 ctaHref: "/services",
-                ctaLabel: "View plans",
+                ctaLabel: "See Details",
               },
               {
                 title: "Paid ADVERTISING",
@@ -271,7 +279,7 @@ export default function Index() {
                 image:
                   "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=815&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 ctaHref: "/services",
-                ctaLabel: "Start sprint",
+                ctaLabel: "See Details",
               },
               {
                 title: "SOCIAL MEDIA MGMT",
@@ -287,7 +295,7 @@ export default function Index() {
                 image:
                   "https://media.istockphoto.com/id/1492180527/photo/digital-marketing-commerce-online-sale-concept-promotion-of-products-or-services-through.webp?a=1&b=1&s=612x612&w=0&k=20&c=Y7ckfHqeILZYTunLLf2SQksvdA7YNzEXiUj4Kvz2vBA=",
                 ctaHref: "/services",
-                ctaLabel: "Build brand",
+                ctaLabel: "See Details",
               },
               {
                 title: "PRINT DESIGNING",
@@ -295,7 +303,7 @@ export default function Index() {
                 image:
                   "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 ctaHref: "/services",
-                ctaLabel: "Get insights",
+                ctaLabel: "See Details",
               },
               {
                 title: "MEDIA PRODUCTION",
@@ -303,7 +311,7 @@ export default function Index() {
                 image:
                   "https://plus.unsplash.com/premium_photo-1663040316559-8684ca45d7e9?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 ctaHref: "/services",
-                ctaLabel: "Get insights",
+                ctaLabel: "See Details",
               },
             ]}
           />
