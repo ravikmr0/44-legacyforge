@@ -92,7 +92,7 @@ export function HeroSlider({
       aria-label="Previous slide"
       onClick={() => emblaApi?.scrollPrev()}
       disabled={!canScrollPrev}
-      className="group absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 inline-flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm text-slate-900 shadow-xl hover:bg-white hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed border border-white/20"
+      className="group absolute left-2 lg:left-4 top-1/2 -translate-y-1/2 inline-flex h-7 w-7 lg:h-7 lg:w-9 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm text-slate-900 shadow-xl hover:bg-white hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed border border-white/20"
     >
       <ChevronLeft className="h-5 w-5 lg:h-6 lg:w-6 group-hover:translate-x-[-2px] transition-transform" />
     </motion.button>
@@ -105,7 +105,7 @@ export function HeroSlider({
       aria-label="Next slide"
       onClick={() => emblaApi?.scrollNext()}
       disabled={!canScrollNext}
-      className="group absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 inline-flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm text-slate-900 shadow-xl hover:bg-white hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed border border-white/20"
+      className="group absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 inline-flex h-7 w-7 lg:h-7 lg:w-9 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm text-slate-900 shadow-xl hover:bg-white hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed border border-white/20"
     >
       <ChevronRight className="h-5 w-5 lg:h-6 lg:w-6 group-hover:translate-x-[2px] transition-transform" />
     </motion.button>
