@@ -1,19 +1,5 @@
 import { Button } from "@/components/ui/button";
-import {
-  Activity,
-  BanknoteArrowUp,
-  Camera,
-  CheckCircle2,
-  ChevronsLeftRightEllipsis,
-  Headset,
-  LineChart,
-  Megaphone,
-  NotebookPen,
-  PenTool,
-  ShieldCheck,
-  Target,
-  TextSelect,
-} from "lucide-react";
+import { Activity, BanknoteArrowUp, Camera, CircleCheck as CheckCircle2, ChevronsLeftRightEllipsis, Headset, ChartLine as LineChart, Megaphone, NotebookPen, PenTool, ShieldCheck, Target, TextSelect } from "lucide-react";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { ServicesCarousel } from "@/components/site/ServicesCarousel";
 
