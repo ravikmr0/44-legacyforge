@@ -131,7 +131,7 @@ export function HeroSlider({
                 {/* Enhanced gradient overlays */}
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/60 to-slate-900/40" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-slate-900/30" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#5170FF]/20 via-transparent to-[#5D17EB]/20" />
+                <div className="absolute inset-0 bg-gradient-to-br from-black via-transparent to-[#5D17EB]/20" />
               </div>
             ))}
           </div>
@@ -287,10 +287,10 @@ export function HeroSlider({
                   transition={{ duration: 1, delay: 1.4 }}
                 >
                   {[
-                    { number: "300%", label: "Average Lead Growth" },
-                    { number: "50+", label: "Projects Completed" },
-                    { number: "98%", label: "Client Satisfaction" },
-                    { number: "₹2Cr+", label: "Revenue Generated" },
+                    // { number: "300%", label: "Average Lead Growth" },
+                    // { number: "50+", label: "Projects Completed" },
+                    // { number: "98%", label: "Client Satisfaction" },
+                    // { number: "₹2Cr+", label: "Revenue Generated" },
                   ].map((stat, index) => (
                     <div key={index} className="text-center lg:text-left">
                       <div className="text-2xl lg:text-3xl font-bold text-white mb-1">
