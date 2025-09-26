@@ -24,53 +24,24 @@ export default function Index() {
       <HeroSlider
         images={[
           {
-            src: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1920&auto=format&fit=crop",
-            alt: "Team collaborating",
+            src: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1920&auto=format&fit=crop",
+            alt: "Digital marketing strategy session",
           },
           {
-            src: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            alt: "Marketing analytics dashboard",
+            src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1920&auto=format&fit=crop",
+            alt: "Business growth analytics",
           },
           {
-            src: "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?q=80&w=1920&auto=format&fit=crop",
-            alt: "Developer operations",
+            src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1920&auto=format&fit=crop",
+            alt: "Digital transformation",
           },
           {
-            src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1920&auto=format&fit=crop",
-            alt: "Social media planning",
+            src: "https://images.unsplash.com/photo-1553484771-371a605b060b?q=80&w=1920&auto=format&fit=crop",
+            alt: "Lead generation success",
           },
         ]}
-        intervalMs={5000}
-      >
-        <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs text-white backdrop-blur">
-          <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]" />
-          Smarter growth 
-        </span>
-        <h1 className="text-4xl font-extrabold tracking-tight md:text-3xl text-white">
-          Your Partner in 
-        </h1>
-        <h1 className="text-8xl font-extrabold tracking-tight md:text-3xl text-white">
-          Digital Marketing & Business Growth
-        </h1>
-        <p className="text-white/90 text-lg md:text-xl">
-          Digital Marketing & Lead Generation Partner
-        </p>
-        <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Button
-            asChild
-            className="h-12 px-6 text-base bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow-lg"
-          >
-            <a href="/contact">Book a free consultation</a>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="h-12 px-6 text-base border-white text-slate-900 hover:bg-white/10"
-          >
-            <a href="/services">Explore services</a>
-          </Button>
-        </div>
-      </HeroSlider>
+        intervalMs={6000}
+      />
 
       {/* About */}
 <section id="about" className="container py-16 md:py-24">
