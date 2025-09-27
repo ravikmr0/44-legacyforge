@@ -19,7 +19,7 @@ export default function WhyUs() {
     {
       icon: <ShieldCheck className="h-5 w-5" />,
       title: "Secure foundations",
-      desc: "IT-first approach ensures uptime, security, and scale.",
+      desc: "Digital-Marketing approach ensures uptime, security, and scale.",
     },
     {
       icon: <Workflow className="h-5 w-5" />,
@@ -74,17 +74,18 @@ export default function WhyUs() {
           <img
             src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
             alt="Professional partnership handshake in office"
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover animate-hero-zoom"
             loading="lazy"
             decoding="async"
             role="presentation"
+            aria-hidden
           />
           {/* Tailwind arbitrary value: use underscores to represent spaces inside the brackets */}
           <div className="absolute inset-0 bg-[linear-gradient(180deg,_rgba(10,12,28,0.6)_0%,_rgba(10,12,28,0.45)_40%,_rgba(10,12,28,0.25)_100%)]" />
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#5170FF29] via-transparent to-[#5D17EB29]" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#1d2e7d29] via-transparent to-[#3e119829]" />
         </div>
         <div className="container py-16 md:py-24">
-          <div className="max-w-3xl text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)]">
+          <div className="max-w-3xl text-black drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)]">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-3 py-1 text-xs backdrop-blur">
               <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]" />
               Why choose us
@@ -92,7 +93,7 @@ export default function WhyUs() {
             <h1 className="mt-4 text-3xl md:text-5xl font-extrabold tracking-tight">
               Results, reliability, and real partnership
             </h1>
-            <p className="mt-4 text-white/90 text-lg">
+            <p className="mt-4 text-slate-700 text-lg">
               We connect strategy with execution — and prove it with data.
             </p>
           </div>
