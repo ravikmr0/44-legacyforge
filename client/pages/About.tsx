@@ -236,16 +236,13 @@ export default function About() {
               Our story
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Founded by engineers and growth leaders, LegacyForge was created
-              to close the gap between IT foundations and marketing performance.
-              We design systems that are measurable, resilient, and primed to
-              scale.
+              Founded by engineers and growth leaders, LegacyForge bridges manufacturing expertise with marketing. We empower uPVC, aluminium, and door & window companies with scalable, measurable growth systems.
             </p>
             <ul className="mt-4 space-y-2">
               {[
                 "Full-funnel strategy and execution",
-                "Secure-by-design infrastructure",
-                "Transparent reporting and measurable ROI",
+                "Scalable systems for long-term success",
+                "Expert support with pan-India market experience",
               ].map((p) => (
                 <li
                   key={p}

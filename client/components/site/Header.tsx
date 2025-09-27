@@ -5,6 +5,7 @@ import { Search, Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const nav = [
+  { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Why Us", href: "/why-us" },
