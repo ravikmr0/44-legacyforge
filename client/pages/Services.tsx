@@ -19,33 +19,7 @@ export default function Services() {
           Outcomes-first solutions tailored to your growth.
         </p>
       </div>
-      <div className="mt-10 grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        <ServiceCard
-          icon={<ShieldCheck className="h-6 w-6" />}
-          title="Lead Generation"
-          desc="We help you get real leads, not just random inquiries. By running targeted Meta Ads in your region, we collect fresh leads and personally connect with them to understand their needs."
-        />
-        <ServiceCard
-          icon={<LineChart className="h-6 w-6" />}
-          title="Performance Marketing"
-          desc="Leverage data-driven ads and campaigns to maximize conversions and reduce wasted ad spend."
-        />
-        <ServiceCard
-          icon={<Megaphone className="h-6 w-6" />}
-          title="Social Media Management"
-          desc="We manage your Facebook, Instagram, and LinkedIn to build a strong and credible brand presence. Our team consistently creates engaging graphics, motion posts, and product reels to boost visibility and connect with your audience."
-        />
-        <ServiceCard
-          icon={<PenTool className="h-6 w-6" />}
-          title="Paid Advertisements"
-          desc="We manage and run Meta Ads and Google Ads directly from your social media accounts and website—helping your brand reach the right audience at the right time. Whether it’s for leads, sales, or simply growing your brand presence, we create campaigns that actually deliver."
-        />
-        <ServiceCard
-          icon={<PenTool className="h-6 w-6" />}
-          title="Social Media Marketing"
-          desc="We manage your Facebook, Instagram, and LinkedIn to build a strong and credible brand presence. Our team consistently creates engaging graphics, motion posts, and product reels to boost visibility and connect with your audience."
-        />
-      </div>
+      
 
       {/* Featured service sections */}
       <div className="mt-16 md:mt-24 space-y-16">

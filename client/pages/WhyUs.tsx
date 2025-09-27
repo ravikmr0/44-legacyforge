@@ -74,9 +74,13 @@ export default function WhyUs() {
           <img
             src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
             alt="Professional partnership handshake in office"
-            className="h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
+            role="presentation"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,12,28,0.60)_0%,rgba(10,12,28,0.45)_40%,rgba(10,12,28,0.25)_100%)]" />
+          {/* Tailwind arbitrary value: use underscores to represent spaces inside the brackets */}
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,_rgba(10,12,28,0.6)_0%,_rgba(10,12,28,0.45)_40%,_rgba(10,12,28,0.25)_100%)]" />
           <div className="absolute inset-0 bg-gradient-to-tr from-[#5170FF29] via-transparent to-[#5D17EB29]" />
         </div>
         <div className="container py-16 md:py-24">
