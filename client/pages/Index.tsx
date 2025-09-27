@@ -213,7 +213,7 @@ export default function Index() {
           <ServicesCarousel
             items={[
               {
-                title: "Website Development",
+                title: "WEBSITE DEVELOPMENT",
                 desc: "We build dynamic sites with full-stack development and custom coding, for your brand.",
                 image:
                   "https://plus.unsplash.com/premium_photo-1733306503329-7a8c701fa9ad?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -229,7 +229,7 @@ export default function Index() {
                 ctaLabel: "See Details",
               },
               {
-                title: "Paid ADVERTISING",
+                title: "PAID ADVERTISING",
                 desc: "We offer SEO services that boost your Google rankings, drive quality traffic, improve online visibility.",
                 image:
                   "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=815&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
