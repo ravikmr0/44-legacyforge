@@ -37,7 +37,7 @@ export default function Services() {
           image="https://opentextbc.ca/foundationsdigitalmarketing/wp-content/uploads/sites/388/2021/07/Lead-Generation.png"
         />
         <ServiceSection
-          right
+          
           eyebrow="Website Design & Development"
           title="Modern, responsive websites that convert"
           desc="We build fast, responsive, and conversion-focused websites that reflect your brand and drive results."
@@ -64,6 +64,7 @@ export default function Services() {
           image="https://www.searchenginejournal.com/wp-content/uploads/2021/04/winning-seo-content-strategy-60815a2f832ee-1024x538.png"
         />
         <ServiceSection
+        right
           eyebrow="Social Media Marketing"
           title="Grow, engage, and convert your audience"
           desc="Our team designs visually engaging posts, motion graphics, and product reels to increase visibility, connect with your audience, and keep your brand active across platforms."
@@ -89,6 +90,7 @@ export default function Services() {
           image="https://wpmanageninja.com/wp-content/uploads/2022/08/Pre_sales_service_and_After_sales_support_both_are_equally_important-min.png"
         />
         <ServiceSection
+        right
          eyebrow="Print & Design Support"
           title="Creative assets that captivate"
           desc="From brochures to banners, we design print materials that enhance your brand presence and support your marketing efforts."
