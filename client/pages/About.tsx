@@ -118,7 +118,7 @@ export default function About() {
               <span className="bg-gradient-to-r from-[#5170FF] to-[#5D17EB] bg-clip-text text-transparent">
                 LegacyForge
               </span>{" "}
-              Marketing
+
             </motion.h1>
             
             <motion.p 
@@ -287,10 +287,10 @@ export default function About() {
           </div>
           <div className="md:col-span-6">
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-2">
+              <Stat kpi="100%" label="Qualified Leads / Month / Client" />
+              <Stat kpi="10x" label="Growth Track Record" />
+              <Stat kpi="24-Hour" label="Lead Qualification & Delivery Cycle" />
               <Stat kpi="98%" label="Client satisfaction" />
-              <Stat kpi="3.5x" label="Avg. ROAS uplift" />
-              <Stat kpi="24/7" label="Managed IT support" />
-              <Stat kpi="200+" label="Campaigns launched" />
             </div>
           </div>
         </div>

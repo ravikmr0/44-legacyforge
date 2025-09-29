@@ -13,23 +13,23 @@ export default function WhyUs() {
   const features = [
     {
       icon: <BarChart3 className="h-5 w-5" />,
-      title: "Data-driven decisions",
-      desc: "We build strategies around measurable impact, not guesswork.",
+      title: "Measurable Growth",
+      desc: "We help one business per category dominate their city, ensuring no local competition within your niche.",
     },
     {
       icon: <ShieldCheck className="h-5 w-5" />,
-      title: "Secure foundations",
+      title: "City-Wise Market Leadership",
       desc: "Digital-Marketing approach ensures uptime, security, and scale.",
     },
     {
       icon: <Workflow className="h-5 w-5" />,
-      title: "End-to-end",
-      desc: "From infrastructure to acquisition and retention.",
+      title: "Manufacturing Industry Expertise",
+      desc: "Our deep industry knowledge helps businesses grow faster, smarter, and with lasting impact.",
     },
     {
       icon: <Zap className="h-5 w-5" />,
-      title: "Speed & iteration",
-      desc: "Rapid experimentation to find and scale winners.",
+      title: "Full-Funnel Business Enablement",
+      desc: "From attracting prospects to closing sales, we optimize every stage of your growth journey.",
     },
     {
       icon: <Sparkles className="h-5 w-5" />,
