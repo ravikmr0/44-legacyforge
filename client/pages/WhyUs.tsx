@@ -46,24 +46,29 @@ export default function WhyUs() {
   const steps = [
     {
       k: "01",
-      t: "Discover",
-      d: "Deep dive into goals, audience, and constraints.",
+      t: "Strategize & Discover",
+      d: "Deep dive into your business goals, target audience, competitive landscape, and existing assets to architect a data-backed, full-funnel strategy.",
     },
     {
       k: "02",
-      t: "Design",
-      d: "Solution design across IT, data, and marketing.",
+      t: "Design & Develop",
+      d: "Create tailored solutions for every touchpoint – from easy-to-use designs and strong technical systems to engaging content and automated marketing.",
     },
     {
       k: "03",
-      t: "Deploy",
-      d: "Implement with QA, security, and performance baselines.",
+      t: "Launch & Optimize",
+      d: "Execute campaigns across the right digital channels, monitor performance closely, and continuously improve results & optimize campaign.",
     },
     {
       k: "04",
-      t: "Scale",
-      d: "Iterate, optimize, and expand channels for growth.",
+      t: "Analyze & Scale",
+      d: "We use insights to fine-tune campaigns, find new growth opportunities, and help your business reach more customers.",
     },
+    {
+      k: "05",
+      t: "Scale & Growth",
+      d: "Turn insights and optimizations into measurable results, expanding revenue, market share, and category leadership while ensuring sustainable scaling.",
+    }
   ];
 
   return (
@@ -94,7 +99,7 @@ export default function WhyUs() {
               Results, reliability, and real partnership
             </h1>
             <p className="mt-4 text-slate-700 text-lg">
-              We connect strategy with execution — and prove it with data.
+              We connect strategy with execution and prove it with data.
             </p>
           </div>
         </div>
