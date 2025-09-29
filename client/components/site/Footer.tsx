@@ -81,8 +81,14 @@ export function Footer() {
         <div>
           <p className="font-semibold">Company</p>
           <nav className="mt-3 flex flex-col text-sm gap-2 text-muted-foreground">
+             <a className="hover:text-foreground" href="/home">
+              Home
+            </a>
             <a className="hover:text-foreground" href="/about">
               About Us
+            </a>
+            <a className="hover:text-foreground" href="/services">
+              Services
             </a>
             <a className="hover:text-foreground" href="/why-us">
               Why Us
