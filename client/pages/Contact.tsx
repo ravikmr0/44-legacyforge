@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
-// ✅ Replace with your actual Apps Script Web App URL
-const GOOGLE_WEB_APP_URL =
-  "https://script.google.com/macros/s/AKfycbxRUNwINyJMQQkMTQMdj4mYYlAhSo_aqivccbGsV5v1NybruwbHkH7Bq75qEbWnyeFF/exec";
+// Replace with your deployed Apps Script Web App URL
+const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzOUayP4K4gTubGncBdOH9JKwaicKEW9oA6O1qLAknx0Rc_O-MP8GCEG-S-VhrdE_FK/exec";
 
-// ✅ Must match the SECRET in Apps Script
+// Must match the SECRET in Apps Script
 const FORM_SECRET = "MY_FORM_SECRET";
 
 export default function ContactForm() {
@@ -32,28 +31,30 @@ export default function ContactForm() {
     setStatus({ loading: true, success: "", error: "" });
 
     try {
-  const response = await fetch(GOOGLE_WEB_APP_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ...form, token: FORM_SECRET }),
-  });
+      const response = await fetch(GOOGLE_WEB_APP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, token: FORM_SECRET }),
+      });
 
-  const text = await response.text();
-  let result;
-  try { result = JSON.parse(text); } 
-  catch { throw new Error("Invalid JSON: " + text); }
+      const text = await response.text();
+      let result;
+      try {
+        result = JSON.parse(text);
+      } catch {
+        throw new Error("Invalid JSON: " + text);
+      }
 
-  if (result.status === "success") {
-    setStatus({ loading: false, success: "Message sent!", error: "" });
-    setForm({ name: "", email: "", phone: "", message: "" });
-  } else {
-    throw new Error(result.message || "Unknown error");
-  }
-} catch (err) {
-  console.error("Form submission error:", err); // <--- Logs full error
-  setStatus({ loading: false, success: "", error: err.message });
-}
-
+      if (result.status === "success") {
+        setStatus({ loading: false, success: "Message sent successfully!", error: "" });
+        setForm({ name: "", email: "", phone: "", message: "" });
+      } else {
+        throw new Error(result.message || "Unknown error");
+      }
+    } catch (err) {
+      console.error("Form submission error:", err);
+      setStatus({ loading: false, success: "", error: err.message });
+    }
   };
 
   return (
@@ -61,7 +62,9 @@ export default function ContactForm() {
       <section className="container py-16">
         <div className="max-w-2xl mx-auto">
           <h1 className="text-3xl md:text-5xl font-extrabold mb-4">Let’s build your legacy</h1>
-          <p className="text-muted-foreground mb-6">Tell us about your goals. We’ll respond within one business day.</p>
+          <p className="text-muted-foreground mb-6">
+            Tell us about your goals. We’ll respond within one business day.
+          </p>
 
           <form onSubmit={handleSubmit} className="grid gap-4">
             <input
