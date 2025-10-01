@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 // Replace with your deployed Apps Script Web App URL
-const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzgkEEPx-zAGsxlJZxOTrdZnYagOSn1RMuYDwSzxvHL-_fdAOoZQ5AwEbcpslrcic5T/exec";
+const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyeeqOGWQldvJTxPfSjlVOJtoEx3G98OrDH_9joGLEH6yP-8-9gFMMzvzXzTbk6wiE/exec";
 
 // Must match the SECRET in Apps Script
 const FORM_SECRET = "MY_FORM_SECRET";
