@@ -32,34 +32,28 @@ export default function ContactForm() {
     setStatus({ loading: true, success: "", error: "" });
 
     try {
-      const response = await fetch(GOOGLE_WEB_APP_URL, {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...form, token: FORM_SECRET }),
-      });
+  const response = await fetch(GOOGLE_WEB_APP_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...form, token: FORM_SECRET }),
+  });
 
-      // Parse the response safely
-      const text = await response.text();
-      let result;
-      try {
-        result = JSON.parse(text);
-      } catch (err) {
-        throw new Error("Invalid JSON returned: " + text);
-      }
+  const text = await response.text();
+  let result;
+  try { result = JSON.parse(text); } 
+  catch { throw new Error("Invalid JSON: " + text); }
 
-      if (result.status === "success") {
-        setStatus({ loading: false, success: "Message sent successfully!", error: "" });
-        setForm({ name: "", email: "", phone: "", message: "" });
-      } else {
-        throw new Error(result.message || "Something went wrong");
-      }
-    } catch (err) {
-      console.error("Form submission error:", err);
-      setStatus({ loading: false, success: "", error: "Failed to send message. Please try again." });
-    }
+  if (result.status === "success") {
+    setStatus({ loading: false, success: "Message sent!", error: "" });
+    setForm({ name: "", email: "", phone: "", message: "" });
+  } else {
+    throw new Error(result.message || "Unknown error");
+  }
+} catch (err) {
+  console.error("Form submission error:", err); // <--- Logs full error
+  setStatus({ loading: false, success: "", error: err.message });
+}
+
   };
 
   return (
