@@ -1,7 +1,4 @@
-
-
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 type FormState = {
@@ -17,6 +14,10 @@ type StatusState = {
   error: string;
 };
 
+// ✅ Replace with your actual Google Apps Script Web App URL
+const GOOGLE_WEB_APP_URL =
+  "https://script.google.com/macros/s/AKfycbzQ8O5T8sWiPAxA4jtsaNxEnqQQtScSNOGBIxQO1ULLWHiiTJFJetpld6CR7z8Oik1W/exec";
+
 export default function Contact() {
   const [form, setForm] = useState<FormState>({
     name: "",
@@ -31,7 +32,9 @@ export default function Contact() {
     error: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
@@ -39,13 +42,32 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus({ loading: true, success: "", error: "" });
+
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      setStatus({ loading: false, success: "Message sent successfully!", error: "" });
-      setForm({ name: "", email: "", phone: "", message: "" });
+      const response = await fetch(GOOGLE_WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify(form),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setStatus({
+          loading: false,
+          success: "Message sent successfully!",
+          error: "",
+        });
+        setForm({ name: "", email: "", phone: "", message: "" });
+      } else {
+        throw new Error("Something went wrong");
+      }
     } catch (err) {
-      setStatus({ loading: false, success: "", error: "Failed to send message." });
+      setStatus({
+        loading: false,
+        success: "",
+        error: "Failed to send message. Please try again.",
+      });
     }
   };
 
@@ -74,92 +96,92 @@ export default function Contact() {
       <section className="container pb-16 md:pb-24">
         <div className="grid gap-10 md:grid-cols-12 md:gap-12">
           {/* Form */}
-<div className="md:col-span-7">
-  <div className="rounded-2xl border p-6 md:p-8">
-    <form
-      onSubmit={handleSubmit}
-      className="grid gap-4"
-    >
-      <div className="grid gap-2">
-        <label htmlFor="name" className="text-sm font-medium">
-          Full Name
-        </label>
-        <input
-          id="name"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          required
-          className="h-11 rounded-md border bg-background px-3 outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
-        />
-      </div>
+          <div className="md:col-span-7">
+            <div className="rounded-2xl border p-6 md:p-8">
+              <form onSubmit={handleSubmit} className="grid gap-4">
+                <div className="grid gap-2">
+                  <label htmlFor="name" className="text-sm font-medium">
+                    Full Name
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                    className="h-11 rounded-md border bg-background px-3 outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  />
+                </div>
 
-      <div className="grid gap-2 sm:grid-cols-2 sm:gap-4">
-        <div className="grid gap-2">
-          <label htmlFor="email" className="text-sm font-medium">
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={form.email}
-            onChange={handleChange}
-            required
-            className="h-11 rounded-md border bg-background px-3 outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
-          />
-        </div>
-        <div className="grid gap-2">
-          <label htmlFor="phone" className="text-sm font-medium">
-            Phone (optional)
-          </label>
-          <input
-            id="phone"
-            name="phone"
-            value={form.phone}
-            onChange={handleChange}
-            className="h-11 rounded-md border bg-background px-3 outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
-          />
-        </div>
-      </div>
+                <div className="grid gap-2 sm:grid-cols-2 sm:gap-4">
+                  <div className="grid gap-2">
+                    <label htmlFor="email" className="text-sm font-medium">
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      required
+                      className="h-11 rounded-md border bg-background px-3 outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <label htmlFor="phone" className="text-sm font-medium">
+                      Phone (optional)
+                    </label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      className="h-11 rounded-md border bg-background px-3 outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    />
+                  </div>
+                </div>
 
-      <div className="grid gap-2">
-        <label htmlFor="message" className="text-sm font-medium">
-          How can we help?
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={6}
-          value={form.message}
-          onChange={handleChange}
-          required
-          className="rounded-md border bg-background px-3 py-2 outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
-        />
-      </div>
+                <div className="grid gap-2">
+                  <label htmlFor="message" className="text-sm font-medium">
+                    How can we help?
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={6}
+                    value={form.message}
+                    onChange={handleChange}
+                    required
+                    className="rounded-md border bg-background px-3 py-2 outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  />
+                </div>
 
-      <div className="flex items-center gap-3">
-        <button
-          type="submit"
-          disabled={status.loading}
-          className="h-11 px-6 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow"
-        >
-          {status.loading ? "Sending..." : "Send message"}
-        </button>
-        <a
-          href="mailto:hello@legacyforge.marketing?subject=Consultation%20Request"
-          className="text-sm text-muted-foreground hover:text-foreground underline"
-        >
-          Or email us directly
-        </a>
-      </div>
+                <div className="flex items-center gap-3">
+                  <button
+                    type="submit"
+                    disabled={status.loading}
+                    className="h-11 px-6 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow"
+                  >
+                    {status.loading ? "Sending..." : "Send message"}
+                  </button>
+                  <a
+                    href="mailto:hello@legacyforge.marketing?subject=Consultation%20Request"
+                    className="text-sm text-muted-foreground hover:text-foreground underline"
+                  >
+                    Or email us directly
+                  </a>
+                </div>
 
-      {status.success && <p className="text-green-600 mt-2">{status.success}</p>}
-      {status.error && <p className="text-red-600 mt-2">{status.error}</p>}
-    </form>
-  </div>
-</div>
-
+                {status.success && (
+                  <p className="text-green-600 mt-2">{status.success}</p>
+                )}
+                {status.error && (
+                  <p className="text-red-600 mt-2">{status.error}</p>
+                )}
+              </form>
+            </div>
+          </div>
 
           {/* Info */}
           <div className="md:col-span-5 space-y-6">
@@ -170,9 +192,9 @@ export default function Contact() {
                   <Mail className="h-4 w-4 text-[#5170FF]" />
                   <a
                     className="underline hover:text-foreground"
-                    href="mailto:hello@legacyforge.marketing"
+                    href="mailto:info@legacyforgegroup.com"
                   >
-                    info@legacyforgegroup.com 
+                    info@legacyforgegroup.com
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
