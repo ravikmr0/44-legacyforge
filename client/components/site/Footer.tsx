@@ -1,190 +1,264 @@
-import { Mail, Twitter, Linkedin, Facebook, Instagram, Phone } from "lucide-react";
+import { Mail, Linkedin, Facebook, Instagram, Phone, MapPin, ArrowRight, Send } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Footer() {
   const year = new Date().getFullYear();
+
+  const services = [
+    { name: "Paid Advertising", href: "/services" },
+    { name: "Website Development", href: "/services" },
+    { name: "SEO Optimization", href: "/services" },
+    { name: "Social Media Management", href: "/services" },
+    { name: "Content Writing & Graphics", href: "/services" },
+    { name: "Creative Branding", href: "/services" },
+    { name: "Media Production", href: "/services" },
+  ];
+
+  const company = [
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Why Us", href: "/why-us" },
+    { name: "Projects", href: "/projects" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact", href: "/contact" },
+  ];
+
+  const socialLinks = [
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/company/legacyforge-marketing-pvt-ltd/posts/?feedView=all",
+      icon: Linkedin,
+      color: "hover:bg-blue-600"
+    },
+    {
+      name: "Facebook",
+      href: "https://www.facebook.com/profile.php?id=61574885485332",
+      icon: Facebook,
+      color: "hover:bg-blue-700"
+    },
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/legacyforge.marketing/",
+      icon: Instagram,
+      color: "hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600"
+    },
+  ];
+
   return (
-    <footer className="border-t border-border bg-background/80">
-      {/* CTA ribbon */}
-      <div className="container py-10">
-        <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-[#5170FF] to-[#5D17EB] p-[1px]">
-          <div className="relative rounded-2xl bg-background/80 p-6 md:p-10 backdrop-blur">
-            <div className="grid items-center gap-6 md:grid-cols-12">
-              <div className="md:col-span-8">
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight">
-                  Lets Grow Your Business Together
+    <footer className="relative bg-gradient-to-b from-background to-slate-50 border-t border-border">
+      {/* Decorative gradient overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-600/5 via-transparent to-transparent pointer-events-none" />
+
+      {/* CTA Section */}
+      <div className="relative container py-12 md:py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 p-[1px] shadow-2xl"
+        >
+          <div className="relative rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 md:p-12 overflow-hidden">
+            {/* Animated background elements */}
+            <div className="absolute inset-0 opacity-20">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500 rounded-full blur-3xl" />
+            </div>
+
+            <div className="relative grid items-center gap-6 md:grid-cols-12">
+              <div className="md:col-span-8 space-y-3">
+                <h3 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+                  Let's Grow Your Business Together
                 </h3>
-                <p className="mt-2 text-muted-foreground">
-                  Book a free consultation and discuss how we can accelerate your business growth.
+                <p className="text-white/80 text-lg max-w-2xl">
+                  Book a free consultation and discover how we can accelerate your business growth with data-driven marketing strategies.
                 </p>
               </div>
               <div className="md:col-span-4 md:justify-self-end">
                 <a
                   href="/contact"
-                  className="inline-flex h-11 items-center justify-center rounded-md bg-gradient-to-r from-[#5170FF] to-[#5D17EB] px-6 text-white shadow hover:from-[#3C72FC] hover:to-[#5D17EB]"
+                  className="group inline-flex items-center gap-2 h-12 px-8 rounded-lg bg-white text-slate-900 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   Book Consultation
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Main Footer Content */}
+      <div className="relative container py-12 md:py-16">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12">
+          {/* Brand Section */}
+          <div className="lg:col-span-4 space-y-6">
+            <a href="/" className="inline-flex items-center gap-3 group">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-lg blur opacity-50 group-hover:opacity-75 transition-opacity" />
+                <img
+                  src="/favicon.ico"
+                  alt="LegacyForge logo"
+                  className="relative h-10 w-10 rounded-lg object-cover shadow-lg"
+                />
+              </div>
+              <span className="font-extrabold text-2xl tracking-tight bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                LegacyForge
+              </span>
+            </a>
+
+            <p className="text-muted-foreground leading-relaxed max-w-sm">
+              We help businesses reach their full potential through smart digital marketing solutions. From lead generation to brand building, we turn clicks into real results.
+            </p>
+
+            {/* Contact Info */}
+            <div className="space-y-3">
+              <a
+                href="mailto:info@legacyforgegroup.com"
+                className="flex items-start gap-3 text-sm text-muted-foreground hover:text-blue-600 transition-colors group"
+              >
+                <Mail className="h-5 w-5 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span>info@legacyforgegroup.com</span>
+              </a>
+
+              <a
+                href="tel:+919599782925"
+                className="flex items-start gap-3 text-sm text-muted-foreground hover:text-blue-600 transition-colors group"
+              >
+                <Phone className="h-5 w-5 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span>+91 9599782925</span>
+              </a>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className={`inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-background text-muted-foreground transition-all duration-300 hover:text-white hover:border-transparent hover:-translate-y-1 hover:shadow-lg ${social.color}`}
+                >
+                  <social.icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Services Section */}
+          <div className="lg:col-span-3">
+            <h4 className="font-bold text-lg mb-4 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+              Our Services
+            </h4>
+            <nav className="flex flex-col gap-3">
+              {services.map((service) => (
+                <a
+                  key={service.name}
+                  href={service.href}
+                  className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-blue-600 transition-colors"
+                >
+                  <ArrowRight className="h-3 w-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                  <span>{service.name}</span>
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Company Section */}
+          <div className="lg:col-span-2">
+            <h4 className="font-bold text-lg mb-4 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+              Company
+            </h4>
+            <nav className="flex flex-col gap-3">
+              {company.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-blue-600 transition-colors"
+                >
+                  <ArrowRight className="h-3 w-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                  <span>{item.name}</span>
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Newsletter Section */}
+          <div className="lg:col-span-3">
+            <h4 className="font-bold text-lg mb-4 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+              Stay in the Loop
+            </h4>
+            <p className="text-sm text-muted-foreground mb-4">
+              Subscribe to our newsletter for marketing insights and industry updates.
+            </p>
+
+            <form
+              name="newsletter"
+              method="POST"
+              data-netlify="true"
+              className="space-y-3"
+            >
+              <input type="hidden" name="form-name" value="newsletter" />
+              <div className="relative">
+                <input
+                  aria-label="Email address"
+                  className="h-11 w-full rounded-lg border-2 border-border bg-background px-4 pr-11 text-sm outline-none transition-all focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20"
+                  name="email"
+                  type="email"
+                  placeholder="you@company.com"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="absolute right-1 top-1 inline-flex h-9 w-9 items-center justify-center rounded-md bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:from-blue-700 hover:to-cyan-700 transition-all hover:scale-105"
+                  aria-label="Subscribe"
+                >
+                  <Send className="h-4 w-4" />
+                </button>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Join 5,000+ subscribers. Unsubscribe anytime.
+              </p>
+            </form>
+
+            {/* Trust Badges */}
+            <div className="mt-6 pt-6 border-t border-border">
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <div className="flex items-center gap-1">
+                  <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+                  <span>Available for consultation</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Main footer */}
-      <div className="container pb-10 grid gap-10 md:grid-cols-4">
-        <div className="space-y-4">
-          <a href="/" className="flex items-center gap-2">
-          <img
-            src="/favicon.ico"
-            alt="LegacyForge logo"
-            className="h-8 w-8 rounded-md object-cover shadow-sm"
-          />
-          <span className="font-extrabold tracking-tight text-lg">
-            LegacyForge
-          </span>
-        </a>
-          <p className="text-sm text-muted-foreground max-w-sm">
-            At Legacyforge, we help your business reach its full potential through smart digital marketing solutions.
-          </p>
-          <p className="text-sm text-muted-foreground max-w-sm">
-            From lead generation to brand building, we combine creativity, technology, and strategy to turn clicks into real results for your business.
-          </p>
-        </div>
+      {/* Bottom Bar */}
+      <div className="relative border-t border-border bg-slate-50/50">
+        <div className="container py-6">
+          <div className="flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
+            <p className="text-center md:text-left">
+              © {year} All rights reserved - <span className="font-semibold text-foreground">Legacyforge Marketing Pvt. Ltd.</span>
+            </p>
 
-        <div>
-          <p className="font-semibold">Services</p>
-          <nav className="mt-3 flex flex-col text-sm gap-2 text-muted-foreground">
-            <a className="hover:text-foreground" href="/services">
-              Paid advertising
-            </a>
-            <a className="hover:text-foreground" href="/services">
-              Website development
-            </a>
-            <a className="hover:text-foreground" href="/services">
-              Search engine optimisation
-            </a>
-            <a className="hover:text-foreground" href="/services">
-              Social media management
-            </a>
-            <a className="hover:text-foreground" href="/services">
-              Content writing & graphics
-            </a>
-            <a className="hover:text-foreground" href="/services">
-              Creative branding
-            </a>
-            <a className="hover:text-foreground" href="/services">
-              Media production
-            </a>
-          </nav>
-        </div>
-
-        <div>
-          <p className="font-semibold">Company</p>
-          <nav className="mt-3 flex flex-col text-sm gap-2 text-muted-foreground">
-             <a className="hover:text-foreground" href="/home">
-              Home
-            </a>
-            <a className="hover:text-foreground" href="/about">
-              About Us
-            </a>
-            <a className="hover:text-foreground" href="/services">
-              Services
-            </a>
-            <a className="hover:text-foreground" href="/why-us">
-              Why Us
-            </a>
-            <a className="hover:text-foreground" href="/projects">
-              Projects
-            </a>
-            <a className="hover:text-foreground" href="/blog">
-              Blog
-            </a>
-            <a className="hover:text-foreground" href="/contact">
-              Contact
-            </a>
-          </nav>
-        </div>
-
-        <div>
-          <p className="font-semibold">Stay in the loop</p>
-          <form
-            name="newsletter"
-            method="POST"
-            data-netlify="true"
-            className="mt-3 grid grid-cols-[1fr_auto] gap-2"
-          >
-            <input type="hidden" name="form-name" value="newsletter" />
-            <input
-              aria-label="Email address"
-              className="h-10 rounded-md border bg-background px-3 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
-              name="email"
-              type="email"
-              placeholder="you@company.com"
-              required
-            />
-            {/*<button
-              type="submit"
-              className="inline-flex h-10 items-center justify-center rounded-md bg-gradient-to-r from-[#5170FF] to-[#5D17EB] px-4 text-sm font-medium text-white shadow hover:from-[#3C72FC] hover:to-[#5D17EB]"
-            >
-              Sub
-            </button>*/}
-          </form>
-          <div className="mt-4 text-sm text-muted-foreground">
-            Email:{" "}
-            <a
-              className="underline hover:text-foreground"
-              href="mailto:info@legacyforgegroup.com"
-            >
-              info@legacyforgegroup.com
-            </a>
+            <div className="flex items-center gap-6">
+              <a href="/privacy" className="hover:text-blue-600 transition-colors text-xs">
+                Privacy Policy
+              </a>
+              <a href="/terms" className="hover:text-blue-600 transition-colors text-xs">
+                Terms of Service
+              </a>
+              <div className="flex items-center gap-1 text-xs">
+                <span>Made with</span>
+                <span className="text-red-500 animate-pulse">❤️</span>
+                <span>in India</span>
+              </div>
+            </div>
           </div>
-          <div className="mt-4 text-sm text-muted-foreground">
-            Phone:{" "}
-            <a
-              className="underline hover:text-foreground"
-              href="tel:+919599782925"
-            >
-              +91 9599782925
-            </a>
-          </div>
-          <div className="mt-4 flex space-x-4">
-            <div className="flex items-center gap-4">
-            <a
-              aria-label="Email"
-              href="mailto: info@legacyforgegroup.com"
-              className="hover:text-foreground"
-            >
-              <Mail className="h-4 w-4" />
-            </a>
-            <a
-              aria-label="Phone"
-              href="tel:+919599782925" // replace with the real phone number
-              className="hover:text-foreground"
-            >
-              <Phone className="h-4 w-4" />
-            </a>
-            {/* <a aria-label="Twitter" href="#" className="hover:text-foreground">
-              <Twitter className="h-4 w-4" />
-            </a> */}
-            <a aria-label="LinkedIn" href="https://www.linkedin.com/company/legacyforge-marketing-pvt-ltd/posts/?feedView=all" className="hover:text-foreground">
-              <Linkedin className="h-4 w-4" />
-            </a>
-            <a aria-label="Facebook" href="https://www.facebook.com/profile.php?id=61574885485332#" className="hover:text-foreground">
-              <Facebook className="h-4 w-4" />
-            </a>
-            <a aria-label="Instagram" href="https://www.instagram.com/legacyforge.marketing/" className="hover:text-foreground">
-              <Instagram className="h-4 w-4" />
-            </a>
-          </div>
-            </div>           
-        </div>  
-      </div>
-
-      {/* Bottom bar */}
-      <div className="border-t border-border py-6">
-        <div className="container flex flex-col items-center justify-between gap-4 text-xs text-muted-foreground md:flex-row">
-          <p>© {year} All rights reserved- Legacyforge Marketing Pvt. Ltd.</p>
-          
         </div>
       </div>
     </footer>
