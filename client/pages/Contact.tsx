@@ -1,58 +1,51 @@
 import React, { useState } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
-type FormState = {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-};
-
-type StatusState = {
-  loading: boolean;
-  success: string;
-  error: string;
-};
-
 // ✅ Replace with your actual Google Apps Script Web App URL
 const GOOGLE_WEB_APP_URL =
   "https://script.google.com/macros/s/AKfycbzQ8O5T8sWiPAxA4jtsaNxEnqQQtScSNOGBIxQO1ULLWHiiTJFJetpld6CR7z8Oik1W/exec";
 
+// ✅ Must match SECRET in your Apps Script
+const FORM_SECRET = "MY_FORM_SECRET";
+
 export default function Contact() {
-  const [form, setForm] = useState<FormState>({
+  const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
   });
 
-  const [status, setStatus] = useState<StatusState>({
+  const [status, setStatus] = useState({
     loading: false,
     success: "",
     error: "",
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ loading: true, success: "", error: "" });
 
     try {
       const response = await fetch(GOOGLE_WEB_APP_URL, {
         method: "POST",
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          token: FORM_SECRET, // ✅ Added token for security
+        }),
         headers: {
           "Content-Type": "application/json",
         },
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (result.status === "success") {
         setStatus({
           loading: false,
           success: "Message sent successfully!",
@@ -60,7 +53,7 @@ export default function Contact() {
         });
         setForm({ name: "", email: "", phone: "", message: "" });
       } else {
-        throw new Error("Something went wrong");
+        throw new Error(result.message || "Something went wrong");
       }
     } catch (err) {
       setStatus({
