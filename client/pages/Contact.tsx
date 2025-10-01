@@ -32,16 +32,14 @@ export default function Contact() {
 
     try {
       const response = await fetch(GOOGLE_WEB_APP_URL, {
-        method: "POST",
-        mode: "cors",   // ✅ allow cross-domain
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...form,
-          token: FORM_SECRET, // must match backend SECRET
-        }),
-      });
+  method: "POST",
+  mode: "cors",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({...form, token: FORM_SECRET})
+})
+
 
       // Parse response safely
       const text = await response.text();
