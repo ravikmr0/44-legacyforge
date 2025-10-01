@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
-// ✅ Replace with your deployed Google Apps Script Web App URL (must end with /exec)
-const GOOGLE_WEB_APP_URL =
-  "https://script.google.com/macros/s/AKfycbxXF3exTzP4jQBSx2x3NpJKnSZalU0t_6nE-BPB1LeQg9tB20AXRg8GhhVfUZbc3kAI/exec";
+// ✅ Your Web App URL (must end with /exec)
+const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwMuBnMaXzF-lwZZso_1kpRGcRM3bD0TvKI_sl9-snsyYsqPfT9jYtFEM45lMzzzepW/exec";
 
-// ✅ Must match the SECRET inside your Apps Script
+// ✅ Must match SECRET in Apps Script
 const FORM_SECRET = "MY_FORM_SECRET";
 
 export default function Contact() {
@@ -34,19 +33,24 @@ export default function Contact() {
     try {
       const response = await fetch(GOOGLE_WEB_APP_URL, {
         method: "POST",
-        mode: "cors", // ✅ allow cross-origin requests
-        cache: "no-cache",
+        mode: "cors",   // ✅ allow cross-domain
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           ...form,
-          token: FORM_SECRET, // must match Apps Script SECRET
+          token: FORM_SECRET, // must match backend SECRET
         }),
       });
 
-      const result = await response.json();
-      console.log("Server response:", result);
+      // Parse response safely
+      const text = await response.text();
+      let result;
+      try {
+        result = JSON.parse(text);
+      } catch (err) {
+        throw new Error("Invalid JSON returned: " + text);
+      }
 
       if (result.status === "success") {
         setStatus({
@@ -59,7 +63,7 @@ export default function Contact() {
         throw new Error(result.message || "Something went wrong");
       }
     } catch (err) {
-      console.error("Form submit error:", err);
+      console.error("Form submission error:", err);
       setStatus({
         loading: false,
         success: "",
@@ -70,7 +74,7 @@ export default function Contact() {
 
   return (
     <div className="bg-background text-foreground">
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#5170FF22] via-[#5D17EB11] to-transparent" />
         <div className="container py-16 md:py-24">
@@ -89,7 +93,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Content Section */}
+      {/* Content */}
       <section className="container pb-16 md:pb-24">
         <div className="grid gap-10 md:grid-cols-12 md:gap-12">
           {/* Form */}
