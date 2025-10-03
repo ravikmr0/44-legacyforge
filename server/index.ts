@@ -6,6 +6,15 @@ import { handleContactForm } from "./routes/contact";
 
 export function createServer() {
   const app = express();
+  // If this app is run behind Netlify Functions the incoming path will be
+  // prefixed with '/.netlify/functions'. Normalize that so our routes
+  // (which are defined at '/api/...') still match.
+  app.use((req, _res, next) => {
+    if (req.url.startsWith("/.netlify/functions")) {
+      req.url = req.url.replace("/.netlify/functions", "");
+    }
+    next();
+  });
 
   // Middleware
   app.use(cors());
