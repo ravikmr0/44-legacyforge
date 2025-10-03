@@ -18,7 +18,8 @@
     "start": "node dist/server/node-build.mjs",
     "test": "vitest --run",
     "format.fix": "prettier --write .",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "send-test-email": "tsx scripts/send-test-email.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
