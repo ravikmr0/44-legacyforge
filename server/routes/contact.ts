@@ -20,6 +20,16 @@ export async function handleContactForm(req: Request, res: Response) {
     console.log("Form data validated:", { name, email, phone: phone || "Not provided" });
 
     if (!process.env.RESEND_API_KEY) {
+
+      // Developer mock: allow non-production environments to simulate email sends
+      // when DEV_EMAIL_MOCK=true. This prevents the 500 error while developing.
+      const devMock = process.env.NODE_ENV !== 'production' && process.env.DEV_EMAIL_MOCK === 'true';
+      if (devMock) {
+        console.log('DEV_EMAIL_MOCK enabled — simulating email send (non-production only).');
+        console.log({ name, email, phone, message });
+        return res.json({ status: 'success', message: "Thank you for contacting us! We'll respond within one business day." });
+      }
+
       // If Resend is not configured but a Google Apps Script webhook is provided,
       // forward the payload to that webhook (server-to-server) so messages can
       // still be delivered without Resend.

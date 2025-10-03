@@ -34,6 +34,12 @@ export default async function handler(req: any, res: any) {
     // deliver contact messages via your Apps Script.
     if (!process.env.RESEND_API_KEY) {
       const gasUrl = process.env.GAS_WEBHOOK_URL;
+      const devMock = process.env.NODE_ENV !== 'production' && process.env.DEV_EMAIL_MOCK === 'true';
+      if (devMock) {
+        console.log('DEV_EMAIL_MOCK enabled — simulating email send and returning success (non-production only).');
+        console.log({ name, email, phone, message });
+        return res.status(200).json({ status: 'success', message: "Thank you for contacting us! We'll respond within one business day." });
+      }
       if (gasUrl) {
         try {
           console.log("RESEND_API_KEY not configured — forwarding to GAS webhook:", gasUrl);
