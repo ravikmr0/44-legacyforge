@@ -20,11 +20,38 @@ export async function handleContactForm(req: Request, res: Response) {
     console.log("Form data validated:", { name, email, phone: phone || "Not provided" });
 
     if (!process.env.RESEND_API_KEY) {
-      console.error("❌ RESEND_API_KEY not configured. Cannot send email.");
+      // If Resend is not configured but a Google Apps Script webhook is provided,
+      // forward the payload to that webhook (server-to-server) so messages can
+      // still be delivered without Resend.
+      const gasUrl = process.env.GAS_WEBHOOK_URL;
+      if (gasUrl) {
+        try {
+          console.log("RESEND_API_KEY not configured — forwarding to GAS webhook:", gasUrl);
+          const upstream = await globalThis.fetch(gasUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, phone, message }),
+          });
+
+          const text = await upstream.text().catch(() => "");
+          console.log("GAS upstream response status:", upstream.status, text);
+
+          if (!upstream.ok) {
+            return res.status(502).json({ status: "error", message: "Failed to deliver message via webhook.", upstreamStatus: upstream.status, upstreamBody: text });
+          }
+
+          return res.json({ status: "success", message: "Thank you for contacting us! We'll respond within one business day." });
+        } catch (err) {
+          console.error("Error forwarding to GAS webhook:", err);
+          return res.status(502).json({ status: "error", message: "Failed to forward message to webhook. Please contact the site administrator." });
+        }
+      }
+
+      console.error("❌ RESEND_API_KEY not configured and no GAS_WEBHOOK_URL provided. Cannot send email.");
       // Return 500 so the frontend doesn't display a misleading success message
       return res.status(500).json({
         status: "error",
-        message: "Email service not configured. Please contact the site administrator.",
+        message: "Email service not configured. Set RESEND_API_KEY or GAS_WEBHOOK_URL in your environment variables.",
       });
     }
 

@@ -29,11 +29,36 @@ export default async function handler(req: any, res: any) {
     const validated = contactFormSchema.parse(body);
     const { name, email, phone, message } = validated;
 
-    // If RESEND_API_KEY is not configured, return 500 so the client doesn't show a
-    // misleading success message. Configure RESEND_API_KEY in Vercel environment vars.
+    // If RESEND_API_KEY is not configured, try forwarding to a Google Apps Script
+    // webhook (GAS_WEBHOOK_URL). This allows deployments without Resend to still
+    // deliver contact messages via your Apps Script.
     if (!process.env.RESEND_API_KEY) {
-      console.error("❌ RESEND_API_KEY not configured. Cannot send email.");
-      return res.status(500).json({ status: "error", message: "Email service not configured. Please contact the site administrator." });
+      const gasUrl = process.env.GAS_WEBHOOK_URL;
+      if (gasUrl) {
+        try {
+          console.log("RESEND_API_KEY not configured — forwarding to GAS webhook:", gasUrl);
+          const upstream = await fetch(gasUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, phone, message }),
+          });
+
+          const text = await upstream.text().catch(() => "");
+          console.log("GAS upstream response status:", upstream.status, text);
+
+          if (!upstream.ok) {
+            return res.status(502).json({ status: "error", message: "Failed to deliver message via webhook.", upstreamStatus: upstream.status, upstreamBody: text });
+          }
+
+          return res.status(200).json({ status: "success", message: "Thank you for contacting us! We'll respond within one business day." });
+        } catch (err) {
+          console.error("Error forwarding to GAS webhook:", err);
+          return res.status(502).json({ status: "error", message: "Failed to forward message to webhook. Please contact the site administrator." });
+        }
+      }
+
+      console.error("❌ RESEND_API_KEY not configured and no GAS_WEBHOOK_URL provided. Cannot send email.");
+      return res.status(500).json({ status: "error", message: "Email service not configured. Set RESEND_API_KEY or GAS_WEBHOOK_URL in your environment variables." });
     }
 
     // Send email via Resend
