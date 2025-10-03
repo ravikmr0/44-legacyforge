@@ -1,12 +1,5 @@
 import React, { useState } from "react";
 
-// ✅ Replace with your actual Apps Script Web App URL
-const GOOGLE_WEB_APP_URL =
-  "https://script.google.com/macros/s/AKfycbzW-7f1304qjjaZB4BcT0vAVOjaA8380cVmYRPOMctMrmOWNBfjoG9-g_486X7r6726/exec";
-
-// ✅ Must match the SECRET in Apps Script
-const FORM_SECRET = "MY_FORM_SECRET";
-
 export default function ContactForm() {
   const [form, setForm] = useState({
     name: "",
@@ -21,34 +14,28 @@ export default function ContactForm() {
     error: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus({ loading: true, success: "", error: "" });
 
     try {
-      const response = await fetch(GOOGLE_WEB_APP_URL, {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, token: FORM_SECRET }),
+        body: JSON.stringify(form),
       });
 
-      const text = await response.text();
-      let result;
-      try {
-        result = JSON.parse(text);
-      } catch (err) {
-        throw new Error("Invalid response: " + text);
-      }
+      const result = await response.json();
 
       if (result.status === "success") {
         setStatus({
           loading: false,
-          success: "✅ Message sent successfully!",
+          success: result.message,
           error: "",
         });
         setForm({ name: "", email: "", phone: "", message: "" });
@@ -60,7 +47,7 @@ export default function ContactForm() {
       setStatus({
         loading: false,
         success: "",
-        error: "❌ Failed to send message. Please try again.",
+        error: "Failed to send message. Please try again.",
       });
     }
   };
