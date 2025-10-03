@@ -287,7 +287,7 @@ export default function About() {
           </div>
           <div className="md:col-span-6">
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-2">
-              <Stat kpi="100%" label="Qualified Leads / Month / Client" />
+              <Stat kpi="100+%" label="Qualified Leads / Month / Client" />
               <Stat kpi="10x" label="Growth Track Record" />
               <Stat kpi="24-Hour" label="Lead Qualification & Delivery Cycle" />
               <Stat kpi="98%" label="Client satisfaction" />
