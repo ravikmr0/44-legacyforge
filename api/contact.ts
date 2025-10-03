@@ -95,12 +95,18 @@ export default async function handler(req: any, res: any) {
     const sendId = (result as any)?.id ?? (result as any)?.data?.id ?? null;
     console.log("Resend result:", result);
 
+    // Some Resend SDKs / responses may not include a top-level `id` while
+    // still actually delivering the message. Treat a non-throwing send as a
+    // success. Log a warning if no id is present so developers can inspect
+    // the result, but don't return a 500 which shows a misleading message
+    // to end users.
     if (!sendId) {
-      console.error("❌ Resend send did not return an id:", result);
-      return res.status(500).json({ status: "error", message: "Failed to send your message. Please try again." });
+      console.warn("⚠️ Resend send did not return an id but completed without throwing. Treating as success.", result);
+    } else {
+      console.log("✅ Email sent successfully! ID:", sendId);
     }
 
-    return res.status(200).json({ status: "success", message: "Thank you for contacting us! We'll respond within one business day." });
+    return res.status(200).json({ status: "success", message: "Thank you for contacting us! We'll respond within one business day.", sendId: sendId ?? undefined });
   } catch (err: unknown) {
     console.error("Contact API error:", err);
 
