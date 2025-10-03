@@ -29,19 +29,11 @@ export default async function handler(req: any, res: any) {
     const validated = contactFormSchema.parse(body);
     const { name, email, phone, message } = validated;
 
-    // If RESEND_API_KEY is not configured, just log and return success (useful for local/dev)
+    // If RESEND_API_KEY is not configured, return 500 so the client doesn't show a
+    // misleading success message. Configure RESEND_API_KEY in Vercel environment vars.
     if (!process.env.RESEND_API_KEY) {
-      console.warn("⚠️  RESEND_API_KEY not configured. Logging form submission only.");
-      console.log({
-        to: "sales@legacyforgegroup.com",
-        from: name,
-        email,
-        phone: phone || "Not provided",
-        message,
-        timestamp: new Date().toISOString(),
-      });
-
-      return res.status(200).json({ status: "success", message: "Thank you for contacting us! We'll respond within one business day." });
+      console.error("❌ RESEND_API_KEY not configured. Cannot send email.");
+      return res.status(500).json({ status: "error", message: "Email service not configured. Please contact the site administrator." });
     }
 
     // Send email via Resend
@@ -69,8 +61,13 @@ export default async function handler(req: any, res: any) {
       text: emailText,
     });
 
-    // Resend client may return different shapes; assume success if no exception thrown
-    console.log("Resend send result:", result);
+    const sendId = (result as any)?.id ?? (result as any)?.data?.id ?? null;
+    console.log("Resend result:", result);
+
+    if (!sendId) {
+      console.error("❌ Resend send did not return an id:", result);
+      return res.status(500).json({ status: "error", message: "Failed to send your message. Please try again." });
+    }
 
     return res.status(200).json({ status: "success", message: "Thank you for contacting us! We'll respond within one business day." });
   } catch (err: unknown) {

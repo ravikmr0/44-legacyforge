@@ -20,26 +20,16 @@ export async function handleContactForm(req: Request, res: Response) {
     console.log("Form data validated:", { name, email, phone: phone || "Not provided" });
 
     if (!process.env.RESEND_API_KEY) {
-      console.warn("⚠️  RESEND_API_KEY not configured. Logging form submission only.");
-      console.log("📧 Contact form submission:");
-      console.log({
-        to: "sales@legacyforgegroup.com",
-        from: name,
-        email: email,
-        phone: phone || "Not provided",
-        message: message,
-        timestamp: new Date().toISOString(),
-      });
-
-      return res.json({
-        status: "success",
-        message: "Thank you for contacting us! We'll respond within one business day.",
+      console.error("❌ RESEND_API_KEY not configured. Cannot send email.");
+      // Return 500 so the frontend doesn't display a misleading success message
+      return res.status(500).json({
+        status: "error",
+        message: "Email service not configured. Please contact the site administrator.",
       });
     }
 
     console.log("Attempting to send email via Resend...");
     const resend = new Resend(process.env.RESEND_API_KEY);
-
     const emailHtml = `
       <h2>New Contact Form Submission</h2>
       <p><strong>Name:</strong> ${name}</p>
@@ -66,28 +56,27 @@ Submitted at: ${new Date().toISOString()}
     `;
 
     const result = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
-      to: "sales@legacyforgegroup.com",
+      from: process.env.RESEND_FROM || "Contact Form <onboarding@resend.dev>",
+      to: process.env.CONTACT_RECEIVER || "sales@legacyforgegroup.com",
       replyTo: email,
       subject: `New Contact Form Submission from ${name}`,
       html: emailHtml,
       text: emailText,
     });
 
-    if (result.error) {
-      console.error("❌ Resend API error:", result.error);
-      return res.status(500).json({
-        status: "error",
-        message: "Failed to send your message. Please try again.",
-      });
+    // Resend's SDK may throw on error; if it returns a result, try to detect success
+    const sendId = (result as any)?.id ?? (result as any)?.data?.id ?? null;
+    console.log("Resend result:", result);
+
+    if (!sendId) {
+      // No send id — treat as failure
+      console.error("❌ Resend send did not return an id:", result);
+      return res.status(500).json({ status: "error", message: "Failed to send your message. Please try again." });
     }
 
-    console.log("✅ Email sent successfully! ID:", result.data?.id);
+    console.log("✅ Email sent successfully! ID:", sendId);
 
-    res.json({
-      status: "success",
-      message: "Thank you for contacting us! We'll respond within one business day.",
-    });
+    return res.json({ status: "success", message: "Thank you for contacting us! We'll respond within one business day." });
   } catch (error) {
     console.error("❌ Contact form error:", error);
 
