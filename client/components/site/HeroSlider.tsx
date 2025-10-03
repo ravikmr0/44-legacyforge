@@ -195,22 +195,22 @@ export function HeroSlider({
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                  <div className="flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm">
+                  {/* <div className="flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm">
                     <div className="flex items-center gap-1">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                       ))}
                     </div>
                     <span className="text-white/90">5.0 Rating</span>
-                  </div>
-                  <div className="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm">
+                  </div> */}
+                  {/* <div className="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm">
                     <span className="h-2 w-2 rounded-full bg-green-400 inline-block mr-2 animate-pulse" />
                     50+ Projects Delivered
-                  </div>
+                  </div> */}
                 </motion.div>
 
                 {/* Main heading */}
-                <div className="space-y-4">
+                <div className="space-y-6">
                   <motion.h1 
                     className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight text-white leading-[1.1]"
                     initial={{ opacity: 0, y: 40 }}

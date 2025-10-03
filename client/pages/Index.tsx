@@ -29,45 +29,60 @@ export default function Index() {
         intervalMs={6000}
       />
 
-      {/* About */}
-<section id="about" className="container py-16 md:py-24">
-  <div className="grid gap-10 md:grid-cols-12 md:gap-12 items-start">
-    {/* Heading */}
-    <div className="md:col-span-5">
-      <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-        About LegacyForge Marketing
-      </h2>
-      <div className="mt-4 h-1 w-24 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] rounded" />
-      {/* About Image */}
-      <div className="mt-8 relative">
-        <div className="rounded-2xl overflow-hidden shadow-2xl">
-          {/* Use a local public image as a reliable fallback while external assets may be blocked */}
-          <img
-            src="/images/office.png"
-            alt="LegacyForge marketing — team and work"
-            className="w-full h-64 md:h-[360px] object-cover bg-white"
-            loading="lazy"
-            decoding="async"
-            width={1200}
-            height={1000}
-          />
-        </div>
+ {/* About */}
+<section id="about" className="relative container py-20 md:py-28">
+  <div className="grid gap-12 md:grid-cols-12 items-center">
+    
+    {/* Image Section with Gradient Border + Overlay */}
+    <div className="md:col-span-5 relative">
+      <div className="rounded-2xl overflow-hidden shadow-xl relative group">
+        <img
+          src="/images/office.png"
+          alt="LegacyForge Marketing Office"
+          className="w-full h-72 md:h-[380px] object-cover transition-transform duration-700 group-hover:scale-105"
+          loading="lazy"
+          decoding="async"
+        />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#5170FF]/40 to-[#5D17EB]/40 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+      </div>
 
-        {/* subtle badge */}
-        <div className="absolute -bottom-3 -right-3 hidden md:block">
-          <div className="rounded-lg bg-gradient-to-r from-[#5170FF] to-[#5D17EB] p-[1px]">
-            
-          </div>
+      {/* Floating Badge */}
+      <div className="absolute -bottom-6 -right-6 hidden md:block">
+        <div className="rounded-xl bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white px-5 py-3 shadow-lg">
+          <span className="font-semibold">3+ Years of Excellence</span>
         </div>
       </div>
     </div>
 
-    {/* Text Content */}
-    <div className="md:col-span-7 text-muted-foreground text-lg leading-relaxed">
-      <p>
-         LegacyForge Marketing specializes in helping B2B and D2C businesses, manufacturers, and brands achieve measurable growth through data-driven digital strategies. We don’t just deliver marketing services—we craft strategic, results-oriented solutions that empower businesses to scale faster. From lead generation, performance marketing, and sales enablement to brand building and customer engagement, our approach ensures every campaign is designed for maximum impact. With a focus on industries that demand precision and trust, we provide end-to-end marketing solutions tailored to businesses in building materials, uPVC profile manufacturing, system aluminium windows manufacturing, real estate, and interior solutions.
-      </p>
+    {/* Text Section */}
+    <div className="md:col-span-7">
+      <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 dark:text-white">
+        About <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5170FF] to-[#5D17EB]">LegacyForge</span> Marketing
+      </h2>
+      <div className="mt-4 h-1 w-28 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] rounded-full" />
       
+      <p className="mt-6 text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+        LegacyForge Marketing specializes in helping <strong>B2B</strong> and <strong>D2C</strong> businesses, 
+        manufacturers, and brands achieve measurable growth through <span className="font-semibold text-gray-800 dark:text-white">data-driven digital strategies</span>. 
+        We don’t just deliver marketing services—we craft strategic, results-oriented solutions that empower businesses to scale faster.
+      </p>
+
+      <p className="mt-4 text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+        From <span className="font-semibold">lead generation</span>, performance marketing, and sales enablement to brand building and customer engagement, 
+        our approach ensures every campaign is designed for <span className="font-semibold">maximum impact</span>. With a focus on industries that demand precision and trust, 
+        we provide end-to-end solutions tailored to building materials, uPVC, aluminium systems, real estate, and interior solutions.
+      </p>
+
+      {/* Call-to-Action Button */}
+      <div className="mt-8">
+        <a
+          href="/contact"
+          className="inline-block rounded-lg bg-gradient-to-r from-[#5170FF] to-[#5D17EB] px-6 py-3 text-white font-semibold shadow-md hover:shadow-xl hover:scale-105 transition"
+        >
+          Learn More →
+        </a>
+      </div>
     </div>
   </div>
 </section>

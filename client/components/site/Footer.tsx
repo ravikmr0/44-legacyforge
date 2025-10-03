@@ -96,7 +96,7 @@ export function Footer() {
           <div className="lg:col-span-4 space-y-6">
             <a href="/" className="inline-flex items-center gap-3 group">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-lg blur opacity-50 group-hover:opacity-75 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-br rounded-lg blur opacity-50 group-hover:opacity-75 transition-opacity" />
                 <img
                   src="/favicon.ico"
                   alt="LegacyForge logo"
