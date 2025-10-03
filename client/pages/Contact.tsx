@@ -30,6 +30,11 @@ export default function ContactForm() {
         body: JSON.stringify(form),
       });
 
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || `Server error: ${response.status}`);
+      }
+
       const result = await response.json();
 
       if (result.status === "success") {
@@ -44,10 +49,11 @@ export default function ContactForm() {
       }
     } catch (err) {
       console.error("Form submission error:", err);
+      const errorMessage = err instanceof Error ? err.message : "Failed to send message. Please try again.";
       setStatus({
         loading: false,
         success: "",
-        error: "Failed to send message. Please try again.",
+        error: errorMessage,
       });
     }
   };
