@@ -12,10 +12,17 @@ export function createServer() {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  // Respond to preflight requests for API routes to avoid 405 Method Not Allowed
+  // Respond to preflight requests for API routes to avoid 405 Method Not Allowed.
   // Some hosting environments (or client preflight requests) may trigger an OPTIONS
   // request before the POST — ensure we respond so the browser can continue.
-  app.options('/api/*', (_req, res) => res.sendStatus(204));
+  // Use a small middleware instead of a route with a wildcard pattern which can
+  // trigger path parsing issues in some environments.
+  app.use((req, res, next) => {
+    if (req.method === "OPTIONS" && req.path.startsWith("/api/")) {
+      return res.sendStatus(204);
+    }
+    next();
+  });
 
   // Example API routes
   app.get("/api/ping", (_req, res) => {
