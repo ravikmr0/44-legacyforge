@@ -79,7 +79,7 @@ export function Header() {
             asChild
             className="hidden sm:inline-flex bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow-md"
           >
-            <a href="/contact">Book Consultation</a>
+            <a href="https://wa.me/919599782925?">Book Consultation</a>
           </Button>
 
           {/* Mobile Menu Button */}

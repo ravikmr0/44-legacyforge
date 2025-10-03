@@ -1,6 +1,7 @@
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { PropsWithChildren } from "react";
+import WhatsAppButton from "./WhatsAppButton";
 
 export function Layout({ children }: PropsWithChildren) {
   return (
@@ -8,7 +9,7 @@ export function Layout({ children }: PropsWithChildren) {
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
-      
+      <WhatsAppButton />
     </div>
   );
 }
