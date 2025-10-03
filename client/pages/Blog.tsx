@@ -81,13 +81,13 @@ export default function Blog() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section with Enhanced Design */}
-      <section className="relative overflow-hidden min-h-[70vh] flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+  <section className="relative overflow-hidden min-h-[70vh] flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0 -z-20">
           <img
             src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=1920&auto=format&fit=crop"
             alt="Person writing blog content"
-            className="h-full w-full object-cover opacity-25"
+            className="h-full w-full object-cover opacity-40"
             onError={(e) => {
               e.currentTarget.style.display = 'none';
             }}
