@@ -4,7 +4,7 @@ import { Resend } from "resend";
 async function main() {
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_RECEIVER || "sales@legacyforgegroup.com";
-  const from = process.env.RESEND_FROM || "Contact Form <no-reply@yourdomain.com>";
+  const from = process.env.RESEND_FROM || "Contact Form <no-reply@legacyforgegroup.com>";
 
   if (!apiKey) {
     console.error("RESEND_API_KEY is not set in the environment. Aborting.");

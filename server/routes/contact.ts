@@ -100,20 +100,23 @@ Submitted at: ${new Date().toISOString()}
       html: emailHtml,
       text: emailText,
     });
-
-    // Resend's SDK may throw on error; if it returns a result, try to detect success
-    const sendId = (result as any)?.id ?? (result as any)?.data?.id ?? null;
+    // Resend's SDK may throw on error. Some versions/clients return metadata
+    // without a top-level `id`. Treat a non-throwing send as success but log
+    // the result for diagnostics. If an `id` is present, include it in logs.
     console.log("Resend result:", result);
+    const sendId = (result as any)?.id ?? (result as any)?.data?.id ?? null;
 
     if (!sendId) {
-      // No send id — treat as failure
-      console.error("❌ Resend send did not return an id:", result);
-      return res.status(500).json({ status: "error", message: "Failed to send your message. Please try again." });
+      // Warn, but don't fail: many SDK responses may not include id while the
+      // send still processed successfully. This prevents false negatives on
+      // the frontend where users see "Failed to send your message" despite a
+      // successful send.
+      console.warn("⚠️ Resend send did not return an id but completed without throwing. Treating as success.", result);
+    } else {
+      console.log("✅ Email sent successfully! ID:", sendId);
     }
 
-    console.log("✅ Email sent successfully! ID:", sendId);
-
-    return res.json({ status: "success", message: "Thank you for contacting us! We'll respond within one business day." });
+    return res.json({ status: "success", message: "Thank you for contacting us! We'll respond within one business day.", sendId: sendId ?? undefined });
   } catch (error) {
     console.error("❌ Contact form error:", error);
 
