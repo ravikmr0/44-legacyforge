@@ -31,11 +31,19 @@ export default function ContactForm() {
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || `Server error: ${response.status}`);
+        // Try to parse JSON error body, but fall back to status text
+        const text = await response.text().catch(() => "");
+        let errorMessage = `Server error: ${response.status}`;
+        try {
+          const errorData = JSON.parse(text || "{}");
+          errorMessage = errorData.message || errorMessage;
+        } catch (_) {
+          if (text) errorMessage = text;
+        }
+        throw new Error(errorMessage);
       }
 
-      const result = await response.json();
+      const result = await response.json().catch(() => ({}));
 
       if (result.status === "success") {
         setStatus({
