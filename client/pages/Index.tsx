@@ -46,13 +46,6 @@ export default function Index() {
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-tr from-[#5170FF]/40 to-[#5D17EB]/40 opacity-0 group-hover:opacity-100 transition duration-500"></div>
       </div>
-
-      {/* Floating Badge */}
-      <div className="absolute -bottom-6 -right-6 hidden md:block">
-        <div className="rounded-xl bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white px-5 py-3 shadow-lg">
-          <span className="font-semibold">3+ Years of Excellence</span>
-        </div>
-      </div>
     </div>
 
     {/* Text Section */}
@@ -77,7 +70,7 @@ export default function Index() {
       {/* Call-to-Action Button */}
       <div className="mt-8">
         <a
-          href="/contact"
+          href="/about"
           className="inline-block rounded-lg bg-gradient-to-r from-[#5170FF] to-[#5D17EB] px-6 py-3 text-white font-semibold shadow-md hover:shadow-xl hover:scale-105 transition"
         >
           Learn More →

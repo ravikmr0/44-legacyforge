@@ -7,21 +7,23 @@ export default function About() {
     <div className="bg-background text-foreground">
       {/* Hero Section with Background Image and Animation */}
       <section className="relative overflow-hidden min-h-[80vh] flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        {/* Background Image */}
-        <div className="absolute inset-0 -z-20">
+  {/* Background Image */}
+  <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80&auto=format&fit=crop"
             alt="Modern office building"
-            className="h-full w-full object-cover opacity-40"
+            className="h-full w-full object-cover opacity-70"
             onError={(e) => {
-              e.currentTarget.style.display = 'none';
+              // hide the image if it fails to load to avoid broken image UI
+              e.currentTarget.style.display = "none";
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/50" />
+          {/* lowered overlay opacity so the background image remains visible */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/25 to-black/10 pointer-events-none" />
         </div>
 
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 -z-10">
+  {/* Animated Background Elements */}
+  <div className="absolute inset-0 z-10">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#5170FF33] via-[#5D17EB22] to-transparent" />
           
           <motion.div
@@ -96,7 +98,7 @@ export default function About() {
           />
         </div>
 
-        <div className="container py-20 md:py-32 relative z-10">
+  <div className="container py-20 md:py-32 relative z-20">
           <div className="max-w-4xl">
             <motion.span 
               className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-2 text-sm text-white/95 backdrop-blur-sm shadow-lg"
@@ -104,7 +106,7 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB] animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#4763e0] to-[#5D17EB] animate-pulse" />
               Who we are
             </motion.span>
             
@@ -115,7 +117,7 @@ export default function About() {
               transition={{ duration: 1, delay: 0.3 }}
             >
               About{" "}
-              <span className="bg-gradient-to-r from-[#5170FF] to-[#5D17EB] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#4260e6] to-[#5D17EB] bg-clip-text text-transparent">
                 LegacyForge
               </span>{" "}
 
@@ -127,7 +129,7 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
             >
-              Helping manufacturing businesses grow online—expanding their reach, generating leads, and boosting sales with smart, data-driven marketing.
+              Helping manufacturing businesses grow online expanding their reach, generating leads, and boosting sales with smart marketing.
             </motion.p>
             
             <motion.div 
@@ -331,12 +333,16 @@ function TeamMember({
           href={linkedin}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={`LinkedIn profile of ${name}`}
+          title={`LinkedIn profile of ${name}`}
           className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-[#5170FF14] to-[#5D17EB14] text-[#5170FF] hover:from-[#5170FF] hover:to-[#5D17EB] hover:text-white transition-colors"
         >
           <Linkedin className="h-4 w-4" />
         </a>
         <a
           href={`mailto:${email}`}
+          aria-label={`Email ${name}`}
+          title={`Email ${name}`}
           className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-[#5170FF14] to-[#5D17EB14] text-[#5170FF] hover:from-[#5170FF] hover:to-[#5D17EB] hover:text-white transition-colors"
         >
           <Mail className="h-4 w-4" />

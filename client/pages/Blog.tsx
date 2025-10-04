@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/site/Badge";
 import { Calendar, Clock, ArrowRight, Search, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 const blogPosts = [
   {
@@ -75,24 +76,52 @@ const blogPosts = [
 const categories = ["All", "Digital Marketing", "Lead Generation", "Social Media", "Web Design", "PPC Advertising", "Content Marketing"];
 
 export default function Blog() {
+  // preload local hero image for reliability
+  useEffect(() => {
+    const href = 'https://images.unsplash.com/photo-1657639028182-24e11504c7c1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+    if (!document.querySelector(`link[rel="preload"][href="${href}"]`)) {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = href;
+      document.head.appendChild(link);
+    }
+    return () => {};
+  }, []);
   const featuredPosts = blogPosts.filter(post => post.featured);
   const regularPosts = blogPosts.filter(post => !post.featured);
 
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section with Enhanced Design */}
-  <section className="relative overflow-hidden min-h-[70vh] flex items-center">
-        {/* Background Image */}
-        <div className="absolute inset-0 -z-20">
-          <img
-            src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=1920&auto=format&fit=crop"
-            alt="Person writing blog content"
-            className="h-full w-full object-cover opacity-40"
-            onError={(e) => {
-              e.currentTarget.style.display = 'none';
+  <section className="relative overflow-hidden min-h-[50vh] flex items-center">
+        {/* Background Image (use local file for reliability) */}
+        <div className="absolute inset-0 z-0">
+          <motion.div
+            className="absolute inset-0 z-0 bg-center bg-cover"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1657639028182-24e11504c7c1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'), linear-gradient(90deg, rgba(8,10,15,0.06), rgba(255,255,255,0.02))",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundColor: '#081023',
+              opacity: 0.95,
             }}
+            initial={{ scale: 1 }}
+            animate={{ scale: 1.02 }}
+            transition={{ duration: 30, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+            role="img"
+            aria-label="Person writing blog content"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/60" />
+
+          {/* Tuned dark overlay + subtle brand tint so image shows through but text stays readable */}
+          <div
+            className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(90deg,rgba(4,16,32,0.48),rgba(4,16,32,0.18))]"
+          />
+
+          {/* subtle brand tint (blue -> purple) to enhance visual identity */}
+          <div
+            className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(120deg,rgba(81,112,255,0.09),rgba(93,23,235,0.06))] mix-blend-overlay"
+          />
         </div>
 
         {/* Animated Background Elements */}
@@ -101,7 +130,7 @@ export default function Blog() {
 
           <motion.div
             aria-hidden
-            className="absolute top-20 left-10 h-72 w-72 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 blur-3xl opacity-15"
+            className="absolute top-20 left-10 h-72 w-72 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 blur-2xl opacity-15"
             animate={{
               x: [-30, 30, -30],
               y: [0, -20, 0],
@@ -116,7 +145,7 @@ export default function Blog() {
 
           <motion.div
             aria-hidden
-            className="absolute bottom-20 right-10 h-80 w-80 rounded-full bg-gradient-to-tr from-cyan-600 to-blue-600 blur-3xl opacity-10"
+            className="absolute bottom-20 right-10 h-80 w-80 rounded-full bg-gradient-to-tr from-cyan-600 to-blue-600 blur-2xl opacity-10"
             animate={{
               x: [20, -20, 20],
               y: [10, 20, 10],
@@ -157,60 +186,80 @@ export default function Blog() {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem]" />
         </div>
 
-        <div className="container py-16 md:py-24 relative z-10">
-          <motion.div
-            className="max-w-4xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.span
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm text-white/95 backdrop-blur-sm shadow-lg"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 animate-pulse" />
-              Insights & Resources
-            </motion.span>
-
-            <motion.h1
-              className="mt-6 text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4 }}
-            >
-              Marketing Insights for{" "}
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                Growth-Focused
-              </span>{" "}
-              Businesses
-            </motion.h1>
-
-            <motion.p
-              className="mt-6 text-white/85 text-xl md:text-2xl leading-relaxed max-w-3xl"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
-            >
-              Expert insights, proven strategies, and actionable tips to help your business grow through smarter marketing and digital transformation.
-            </motion.p>
-
-            {/* Search Bar */}
+        <div className="container py-12 md:py-20 relative z-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <motion.div
-              className="mt-8 relative max-w-xl"
-              initial={{ opacity: 0, y: 30 }}
+              className="max-w-3xl"
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.8 }}
+              transition={{ duration: 0.8 }}
             >
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/60" />
-              <input
-                type="search"
-                placeholder="Search articles, topics, and insights..."
-                className="h-14 w-full rounded-xl border border-white/20 bg-white/10 backdrop-blur-md pl-12 pr-4 text-white placeholder:text-white/50 outline-none focus:border-blue-400/50 focus:ring-2 focus:ring-blue-400/20 transition-all"
-              />
+              <motion.span
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/8 px-3 py-1 text-sm text-white/95 backdrop-blur-sm shadow-sm"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 animate-pulse" />
+                Insights & Resources
+              </motion.span>
+
+              <motion.h1
+                className="mt-6 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.15 }}
+              >
+                Marketing Insights for{' '}
+                <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                  Growth-Focused
+                </span>{' '}
+                Businesses
+              </motion.h1>
+
+              <motion.p
+                className="mt-4 text-white/85 text-lg md:text-xl leading-relaxed max-w-xl"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.25 }}
+              >
+                Expert insights, proven strategies, and actionable tips to help your business grow through smarter marketing.
+              </motion.p>
+
+              <motion.div
+                className="mt-6 relative max-w-md"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.35 }}
+              >
+                {/* <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/60" />
+                <input
+                  type="search"
+                  placeholder="Search articles, topics, and insights..."
+                  className="h-12 w-full rounded-xl border border-white/12 bg-white/6 backdrop-blur-md pl-12 pr-4 text-white placeholder:text-white/50 outline-none focus:border-blue-400/50 focus:ring-2 focus:ring-blue-400/20 transition-all"
+                /> */}
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            <motion.aside
+              className="w-full flex justify-center lg:justify-end"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.35 }}
+            >
+              <div className="relative w-full max-w-sm rounded-2xl overflow-hidden bg-white/6 backdrop-blur-md border border-white/10 shadow-lg">
+                <img src="/images/office.png" alt="Latest article" className="w-full h-40 object-cover" />
+                <div className="p-6">
+                  <h4 className="text-lg font-semibold text-white mb-2">Latest: The Future of Digital Marketing</h4>
+                  <p className="text-sm text-white/80 mb-4">Quick insights on where digital marketing for manufacturing is heading in 2025.</p>
+                  <div className="flex items-center gap-3">
+                    <Button size="sm" className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white">Read Latest</Button>
+                    <Button size="sm" variant="outline" className="text-slate-900/90">Subscribe</Button>
+                  </div>
+                </div>
+              </div>
+            </motion.aside>
+          </div>
         </div>
 
         {/* Scroll indicator */}

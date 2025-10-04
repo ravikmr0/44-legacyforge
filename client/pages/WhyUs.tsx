@@ -49,20 +49,20 @@ export default function WhyUs() {
       {/* Hero Section with Background Image and Animation */}
       <section className="relative overflow-hidden min-h-[80vh] flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         {/* Background Image */}
-        <div className="absolute inset-0 -z-20">
+        <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80&auto=format&fit=crop"
             alt="Team collaboration"
-            className="h-full w-full object-cover opacity-30"
+            className="h-full w-full object-cover opacity-60"
             onError={(e) => {
               e.currentTarget.style.display = 'none';
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/30 to-black/20" />
         </div>
 
         {/* Animated Background Elements */}
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 z-10">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-600/20 via-cyan-600/10 to-transparent" />
 
           <motion.div
@@ -137,7 +137,7 @@ export default function WhyUs() {
           />
         </div>
 
-        <div className="container py-20 md:py-32 relative z-10">
+  <div className="container py-20 md:py-32 relative z-20">
           <div className="max-w-4xl">
             <motion.span
               className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm text-white/95 backdrop-blur-sm shadow-lg"
@@ -185,7 +185,7 @@ export default function WhyUs() {
               <Button
                 asChild
                 variant="outline"
-                className="h-12 px-8 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm text-lg font-semibold"
+                className="h-12 px-8 border-white/30 text-blue-950 hover:bg-white/10 backdrop-blur-sm text-lg font-semibold"
               >
                 <a href="/services">Explore Services</a>
               </Button>

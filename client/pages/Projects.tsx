@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/site/Badge";
 import { ExternalLink, Calendar, TrendingUp, Users, Target } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 const projects = [
   {
@@ -123,42 +124,114 @@ const projects = [
 const industries = ["All", "Manufacturing", "Construction", "Retail", "Design", "Real Estate"];
 
 export default function Projects() {
+  // preload hero background to reduce chance of FOUC / late load
+  useEffect(() => {
+    // preload a high-quality hero image (external) and keep local office.png as fallback
+    const heroExternal = 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=9f4c5e6a6b7d8c1b9f0c';
+    const hrefs = [heroExternal, '/images/office.png'];
+    hrefs.forEach((href) => {
+      if (!document.querySelector(`link[rel="preload"][href="${href}"]`)) {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = href;
+        document.head.appendChild(link);
+      }
+    });
+    return () => {};
+  }, []);
+
   const featuredProjects = projects.filter(project => project.featured);
   const allProjects = projects;
 
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1920&auto=format&fit=crop"
-            alt="Successful business projects"
-            className="h-full w-full object-cover opacity-20"
+  <section className="relative overflow-hidden bg-[color:var(--bg-muted,#f6f8fb)]">
+  <div className="absolute inset-0 z-0">
+          {/* Use a background-image div that points to a local public image so it reliably loads in dev/build */}
+          <motion.div
+            // use an attractive high-res external hero image, fall back to local office.png
+            className="absolute inset-0 bg-center bg-cover bg-fixed"
+            style={{
+              backgroundImage: "linear-gradient(90deg, rgba(8,10,15,0.06), rgba(255,255,255,0.02)), url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=9f4c5e6a6b7d8c1b9f0c'), url('/images/office.png')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+            role="img"
+            aria-label="Successful business projects"
+            initial={{ scale: 1, x: 0, y: 0 }}
+            animate={{ scale: 1.05, x: -10, y: -6 }}
+            transition={{ duration: 20, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/70" />
+          {/* semi-transparent overlay so the background image is still visible; increased contrast for readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/30 to-black/10 pointer-events-none z-10" />
+        </div>
+
+        {/* Decorative animated blobs between the image and content */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <motion.div
+            className="absolute left-1/4 top-10 w-72 h-72 rounded-full bg-gradient-to-br from-[#5170FF]/40 to-[#5D17EB]/30 blur-2xl opacity-70"
+            initial={{ y: 0, scale: 0.9, opacity: 0 }}
+            animate={{ y: -20, scale: 1.05, opacity: 0.7 }}
+            transition={{ duration: 6, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+          />
+
+          <motion.div
+            className="absolute right-1/4 top-28 w-56 h-56 rounded-full bg-gradient-to-tr from-[#FF8A00]/30 to-[#FF3CAC]/20 blur-3xl opacity-60"
+            initial={{ y: 0, scale: 1 }}
+            animate={{ y: 18, scale: 0.95 }}
+            transition={{ duration: 8, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+          />
+
+          <motion.div
+            className="absolute left-10 bottom-6 w-40 h-40 rounded-full bg-gradient-to-r from-[#17E0B2]/20 to-[#5170FF]/20 blur-2xl opacity-60"
+            initial={{ x: 0, scale: 1 }}
+            animate={{ x: -16, scale: 1.02 }}
+            transition={{ duration: 7, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+          />
+
+          {/* subtle animated spotlight behind hero content */}
+          <motion.div
+            aria-hidden
+            className="absolute left-12 top-16 w-[520px] h-[520px] rounded-full pointer-events-none bg-[radial-gradient(closest-side,rgba(81,112,255,0.18),rgba(81,112,255,0.04)_40%,rgba(255,255,255,0)_70%)] blur-[64px]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: [0, 0.7, 0.45, 0.7, 0], scale: [0.95, 1.02, 1, 1.03, 0.98], y: [0, -6, 0, -4, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          />
         </div>
         
-        <div className="container py-16 md:py-24 relative">
+          <div className="container py-16 md:py-24 relative min-h-[320px]">
           <motion.div 
-            className="max-w-3xl"
+            className="max-w-3xl relative z-20"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
-              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]" />
-              Success Stories
-            </span>
-            <h1 className="mt-4 text-3xl md:text-5xl font-extrabold tracking-tight">
-              Projects That{" "}
-              <span className="bg-gradient-to-r from-[#5170FF] to-[#5D17EB] bg-clip-text text-transparent">
-                Drive Results
+            {/* Glass panel behind hero text for better contrast */}
+            <div className="backdrop-blur-md bg-black/35 rounded-2xl p-6 md:p-8 shadow-xl border border-white/10">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/90 text-slate-900 px-3 py-1 text-xs font-medium">
+                <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]" />
+                Success Stories
               </span>
-            </h1>
-            <p className="mt-4 text-muted-foreground text-lg max-w-2xl">
-              Explore our portfolio of successful digital marketing campaigns and business transformations. Real clients, real results, real growth.
-            </p>
+
+              <motion.h1
+                className="mt-4 text-3xl md:text-5xl font-extrabold tracking-tight text-white drop-shadow-lg"
+                initial={{ y: 12, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.15 }}
+              >
+                Projects That{" "}
+                <span className="bg-gradient-to-r from-[#6EE7B7] to-[#6366F1] bg-clip-text text-transparent">
+                  Drive Results
+                </span>
+              </motion.h1>
+
+              <p className="mt-4 text-white/80 text-lg max-w-2xl leading-relaxed">
+                Explore our portfolio of successful digital marketing campaigns and business transformations. Real clients, real results, real growth.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
