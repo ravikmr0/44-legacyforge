@@ -10,7 +10,7 @@ export default function About() {
   {/* Background Image */}
   <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80&auto=format&fit=crop"
+            src="https://cdn.pixabay.com/photo/2021/12/29/04/40/kanban-6900750_1280.jpg"
             alt="Modern office building"
             className="h-full w-full object-cover opacity-70"
             onError={(e) => {

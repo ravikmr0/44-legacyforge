@@ -156,7 +156,7 @@ export default function WhyUs() {
               transition={{ duration: 1, delay: 0.3 }}
             >
               Why Choose{" "}
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                 LegacyForge
               </span>
             </motion.h1>

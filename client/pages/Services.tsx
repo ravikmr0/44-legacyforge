@@ -24,7 +24,6 @@ export default function Services() {
       {/* Featured service sections */}
       <div className="mt-16 md:mt-24 space-y-16">
         <ServiceSection
-          right
           eyebrow="Performance Marketing | Lead Generation"
           title="Acquisition you can measure — and scale"
           desc="Supercharge your sales pipeline with targeted lead generation tailored to your industry. From ad to inbox, we capture the right audience for your business."
@@ -34,9 +33,10 @@ export default function Services() {
             "Lead Segmentation & Nurturing",
             "End-to-End Campaign Execution",
           ]}
-          image="https://opentextbc.ca/foundationsdigitalmarketing/wp-content/uploads/sites/388/2021/07/Lead-Generation.png"
+          image="https://cdn.pixabay.com/photo/2023/02/15/10/21/lead-magnet-7791403_1280.jpg"
         />
         <ServiceSection
+          right
           eyebrow="Website Design & Development"
           title="Modern, responsive websites that convert"
           desc="We build fast, responsive, and conversion-focused websites that reflect your brand and drive results."
@@ -47,10 +47,9 @@ export default function Services() {
             "Custom Design & User Experience",
             "SEO-Ready Structure",
           ]}
-          image="https://fsdsolutions.com/wp-content/uploads/2016/07/Web_Design_and_Development.jpg"
+          image="https://cdn.pixabay.com/photo/2016/09/14/08/26/web-1668927_1280.jpg"
         />
         <ServiceSection
-          right
           eyebrow="SEO & Content Marketing"
           title="Boost your visibility and authority"
           desc="Our SEO experts optimize your site and create compelling content to improve your search rankings and attract organic traffic."
@@ -63,6 +62,7 @@ export default function Services() {
           image="https://www.searchenginejournal.com/wp-content/uploads/2021/04/winning-seo-content-strategy-60815a2f832ee-1024x538.png"
         />
         <ServiceSection
+          right
           eyebrow="Social Media Marketing"
           title="Grow, engage, and convert your audience"
           desc="Our team designs visually engaging posts, motion graphics, and product reels to increase visibility, connect with your audience, and keep your brand active across platforms."
@@ -76,7 +76,6 @@ export default function Services() {
         />
         
         <ServiceSection
-          right
           eyebrow="PRE SALES SUPPORT"
           title="Guiding Leads to Conversion"
           desc="Bridge the gap between leads and deals with our powerful sales calling team trained to share your client's details, build trust, and drive immediate contact."
@@ -89,6 +88,7 @@ export default function Services() {
           image="https://wpmanageninja.com/wp-content/uploads/2022/08/Pre_sales_service_and_After_sales_support_both_are_equally_important-min.png"
         />
         <ServiceSection
+          right
          eyebrow="Print & Design Support"
           title="Creative assets that captivate"
           desc="From brochures to banners, we design print materials that enhance your brand presence and support your marketing efforts."
@@ -101,7 +101,6 @@ export default function Services() {
           image="https://cdn.prod.website-files.com/61025d0c08f8a23b56de3526/682ed81efd37c574d11afc60_image-150.webp"
          />
         <ServiceSection
-          right
           eyebrow="Media & Visual Production"
           title="Video Production & Photography"
           desc="Bring your brand to life with professional visuals that captivate and convert. From product shoots to event coverage, we create content that tells your story with impact."

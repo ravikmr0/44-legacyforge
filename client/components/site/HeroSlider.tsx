@@ -248,7 +248,7 @@ export function HeroSlider({
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 1.0 }}
                 >
-                  Transform your business with data-driven digital marketing strategies that deliver measurable results and sustainable growth.
+                  Transform your business with data-driven digital marketing strategies that deliver measurable results.
                 </motion.p>
 
                 {/* CTA Buttons */}
