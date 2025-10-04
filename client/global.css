@@ -110,6 +110,14 @@
     animation: hero-zoom 12s ease-in-out infinite;
     will-change: transform;
   }
+
+  /* Hero background helper using public/images/office.png */
+  .hero-bg-office {
+    background-image: url('https://cdn.pixabay.com/photo/2020/08/09/14/25/business-5475661_1280.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
 }
 
 @layer base {

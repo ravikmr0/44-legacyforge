@@ -11,13 +11,57 @@ import { Button } from "@/components/ui/button";
 export default function Services() {
   return (
     <div className="container py-16 md:py-24">
-      <div className="mx-auto max-w-2xl text-center">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
-          Our Services
-        </h1>
-        <p className="mt-3 text-muted-foreground">
-          Outcomes-first solutions tailored to your growth.
-        </p>
+      {/* Hero - half screen with background image and overlay */}
+      <div className="relative mb-12">
+        <div className="relative h-[50vh] md:h-[60vh] w-full rounded-xl overflow-hidden hero-bg-office animate-hero-zoom">
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/30" />
+
+          <div className="container relative z-10 flex h-full items-center">
+            <div className="max-w-2xl text-white">
+              <p className="inline-block rounded-full bg-white/10 px-3 py-1 text-sm font-semibold tracking-wide text-white/90">
+                Services • Enterprise & SMB
+              </p>
+
+              <h1 className="mt-4 text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+                Growth-focused digital services
+              </h1>
+              <p className="mt-4 text-lg text-white/90">
+                Outcomes-first solutions tailored to your growth — from acquisition to creative and technical enablement.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button
+                  asChild
+                  className="h-11 px-6 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white shadow-lg"
+                >
+                  <a href="/contact">Start a project</a>
+                </Button>
+                <a
+                  href="/contact"
+                  className="inline-flex items-center rounded-md px-4 py-2 text-sm font-medium bg-white/10 text-white/90 hover:bg-white/20"
+                >
+                  Contact sales
+                </a>
+              </div>
+
+              <div className="mt-6 flex gap-4 text-sm text-white/90">
+                <div className="flex items-center gap-2">
+                  <LineChart className="h-5 w-5 text-white/90" />
+                  <span>Performance-driven</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Megaphone className="h-5 w-5 text-white/90" />
+                  <span>Creative & Social</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="h-5 w-5 text-white/90" />
+                  <span>Reliable ops</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       
 
