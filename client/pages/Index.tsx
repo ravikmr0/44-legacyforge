@@ -10,19 +10,19 @@ export default function Index() {
       <HeroSlider
         images={[
           {
-            src: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1920&auto=format&fit=crop",
+            src: "https://ideogram.ai/assets/image/lossless/response/CjiwpktpTGyvdUigs5898w",
             alt: "Digital marketing strategy session",
           },
           {
-            src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1920&auto=format&fit=crop",
+            src: "https://ideogram.ai/assets/image/lossless/response/fREalevIRPee_8GQ69VwBw",
             alt: "Business growth analytics",
           },
           {
-            src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1920&auto=format&fit=crop",
+            src: "https://ideogram.ai/assets/image/lossless/response/9qaw5TqCQTG70J6UqwGXYQ",
             alt: "Digital transformation",
           },
           {
-            src: "https://images.unsplash.com/photo-1553484771-371a605b060b?q=80&w=1920&auto=format&fit=crop",
+            src: "https://ideogram.ai/assets/image/lossless/response/KPexiL31Qj2yybfohJTuTw",
             alt: "Lead generation success",
           },
         ]}
