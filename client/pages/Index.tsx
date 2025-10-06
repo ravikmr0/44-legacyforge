@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Activity, BanknoteArrowUp, Camera, CircleCheck as CheckCircle2, ChevronsLeftRightEllipsis, Headset, ChartLine as LineChart, Megaphone, NotebookPen, PenTool, ShieldCheck, Target, TextSelect } from "lucide-react";
+import { Activity, BanknoteArrowUp, Camera, CircleCheck as CheckCircle2, ChevronsLeftRightEllipsis, Headset, ChartLine as LineChart, Megaphone, NotebookPen, PenTool, ShieldCheck, Target, TextSelect, ArrowRight, MoveRight } from "lucide-react";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { ServicesCarousel } from "@/components/site/ServicesCarousel";
 
@@ -80,7 +80,7 @@ export default function Index() {
   </div>
 </section>
 
-      {/* Our Expertise */}
+      {/* Our Expertise - Flow Diagram */}
       <section id="services" className="relative container py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-[#5170FF05] to-background pointer-events-none" />
 
@@ -89,62 +89,173 @@ export default function Index() {
             <div className="inline-block">
               <span className="inline-flex items-center rounded-full bg-gradient-to-r from-[#5170FF]/10 to-[#5D17EB]/10 px-4 py-1.5 text-sm font-medium text-[#5170FF] border border-[#5170FF]/20">
                 <Megaphone className="mr-2 h-4 w-4" />
-                What We Do Best
+                Our Process Flow
               </span>
             </div>
             <h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5170FF] to-[#5D17EB]">Expertise</span>
             </h2>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Comprehensive digital marketing solutions designed to elevate your brand, drive qualified traffic, and deliver measurable business growth
+              A comprehensive flow from strategy to execution that transforms your business growth
             </p>
           </div>
 
-          <div className="mt-16 md:mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            <ServiceCard
-              icon={<BanknoteArrowUp className="h-7 w-7" />}
-              title="Paid Advertising"
-              desc="Data-driven PPC campaigns across Google Ads, Facebook, and LinkedIn that generate qualified leads and maximize ROI. We target the right audience with precision to accelerate your business growth."
-              featured
-            />
-            <ServiceCard
-              icon={<ChevronsLeftRightEllipsis className="h-7 w-7" />}
-              title="Website Development"
-              desc="Custom-built, responsive websites optimized for performance and conversions. We create SEO-friendly digital experiences that attract your ideal audience and turn visitors into valuable leads."
-              featured
-            />
-            <ServiceCard
-              icon={<Activity className="h-7 w-7" />}
-              title="Social Media Marketing"
-              desc="Strategic social media management that builds brand authority and engagement. We craft compelling content and run targeted campaigns across key platforms to generate quality leads."
-              featured
-            />
-            <ServiceCard
-              icon={<TextSelect className="h-7 w-7" />}
-              title="SEO Optimization"
-              desc="Proven search engine optimization strategies that improve online visibility and organic rankings. We ensure your business ranks higher on Google and attracts qualified, high-intent traffic."
-              featured
-            />
-            <ServiceCard
-              icon={<Headset className="h-7 w-7" />}
-              title="Sales Support"
-              desc="End-to-end sales enablement services including lead qualification, nurturing, and conversion. Our expert team handles calls and follow-ups to help you close more deals efficiently."
-            />
-            <ServiceCard
-              icon={<NotebookPen className="h-7 w-7" />}
-              title="Content Writing"
-              desc="SEO-optimized blogs, articles, and website content that boost visibility and establish thought leadership. We create compelling content that attracts qualified leads and drives conversions."
-            />
-            <ServiceCard
-              icon={<Target className="h-7 w-7" />}
-              title="Creative Branding"
-              desc="Complete branding solutions from logo design to brand identity systems. We create unique visual assets, print collateral, brochures, and sample boxes that make your brand memorable."
-            />
-            <ServiceCard
-              icon={<Camera className="h-7 w-7" />}
-              title="Media Production"
-              desc="Professional photography and videography services including product shoots, factory tours, office showcases, and corporate videos that visually elevate your brand presence."
-            />
+          {/* Flow Diagram Layout */}
+          <div className="mt-16 md:mt-20 max-w-7xl mx-auto">
+
+            {/* Stage 1: Foundation */}
+            <div className="mb-12">
+              <div className="flex items-center justify-center mb-6">
+                <div className="px-4 py-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white text-sm font-semibold">
+                  STAGE 1: FOUNDATION
+                </div>
+              </div>
+              <div className="grid md:grid-cols-3 gap-6">
+                <FlowCard
+                  icon={<Target className="h-7 w-7" />}
+                  title="Creative Branding"
+                  desc="Complete branding solutions from logo design to brand identity systems"
+                  step="1"
+                />
+                <div className="hidden md:flex items-center justify-center">
+                  <ArrowRight className="h-8 w-8 text-[#5170FF] animate-pulse" />
+                </div>
+                <FlowCard
+                  icon={<ChevronsLeftRightEllipsis className="h-7 w-7" />}
+                  title="Website Development"
+                  desc="Custom-built, responsive websites optimized for conversions"
+                  step="2"
+                />
+              </div>
+            </div>
+
+            {/* Connecting Arrow */}
+            <div className="flex items-center justify-center my-8">
+              <div className="flex flex-col items-center">
+                <div className="h-12 w-0.5 bg-gradient-to-b from-[#5170FF] to-[#5D17EB]" />
+                <div className="p-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]">
+                  <ArrowRight className="h-5 w-5 text-white rotate-90" />
+                </div>
+              </div>
+            </div>
+
+            {/* Stage 2: Visibility */}
+            <div className="mb-12">
+              <div className="flex items-center justify-center mb-6">
+                <div className="px-4 py-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white text-sm font-semibold">
+                  STAGE 2: VISIBILITY
+                </div>
+              </div>
+              <div className="grid md:grid-cols-4 gap-6">
+                <FlowCard
+                  icon={<TextSelect className="h-7 w-7" />}
+                  title="SEO Optimization"
+                  desc="Proven strategies for higher rankings and organic traffic"
+                  step="3"
+                />
+                <div className="hidden md:flex items-center justify-center">
+                  <MoveRight className="h-8 w-8 text-[#5170FF] animate-pulse" />
+                </div>
+                <FlowCard
+                  icon={<NotebookPen className="h-7 w-7" />}
+                  title="Content Writing"
+                  desc="SEO-optimized content that attracts qualified leads"
+                  step="4"
+                />
+                <div className="hidden md:flex items-center justify-center">
+                  <MoveRight className="h-8 w-8 text-[#5170FF] animate-pulse" />
+                </div>
+              </div>
+            </div>
+
+            {/* Connecting Arrow */}
+            <div className="flex items-center justify-center my-8">
+              <div className="flex flex-col items-center">
+                <div className="h-12 w-0.5 bg-gradient-to-b from-[#5170FF] to-[#5D17EB]" />
+                <div className="p-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]">
+                  <ArrowRight className="h-5 w-5 text-white rotate-90" />
+                </div>
+              </div>
+            </div>
+
+            {/* Stage 3: Engagement */}
+            <div className="mb-12">
+              <div className="flex items-center justify-center mb-6">
+                <div className="px-4 py-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white text-sm font-semibold">
+                  STAGE 3: ENGAGEMENT
+                </div>
+              </div>
+              <div className="grid md:grid-cols-3 gap-6">
+                <FlowCard
+                  icon={<BanknoteArrowUp className="h-7 w-7" />}
+                  title="Paid Advertising"
+                  desc="Data-driven PPC campaigns for qualified leads and ROI"
+                  step="5"
+                />
+                <div className="hidden md:flex items-center justify-center">
+                  <ArrowRight className="h-8 w-8 text-[#5170FF] animate-pulse" />
+                </div>
+                <FlowCard
+                  icon={<Activity className="h-7 w-7" />}
+                  title="Social Media"
+                  desc="Strategic campaigns to build brand authority"
+                  step="6"
+                />
+              </div>
+            </div>
+
+            {/* Connecting Arrow */}
+            <div className="flex items-center justify-center my-8">
+              <div className="flex flex-col items-center">
+                <div className="h-12 w-0.5 bg-gradient-to-b from-[#5170FF] to-[#5D17EB]" />
+                <div className="p-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]">
+                  <ArrowRight className="h-5 w-5 text-white rotate-90" />
+                </div>
+              </div>
+            </div>
+
+            {/* Stage 4: Conversion */}
+            <div className="mb-12">
+              <div className="flex items-center justify-center mb-6">
+                <div className="px-4 py-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white text-sm font-semibold">
+                  STAGE 4: CONVERSION
+                </div>
+              </div>
+              <div className="grid md:grid-cols-3 gap-6">
+                <FlowCard
+                  icon={<Headset className="h-7 w-7" />}
+                  title="Sales Support"
+                  desc="Lead qualification, nurturing, and conversion services"
+                  step="7"
+                />
+                <div className="hidden md:flex items-center justify-center">
+                  <ArrowRight className="h-8 w-8 text-[#5170FF] animate-pulse" />
+                </div>
+                <FlowCard
+                  icon={<Camera className="h-7 w-7" />}
+                  title="Media Production"
+                  desc="Professional visuals that elevate your brand presence"
+                  step="8"
+                />
+              </div>
+            </div>
+
+            {/* Final Result */}
+            <div className="flex items-center justify-center mt-12">
+              <div className="relative p-8 rounded-2xl border-2 border-[#5170FF] bg-gradient-to-r from-[#5170FF]/5 to-[#5D17EB]/5 max-w-2xl">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white text-xs font-bold">
+                  RESULT
+                </div>
+                <div className="text-center">
+                  <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#5170FF] to-[#5D17EB]">
+                    Measurable Business Growth
+                  </h3>
+                  <p className="mt-3 text-muted-foreground">
+                    Qualified leads, increased revenue, and sustainable brand authority
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="mt-16 md:mt-20 text-center">
@@ -310,33 +421,33 @@ export default function Index() {
   );
 }
 
-function ServiceCard({
+function FlowCard({
   icon,
   title,
   desc,
-  featured = false,
+  step,
 }: {
   icon: React.ReactNode;
   title: string;
   desc: string;
-  featured?: boolean;
+  step: string;
 }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border bg-card p-7 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+    <div className="group relative overflow-hidden rounded-2xl border-2 border-[#5170FF]/20 bg-card p-6 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 hover:border-[#5170FF]">
       <div
         className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-[#5170FF00] via-[#5170FF00] to-[#5D17EB00] opacity-0 blur-xl transition-all duration-500 group-hover:opacity-40 group-hover:from-[#5170FF40] group-hover:via-[#5170FF30] group-hover:to-[#5D17EB40]"
         aria-hidden
       />
-      <div className="relative space-y-4">
-        <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#5170FF14] to-[#5D17EB14] text-[#5170FF] transition-all duration-500 group-hover:scale-110 group-hover:from-[#5170FF] group-hover:to-[#5D17EB] group-hover:text-white group-hover:shadow-lg">
-          {icon}
-        </div>
-        {featured && (
-          <span className="inline-block px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white">
-            Popular
+      <div className="relative">
+        <div className="flex items-start justify-between mb-4">
+          <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#5170FF14] to-[#5D17EB14] text-[#5170FF] transition-all duration-500 group-hover:scale-110 group-hover:from-[#5170FF] group-hover:to-[#5D17EB] group-hover:text-white group-hover:shadow-lg">
+            {icon}
+          </div>
+          <span className="flex items-center justify-center h-8 w-8 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white text-xs font-bold">
+            {step}
           </span>
-        )}
-        <h3 className="font-bold text-xl tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#5170FF] group-hover:to-[#5D17EB] transition-all duration-300">
+        </div>
+        <h3 className="font-bold text-lg tracking-tight mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#5170FF] group-hover:to-[#5D17EB] transition-all duration-300">
           {title}
         </h3>
         <p className="text-sm leading-relaxed text-muted-foreground">{desc}</p>
