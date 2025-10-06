@@ -79,272 +79,7 @@ export default function Index() {
     </div>
   </div>
 </section>
-
-      {/* Our Expertise - Flow Diagram */}
-      <section id="services" className="relative container py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-[#5170FF05] to-background pointer-events-none" />
-
-        <div className="relative z-10">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="inline-block">
-              <span className="inline-flex items-center rounded-full bg-gradient-to-r from-[#5170FF]/10 to-[#5D17EB]/10 px-4 py-1.5 text-sm font-medium text-[#5170FF] border border-[#5170FF]/20">
-                <Megaphone className="mr-2 h-4 w-4" />
-                Our Process Flow
-              </span>
-            </div>
-            <h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5170FF] to-[#5D17EB]">Expertise</span>
-            </h2>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              A comprehensive flow from strategy to execution that transforms your business growth
-            </p>
-          </div>
-
-          {/* Flow Diagram Layout */}
-          <div className="mt-16 md:mt-20 max-w-7xl mx-auto">
-
-            {/* Stage 1: Foundation */}
-            <div className="mb-12">
-              <div className="flex items-center justify-center mb-6">
-                <div className="px-4 py-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white text-sm font-semibold">
-                  STAGE 1: FOUNDATION
-                </div>
-              </div>
-              <div className="grid md:grid-cols-3 gap-6">
-                <FlowCard
-                  icon={<Target className="h-7 w-7" />}
-                  title="Creative Branding"
-                  desc="Complete branding solutions from logo design to brand identity systems"
-                  step="1"
-                />
-                <div className="hidden md:flex items-center justify-center">
-                  <ArrowRight className="h-8 w-8 text-[#5170FF] animate-pulse" />
-                </div>
-                <FlowCard
-                  icon={<ChevronsLeftRightEllipsis className="h-7 w-7" />}
-                  title="Website Development"
-                  desc="Custom-built, responsive websites optimized for conversions"
-                  step="2"
-                />
-              </div>
-            </div>
-
-            {/* Connecting Arrow */}
-            <div className="flex items-center justify-center my-8">
-              <div className="flex flex-col items-center">
-                <div className="h-12 w-0.5 bg-gradient-to-b from-[#5170FF] to-[#5D17EB]" />
-                <div className="p-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]">
-                  <ArrowRight className="h-5 w-5 text-white rotate-90" />
-                </div>
-              </div>
-            </div>
-
-            {/* Stage 2: Visibility */}
-            <div className="mb-12">
-              <div className="flex items-center justify-center mb-6">
-                <div className="px-4 py-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white text-sm font-semibold">
-                  STAGE 2: VISIBILITY
-                </div>
-              </div>
-              <div className="grid md:grid-cols-4 gap-6">
-                <FlowCard
-                  icon={<TextSelect className="h-7 w-7" />}
-                  title="SEO Optimization"
-                  desc="Proven strategies for higher rankings and organic traffic"
-                  step="3"
-                />
-                <div className="hidden md:flex items-center justify-center">
-                  <MoveRight className="h-8 w-8 text-[#5170FF] animate-pulse" />
-                </div>
-                <FlowCard
-                  icon={<NotebookPen className="h-7 w-7" />}
-                  title="Content Writing"
-                  desc="SEO-optimized content that attracts qualified leads"
-                  step="4"
-                />
-                <div className="hidden md:flex items-center justify-center">
-                  <MoveRight className="h-8 w-8 text-[#5170FF] animate-pulse" />
-                </div>
-              </div>
-            </div>
-
-            {/* Connecting Arrow */}
-            <div className="flex items-center justify-center my-8">
-              <div className="flex flex-col items-center">
-                <div className="h-12 w-0.5 bg-gradient-to-b from-[#5170FF] to-[#5D17EB]" />
-                <div className="p-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]">
-                  <ArrowRight className="h-5 w-5 text-white rotate-90" />
-                </div>
-              </div>
-            </div>
-
-            {/* Stage 3: Engagement */}
-            <div className="mb-12">
-              <div className="flex items-center justify-center mb-6">
-                <div className="px-4 py-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white text-sm font-semibold">
-                  STAGE 3: ENGAGEMENT
-                </div>
-              </div>
-              <div className="grid md:grid-cols-3 gap-6">
-                <FlowCard
-                  icon={<BanknoteArrowUp className="h-7 w-7" />}
-                  title="Paid Advertising"
-                  desc="Data-driven PPC campaigns for qualified leads and ROI"
-                  step="5"
-                />
-                <div className="hidden md:flex items-center justify-center">
-                  <ArrowRight className="h-8 w-8 text-[#5170FF] animate-pulse" />
-                </div>
-                <FlowCard
-                  icon={<Activity className="h-7 w-7" />}
-                  title="Social Media"
-                  desc="Strategic campaigns to build brand authority"
-                  step="6"
-                />
-              </div>
-            </div>
-
-            {/* Connecting Arrow */}
-            <div className="flex items-center justify-center my-8">
-              <div className="flex flex-col items-center">
-                <div className="h-12 w-0.5 bg-gradient-to-b from-[#5170FF] to-[#5D17EB]" />
-                <div className="p-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]">
-                  <ArrowRight className="h-5 w-5 text-white rotate-90" />
-                </div>
-              </div>
-            </div>
-
-            {/* Stage 4: Conversion */}
-            <div className="mb-12">
-              <div className="flex items-center justify-center mb-6">
-                <div className="px-4 py-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white text-sm font-semibold">
-                  STAGE 4: CONVERSION
-                </div>
-              </div>
-              <div className="grid md:grid-cols-3 gap-6">
-                <FlowCard
-                  icon={<Headset className="h-7 w-7" />}
-                  title="Sales Support"
-                  desc="Lead qualification, nurturing, and conversion services"
-                  step="7"
-                />
-                <div className="hidden md:flex items-center justify-center">
-                  <ArrowRight className="h-8 w-8 text-[#5170FF] animate-pulse" />
-                </div>
-                <FlowCard
-                  icon={<Camera className="h-7 w-7" />}
-                  title="Media Production"
-                  desc="Professional visuals that elevate your brand presence"
-                  step="8"
-                />
-              </div>
-            </div>
-
-            {/* Final Result */}
-            <div className="flex items-center justify-center mt-12">
-              <div className="relative p-8 rounded-2xl border-2 border-[#5170FF] bg-gradient-to-r from-[#5170FF]/5 to-[#5D17EB]/5 max-w-2xl">
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white text-xs font-bold">
-                  RESULT
-                </div>
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#5170FF] to-[#5D17EB]">
-                    Measurable Business Growth
-                  </h3>
-                  <p className="mt-3 text-muted-foreground">
-                    Qualified leads, increased revenue, and sustainable brand authority
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-16 md:mt-20 text-center">
-            <p className="text-sm text-muted-foreground mb-6">Trusted by leading B2B and D2C brands across industries</p>
-            <Button
-              asChild
-              size="lg"
-              className="h-14 px-8 text-base bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-            >
-              <a href="/services">Explore All Services →</a>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose */}
-      <section id="why" className="container py-16 md:py-24">
-        <div className="grid md:grid-cols-12 gap-10 md:gap-12 items-center">
-          <div className="md:col-span-6 space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Why Choose LegacyForge
-            </h2>
-            <ul className="space-y-4">
-              {[
-                "Your trusted B2B & D2C partner.",
-                "Proven expertise in the uPVC & aluminium window industry.",
-                "Strategic lead generation to acquire your ideal customers.",
-                "We deliver qualified, ready-to-convert leads for you.",
-                "We engage your audience to discover real-time project needs.",
-                "We help you turn leads into orders and significant business growth."
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-lg">
-                  <CheckCircle2 className="mt-1 h-5 w-5 text-[#5170FF]" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="md:col-span-6">
-            <div className="relative rounded-xl border bg-gradient-to-br from-[#5170FF14] to-[#5D17EB14] p-8">
-              <div
-                className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-[#5170FF] to-[#5D17EB] opacity-30 blur-lg"
-                aria-hidden
-              />
-              <div className="relative">
-                <p className="font-semibold">Our approach</p>
-                <p className="mt-2 text-muted-foreground">
-                  From strategy to execution, we build end-to-end digital systems that attract your ideal customers and drive measurable business growth.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <Badge>Qualified Leads</Badge>
-                  <Badge>Revenue Growth</Badge>
-                  <Badge>Brand Authority</Badge>
-                  <Badge>Market Expansion</Badge>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="container py-16 md:py-24">
-        <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-[#5170FF] to-[#5D17EB] p-[1px]">
-          <div className="relative rounded-2xl bg-background p-10 md:p-16">
-            <div className="grid gap-6 md:grid-cols-12 md:items-center">
-              <div className="md:col-span-8 space-y-3">
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight">
-                  Let’s build your business legacy together.
-                </h3>
-                <p className="text-muted-foreground">
-                  Book a free consultation today and take the first step toward
-                  smarter growth.
-                </p>
-              </div>
-              <div className="md:col-span-4 flex md:justify-end">
-                <Button
-                  asChild
-                  className="h-12 px-6 text-base bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow-lg"
-                >
-                  <a href="/contact">Book a free consultation</a>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Offers Carousel */}
+  {/* Services Offers Carousel */}
       <section className="container py-16 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -415,6 +150,52 @@ export default function Index() {
               },
             ]}
           />
+        </div>
+      </section>
+
+      {/* Why Choose */}
+      <section id="why" className="container py-16 md:py-24">
+        <div className="grid md:grid-cols-12 gap-10 md:gap-12 items-center">
+          <div className="md:col-span-6 space-y-6">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+              Why Choose LegacyForge
+            </h2>
+            <ul className="space-y-4">
+              {[
+                "Your trusted B2B & D2C partner.",
+                "Proven expertise in the uPVC & aluminium window industry.",
+                "Strategic lead generation to acquire your ideal customers.",
+                "We deliver qualified, ready-to-convert leads for you.",
+                "We engage your audience to discover real-time project needs.",
+                "We help you turn leads into orders and significant business growth."
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-lg">
+                  <CheckCircle2 className="mt-1 h-5 w-5 text-[#5170FF]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="md:col-span-6">
+            <div className="relative rounded-xl border bg-gradient-to-br from-[#5170FF14] to-[#5D17EB14] p-8">
+              <div
+                className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-[#5170FF] to-[#5D17EB] opacity-30 blur-lg"
+                aria-hidden
+              />
+              <div className="relative">
+                <p className="font-semibold">Our approach</p>
+                <p className="mt-2 text-muted-foreground">
+                  From strategy to execution, we build end-to-end digital systems that attract your ideal customers and drive measurable business growth.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <Badge>Qualified Leads</Badge>
+                  <Badge>Revenue Growth</Badge>
+                  <Badge>Brand Authority</Badge>
+                  <Badge>Market Expansion</Badge>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
