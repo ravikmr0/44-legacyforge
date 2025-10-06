@@ -80,57 +80,83 @@ export default function Index() {
   </div>
 </section>
 
-      {/* Explore Our Services */}
-      <section id="services" className="container py-16 md:py-24">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Our Expertise
-          </h2>
-          <p className="mt-3 text-muted-foreground">
-            Custom Strategies to Grow Your Brand, Increase Traffic, and Maximize Revenue
-          </p>
-        </div>
-        <div className="mt-10 grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          <ServiceCard
-            icon={<BanknoteArrowUp className="h-6 w-6" />}
-            title="PAID ADVERTISING"
-            desc="Our data-driven PPC campaigns generate qualified leads and maximize ROI, targeting the right audience to scale your business."
-          />
-          <ServiceCard
-            icon={<ChevronsLeftRightEllipsis className="h-6 w-6" />}
-            title="WEBSITE DEVELOPMENT"
-            desc="We develop custom websites that are SEO-friendly and strategically built to attract your ideal audience and convert them into valuable leads."
-          />
-          <ServiceCard
-            icon={<Activity className="h-6 w-6" />}
-            title=" SOCIAL MEDIA"
-            desc="We craft engaging content and run strategic campaigns to build your brand authority and generate leads across key platforms."
-          />
-          <ServiceCard
-            icon={<TextSelect className="h-6 w-6" />}
-            title="SEO OPTIMIZATION"
-            desc="We implement proven SEO strategies to improve online visibility, ensuring you rank higher and attract qualified organic traffic."
-          />
-          <ServiceCard
-            icon={<Headset className="h-6 w-6" />}
-            title="SALES SUPPORT"
-            desc="We handle end-to-end sales on calls qualifying, nurturing, and converting prospects into customers to help you close more deals."
-          />
-           <ServiceCard
-            icon={<NotebookPen className="h-6 w-6" />}
-            title="CONTENT WRITING"
-            desc="We create SEO-optimized blogs and content to boost visibility and authority, attracting qualified leads and establishing your brand as a leader."
-          />
-           <ServiceCard
-            icon={<Target className="h-6 w-6" />}
-            title="CREATIVE BRANDING"
-            desc="We provide end-to-end creative and branding, including unique logos, digital assets, and print collateral like brochures and sample boxes."
-          />
-           <ServiceCard
-            icon={<Camera className="h-6 w-6" />}
-            title="MEDIA PRODUCTION"
-            desc="We create high-quality product, factory, and office photoshoots and videoshoots to visually showcase your business and brand."
-          />
+      {/* Our Expertise */}
+      <section id="services" className="relative container py-20 md:py-28 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-[#5170FF05] to-background pointer-events-none" />
+
+        <div className="relative z-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="inline-block">
+              <span className="inline-flex items-center rounded-full bg-gradient-to-r from-[#5170FF]/10 to-[#5D17EB]/10 px-4 py-1.5 text-sm font-medium text-[#5170FF] border border-[#5170FF]/20">
+                <Megaphone className="mr-2 h-4 w-4" />
+                What We Do Best
+              </span>
+            </div>
+            <h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5170FF] to-[#5D17EB]">Expertise</span>
+            </h2>
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              Comprehensive digital marketing solutions designed to elevate your brand, drive qualified traffic, and deliver measurable business growth
+            </p>
+          </div>
+
+          <div className="mt-16 md:mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <ServiceCard
+              icon={<BanknoteArrowUp className="h-7 w-7" />}
+              title="Paid Advertising"
+              desc="Data-driven PPC campaigns across Google Ads, Facebook, and LinkedIn that generate qualified leads and maximize ROI. We target the right audience with precision to accelerate your business growth."
+              featured
+            />
+            <ServiceCard
+              icon={<ChevronsLeftRightEllipsis className="h-7 w-7" />}
+              title="Website Development"
+              desc="Custom-built, responsive websites optimized for performance and conversions. We create SEO-friendly digital experiences that attract your ideal audience and turn visitors into valuable leads."
+              featured
+            />
+            <ServiceCard
+              icon={<Activity className="h-7 w-7" />}
+              title="Social Media Marketing"
+              desc="Strategic social media management that builds brand authority and engagement. We craft compelling content and run targeted campaigns across key platforms to generate quality leads."
+              featured
+            />
+            <ServiceCard
+              icon={<TextSelect className="h-7 w-7" />}
+              title="SEO Optimization"
+              desc="Proven search engine optimization strategies that improve online visibility and organic rankings. We ensure your business ranks higher on Google and attracts qualified, high-intent traffic."
+              featured
+            />
+            <ServiceCard
+              icon={<Headset className="h-7 w-7" />}
+              title="Sales Support"
+              desc="End-to-end sales enablement services including lead qualification, nurturing, and conversion. Our expert team handles calls and follow-ups to help you close more deals efficiently."
+            />
+            <ServiceCard
+              icon={<NotebookPen className="h-7 w-7" />}
+              title="Content Writing"
+              desc="SEO-optimized blogs, articles, and website content that boost visibility and establish thought leadership. We create compelling content that attracts qualified leads and drives conversions."
+            />
+            <ServiceCard
+              icon={<Target className="h-7 w-7" />}
+              title="Creative Branding"
+              desc="Complete branding solutions from logo design to brand identity systems. We create unique visual assets, print collateral, brochures, and sample boxes that make your brand memorable."
+            />
+            <ServiceCard
+              icon={<Camera className="h-7 w-7" />}
+              title="Media Production"
+              desc="Professional photography and videography services including product shoots, factory tours, office showcases, and corporate videos that visually elevate your brand presence."
+            />
+          </div>
+
+          <div className="mt-16 md:mt-20 text-center">
+            <p className="text-sm text-muted-foreground mb-6">Trusted by leading B2B and D2C brands across industries</p>
+            <Button
+              asChild
+              size="lg"
+              className="h-14 px-8 text-base bg-gradient-to-r from-[#5170FF] to-[#5D17EB] hover:from-[#3C72FC] hover:to-[#5D17EB] text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+            >
+              <a href="/services">Explore All Services →</a>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -288,23 +314,32 @@ function ServiceCard({
   icon,
   title,
   desc,
+  featured = false,
 }: {
   icon: React.ReactNode;
   title: string;
   desc: string;
+  featured?: boolean;
 }) {
   return (
-    <div className="group relative overflow-hidden rounded-xl border bg-card p-6">
+    <div className="group relative overflow-hidden rounded-2xl border bg-card p-7 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
       <div
-        className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-[#5170FF00] via-[#5170FF00] to-[#5D17EB00] opacity-0 blur transition group-hover:opacity-30 group-hover:from-[#5170FF30] group-hover:via-[#5170FF20] group-hover:to-[#5D17EB30]"
+        className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-[#5170FF00] via-[#5170FF00] to-[#5D17EB00] opacity-0 blur-xl transition-all duration-500 group-hover:opacity-40 group-hover:from-[#5170FF40] group-hover:via-[#5170FF30] group-hover:to-[#5D17EB40]"
         aria-hidden
       />
-      <div className="relative space-y-3">
-        <div className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-gradient-to-br from-[#5170FF14] to-[#5D17EB14] text-[#5170FF]">
+      <div className="relative space-y-4">
+        <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#5170FF14] to-[#5D17EB14] text-[#5170FF] transition-all duration-500 group-hover:scale-110 group-hover:from-[#5170FF] group-hover:to-[#5D17EB] group-hover:text-white group-hover:shadow-lg">
           {icon}
         </div>
-        <h3 className="font-semibold text-lg">{title}</h3>
-        <p className="text-sm text-muted-foreground">{desc}</p>
+        {featured && (
+          <span className="inline-block px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white">
+            Popular
+          </span>
+        )}
+        <h3 className="font-bold text-xl tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#5170FF] group-hover:to-[#5D17EB] transition-all duration-300">
+          {title}
+        </h3>
+        <p className="text-sm leading-relaxed text-muted-foreground">{desc}</p>
       </div>
     </div>
   );
