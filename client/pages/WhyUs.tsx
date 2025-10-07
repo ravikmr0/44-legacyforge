@@ -252,24 +252,20 @@ export default function WhyUs() {
 
         <motion.div
           className="relative max-w-6xl mx-auto"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
           viewport={{ once: true }}
         >
           <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-blue-100 bg-gradient-to-br from-blue-50/50 to-cyan-50/50 p-4 md:p-8">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-cyan-600/5 to-transparent pointer-events-none" />
-            <motion.div
-              className="relative"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
+            <div className="relative">
               <img
                 src="/images/process flow.png"
                 alt="Our Strategic Process Flow"
                 className="w-full h-auto rounded-2xl shadow-lg"
               />
-            </motion.div>
+            </div>
           </div>
 
           <motion.div
