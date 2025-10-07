@@ -51,7 +51,7 @@ export default function WhyUs() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80&auto=format&fit=crop"
+            src="https://ideogram.ai/assets/image/lossless/response/UGsKkHMJRg-C76hmcWPjgQ"
             alt="Team collaboration"
             className="h-full w-full object-cover opacity-60"
             onError={(e) => {
@@ -155,8 +155,8 @@ export default function WhyUs() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
             >
-              Why Choose{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+              Why{" "}
+              <span className="bg-gradient-to-r from-[#1d42e5] to-[#5a10ed]  bg-clip-text text-transparent">
                 LegacyForge
               </span>
             </motion.h1>

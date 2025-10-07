@@ -10,7 +10,7 @@ export default function About() {
   {/* Background Image */}
   <div className="absolute inset-0 z-0">
           <img
-            src="https://cdn.pixabay.com/photo/2021/12/29/04/40/kanban-6900750_1280.jpg"
+            src="https://ideogram.ai/assets/image/lossless/response/Y7N3Nxn0SZOHvulChwuwVg"
             alt="Modern office building"
             className="h-full w-full object-cover opacity-70"
             onError={(e) => {
@@ -117,7 +117,7 @@ export default function About() {
               transition={{ duration: 1, delay: 0.3 }}
             >
               About{" "}
-              <span className="bg-gradient-to-r from-[#4260e6] to-[#5D17EB] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#5b75ea] to-[#7032ed] bg-clip-text text-transparent">
                 LegacyForge
               </span>{" "}
 
