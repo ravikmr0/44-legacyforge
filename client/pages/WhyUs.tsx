@@ -38,10 +38,10 @@ export default function WhyUs() {
   ];
 
   const stats = [
-    { value: "300+", label: "Projects Completed" },
-    { value: "98%", label: "Client Satisfaction" },
-    { value: "10x", label: "Average ROI" },
-    { value: "50+", label: "Industry Awards" }
+    { value: "30%", label: "Growth rate Quarterly" },
+    { value: "1000+", label: "Qualified Leads Monthly" },
+    { value: "10+", label: "Cities" },
+    { value: "98%", label: "Client Satisfaction" }
   ];
 
   return (
