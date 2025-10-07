@@ -234,7 +234,7 @@ export default function WhyUs() {
       </section>
 
       {/* Process Flow Section */}
-      <section className="container py-16 md:py-20 overflow-hidden">
+      <section className="container py- md:py-20 overflow-hidden">
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
@@ -261,7 +261,7 @@ export default function WhyUs() {
             <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-cyan-600/5 to-transparent pointer-events-none" />
             <div className="relative">
               <img
-                src="/images/process flow.png"
+                src="/images/processflow.png"
                 alt="Our Strategic Process Flow"
                 className="w-full h-auto rounded-2xl shadow-lg"
               />
