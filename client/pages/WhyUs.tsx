@@ -233,6 +233,104 @@ export default function WhyUs() {
         </div>
       </section>
 
+      {/* Process Flow Section */}
+      <section className="container py-16 md:py-20 overflow-hidden">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            Our Strategic Process
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            A proven methodology that drives success at every stage
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="relative max-w-6xl mx-auto"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-blue-100 bg-gradient-to-br from-blue-50/50 to-cyan-50/50 p-4 md:p-8">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-cyan-600/5 to-transparent pointer-events-none" />
+            <motion.div
+              className="relative"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img
+                src="/images/process flow.png"
+                alt="Our Strategic Process Flow"
+                className="w-full h-auto rounded-2xl shadow-lg"
+              />
+            </motion.div>
+          </div>
+
+          <motion.div
+            className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-full blur-3xl opacity-20"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.2, 0.3, 0.2],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-tr from-cyan-600 to-blue-600 rounded-full blur-3xl opacity-20"
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.2, 0.3, 0.2],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
+          />
+        </motion.div>
+
+        <motion.div
+          className="mt-12 grid md:grid-cols-5 gap-4 max-w-5xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          {[
+            { title: "Strategize & Discover", desc: "Understanding your goals" },
+            { title: "Design & Develop", desc: "Creating solutions" },
+            { title: "Launch & Optimize", desc: "Going live with precision" },
+            { title: "Analyze & Scale", desc: "Data-driven improvements" },
+            { title: "Scale & Growth", desc: "Sustainable expansion" },
+          ].map((step, index) => (
+            <motion.div
+              key={index}
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 text-white font-bold mb-2 shadow-lg">
+                {index + 1}
+              </div>
+              <h4 className="font-semibold text-sm mb-1">{step.title}</h4>
+              <p className="text-xs text-muted-foreground">{step.desc}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+
       {/* Reasons Section */}
       <section className="container py-16 md:py-20">
         <motion.div
