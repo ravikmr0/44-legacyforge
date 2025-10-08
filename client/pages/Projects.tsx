@@ -11,7 +11,7 @@ const projects = [
     client: "Premium Windows Co.",
     industry: "Manufacturing",
     description: "Complete digital marketing overhaul for a leading uPVC windows manufacturer, including website redesign, lead generation campaigns, and social media management.",
-    image: "https://media.istockphoto.com/id/2190916511/photo/factory-worker-cleaning-pvc-windows-in-production-line.webp?a=1&b=1&s=612x612&w=0&k=20&c=kRqHs0fFhZKHs1-ec6cQJMCGJwF9nrJNeL1OxeAk6Gs=",
+    image: "https://ideogram.ai/assets/image/lossless/response/aCUm57SuRjixEuDo7wQIFQ",
     results: [
       { metric: "Lead Generation", value: "300%", description: "increase in qualified leads" },
       { metric: "Website Traffic", value: "250%", description: "growth in organic traffic" },
@@ -30,7 +30,7 @@ const projects = [
     client: "Modern Aluminium Solutions",
     industry: "Construction",
     description: "Targeted lead generation campaign for an aluminium fabricator focusing on residential and commercial projects across North India.",
-    image: "https://images.unsplash.com/photo-1624841970647-87dce8628d72?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "https://ideogram.ai/assets/image/lossless/response/f_kP0Ih3Rw2nvbpk4lUMog",
     results: [
       { metric: "Qualified Leads", value: "180", description: "leads generated in 3 months" },
       { metric: "Conversion Rate", value: "25%", description: "lead to customer conversion" },
@@ -49,7 +49,7 @@ const projects = [
     client: "BuildMart Supplies",
     industry: "Retail",
     description: "Development of a comprehensive e-commerce platform for building materials with integrated inventory management and customer portal.",
-    image: "https://plus.unsplash.com/premium_photo-1682129210416-53fabe5b08da?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "https://ideogram.ai/assets/image/lossless/response/w7fXQ864SYOffc6xADilcA",
     results: [
       { metric: "Online Sales", value: "500%", description: "growth in online revenue" },
       { metric: "Customer Base", value: "1000+", description: "new registered customers" },
@@ -87,7 +87,7 @@ const projects = [
     client: "BuildRight Construction",
     industry: "Construction",
     description: "Comprehensive digital marketing strategy for a mid-size construction company focusing on residential and commercial projects.",
-    image: "https://media.istockphoto.com/id/2187596750/photo/construction-worker-shaking-hands-with-foreman.webp?a=1&b=1&s=612x612&w=0&k=20&c=TkDOdNDoDI4ej1dVAKiQCgSKmjhVKLdu7ZBE5C4kHSY=",
+    image: "https://ideogram.ai/assets/image/lossless/response/vdqit3VnRRygGxrb5ZV3qg",
     results: [
       { metric: "Project Leads", value: "200%", description: "increase in project inquiries" },
       { metric: "Website Visitors", value: "350%", description: "growth in monthly visitors" },
