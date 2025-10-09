@@ -16,6 +16,15 @@ import Blog from "./pages/Blog";
 import Projects from "./pages/Projects";
 import NotFound from "./pages/NotFound";
 
+// Service Pages
+import PaidAdvertising from "./pages/services/PaidAdvertising";
+import WebsiteDevelopment from "./pages/services/WebsiteDevelopment";
+import SEOOptimization from "./pages/services/SEOOptimization";
+import SocialMediaManagement from "./pages/services/SocialMediaManagement";
+import ContentWritingGraphics from "./pages/services/ContentWritingGraphics";
+import CreativeBranding from "./pages/services/CreativeBranding";
+import MediaProduction from "./pages/services/MediaProduction";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -49,6 +58,16 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/projects" element={<Projects />} />
+              
+              {/* Service Pages */}
+              <Route path="/services/paid-advertising" element={<PaidAdvertising />} />
+              <Route path="/services/website-development" element={<WebsiteDevelopment />} />
+              <Route path="/services/seo-optimization" element={<SEOOptimization />} />
+              <Route path="/services/social-media-management" element={<SocialMediaManagement />} />
+              <Route path="/services/content-writing-graphics" element={<ContentWritingGraphics />} />
+              <Route path="/services/creative-branding" element={<CreativeBranding />} />
+              <Route path="/services/media-production" element={<MediaProduction />} />
+              
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
