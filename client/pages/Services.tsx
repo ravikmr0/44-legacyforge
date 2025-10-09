@@ -7,62 +7,175 @@ import {
 } from "lucide-react";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 export default function Services() {
   return (
-    <div className="container py-16 md:py-24">
+    <div className="bg-background text-foreground">
       {/* Hero - half screen with background image and overlay */}
-      <div className="relative mb-12">
-        <div className="relative h-[50vh] md:h-[60vh] w-full rounded-xl overflow-hidden hero-bg-office animate-hero-zoom">
-          <div className="absolute inset-0 bg-black/50" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/30" />
+      <section className="relative overflow-hidden min-h-[80vh] flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://ideogram.ai/assets/image/lossless/response/UGsKkHMJRg-C76hmcWPjgQ"
+            alt="Team collaboration"
+            className="h-full w-full object-cover opacity-60"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/30 to-black/20" />
+        </div>
 
-          <div className="container relative z-10 flex h-full items-center">
-            <div className="max-w-2xl text-white">
-              <p className="inline-block rounded-full bg-white/10 px-3 py-1 text-sm font-semibold tracking-wide text-white/90">
-                Services • Enterprise & SMB
-              </p>
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 z-10">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-600/20 via-cyan-600/10 to-transparent" />
 
-              <h1 className="mt-4 text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-                Growth-focused digital services
-              </h1>
-              <p className="mt-4 text-lg text-white/90">
-                Outcomes-first solutions tailored to your growth — from acquisition to creative and technical enablement.
-              </p>
+          <motion.div
+            aria-hidden
+            className="absolute -top-10 -left-10 h-80 w-80 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 blur-3xl opacity-20"
+            animate={{
+              x: [-40, 40, -30],
+              y: [0, -30, 15],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{
+              duration: 15,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "mirror",
+            }}
+          />
 
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Button
-                  asChild
-                  className="h-11 px-6 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white shadow-lg"
-                >
-                  <a href="/contact">Start a project</a>
-                </Button>
-                <a
-                  href="/contact"
-                  className="inline-flex items-center rounded-md px-4 py-2 text-sm font-medium bg-white/10 text-white/90 hover:bg-white/20"
-                >
-                  Contact sales
-                </a>
-              </div>
+          <motion.div
+            aria-hidden
+            className="absolute top-20 right-0 h-96 w-96 rounded-full bg-gradient-to-tr from-cyan-600 to-blue-600 blur-3xl opacity-15"
+            animate={{
+              x: [30, -30, 20],
+              y: [15, 25, -20],
+              scale: [1, 0.9, 1.1]
+            }}
+            transition={{
+              duration: 18,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "mirror",
+              delay: 2,
+            }}
+          />
 
-              <div className="mt-6 flex gap-4 text-sm text-white/90">
-                <div className="flex items-center gap-2">
-                  <LineChart className="h-5 w-5 text-white/90" />
-                  <span>Performance-driven</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Megaphone className="h-5 w-5 text-white/90" />
-                  <span>Creative & Social</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="h-5 w-5 text-white/90" />
-                  <span>Reliable ops</span>
-                </div>
-              </div>
-            </div>
+          {/* Floating particles animation */}
+          {[...Array(10)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-white/20"
+              style={{
+                left: `${10 + i * 10}%`,
+                top: `${20 + i * 7}%`,
+                width: `${6 + i * 1.5}px`,
+                height: `${6 + i * 1.5}px`,
+              }}
+              animate={{
+                y: [-20, -50, -20],
+                x: [-8, 8, -8],
+                opacity: [0.2, 0.6, 0.2],
+                scale: [0.8, 1.2, 0.8],
+              }}
+              transition={{
+                duration: 3 + i * 0.5,
+                repeat: Infinity,
+                delay: i * 0.3,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+
+          {/* Geometric shapes */}
+          <motion.div
+            className="absolute top-1/4 left-1/3 w-4 h-4 border-2 border-white/20 rotate-45"
+            animate={{ rotate: [45, 405, 45] }}
+            transition={{ duration: 20, repeat: Infinity }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 right-1/3 w-6 h-6 border border-white/15 rounded-full"
+            animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.7, 0.3] }}
+            transition={{ duration: 8, repeat: Infinity }}
+          />
+        </div>
+      
+  <div className="container py-20 md:py-32 relative z-20">
+          <div className="max-w-4xl">
+            <motion.span
+              className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm text-white/95 backdrop-blur-sm shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 animate-pulse" />
+              Leading Digital Marketing Agency
+            </motion.span>
+
+            <motion.h1
+              className="mt-6 text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+            >
+              Our{" "}
+              <span className="bg-gradient-to-r from-[#1d42e5] to-[#5a10ed]  bg-clip-text text-transparent">
+                Services
+              </span>
+            </motion.h1>
+
+            <motion.p
+              className="mt-6 text-white/85 text-xl md:text-2xl leading-relaxed max-w-3xl"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            >
+              From lead generation to full-scale digital strategies, we offer a
+              comprehensive suite of services designed to elevate your brand.
+            </motion.p>
+
+            <motion.div
+              className="mt-8 flex flex-col sm:flex-row gap-4"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.9 }}
+            >
+              <Button
+                asChild
+                className="h-12 px-8 bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:from-blue-700 hover:to-cyan-700 shadow-xl hover:shadow-2xl transition-all duration-300 text-lg font-semibold"
+              >
+                <a href="/contact">Start Your Journey</a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="h-12 px-8 border-white/30 text-blue-950 hover:bg-white/10 backdrop-blur-sm text-lg font-semibold"
+              >
+                <a href="/blog">Growth-Focused</a>
+              </Button>
+            </motion.div>
           </div>
         </div>
-      </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          animate={{ y: [0, 15, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity }}
+        >
+          <div className="w-8 h-12 border-2 border-white/40 rounded-full flex justify-center backdrop-blur-sm">
+            <motion.div
+              className="w-1.5 h-4 bg-white/70 rounded-full mt-2"
+              animate={{ opacity: [0.4, 1, 0.4] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+          </div>
+        </motion.div>
+      </section>
+
       
 
       {/* Featured service sections */}
