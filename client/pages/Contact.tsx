@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-export default function ContactForm() {
-  const [form, setForm] = useState({
+export default function Contact() {
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
@@ -16,53 +16,48 @@ export default function ContactForm() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus({ loading: true, success: "", error: "" });
+    setIsSubmitting(true);
+    setSubmitMessage('');
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+      // Send form data to the API endpoint
+      // This will trigger the Gmail SMTP email sending
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
-        // Try to parse JSON error body, but fall back to status text
-        const text = await response.text().catch(() => "");
-        let errorMessage = `Server error: ${response.status}`;
-        try {
-          const errorData = JSON.parse(text || "{}");
-          errorMessage = errorData.message || errorMessage;
-        } catch (_) {
-          if (text) errorMessage = text;
-        }
-        throw new Error(errorMessage);
-      }
+      const result = await response.json();
 
-      const result = await response.json().catch(() => ({}));
-
-      if (result.status === "success") {
-        setStatus({
-          loading: false,
-          success: result.message,
-          error: "",
+      if (response.ok && result.success) {
+        // Success: Email was sent successfully through Gmail
+        setSubmitMessage('Thank you! Your message has been sent successfully. We\'ll get back to you soon.');
+        
+        // Clear the form after successful submission
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: ''
         });
-        setForm({ name: "", email: "", phone: "", message: "" });
       } else {
-        throw new Error(result.message || "Something went wrong");
+        // Error: Something went wrong with email sending
+        setSubmitMessage(result.message || 'Sorry, there was an error sending your message. Please try again.');
       }
-    } catch (err) {
-      console.error("Form submission error:", err);
-      const errorMessage = err instanceof Error ? err.message : "Failed to send message. Please try again.";
-      setStatus({
-        loading: false,
-        success: "",
-        error: errorMessage,
-      });
+    } catch (error) {
+      // Network or other errors
+      console.error('Contact form error:', error);
+      setSubmitMessage('Sorry, there was an error sending your message. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -72,7 +67,7 @@ export default function ContactForm() {
         <div className="max-w-2xl mx-auto bg-white shadow-md p-8 rounded-lg">
           <h1 className="text-3xl font-bold mb-4 text-center">Contact Us</h1>
           <p className="text-gray-500 mb-6 text-center">
-            Tell us about your goals. We’ll respond within one business day.
+            Tell us about your goals. We'll respond within one business day.
           </p>
 
           <form onSubmit={handleSubmit} className="grid gap-4">
@@ -80,7 +75,7 @@ export default function ContactForm() {
               type="text"
               name="name"
               placeholder="Full Name"
-              value={form.name}
+              value={formData.name}
               onChange={handleChange}
               required
               className="border rounded-md p-2 w-full"
@@ -89,7 +84,7 @@ export default function ContactForm() {
               type="email"
               name="email"
               placeholder="Email"
-              value={form.email}
+              value={formData.email}
               onChange={handleChange}
               required
               className="border rounded-md p-2 w-full"
@@ -98,7 +93,7 @@ export default function ContactForm() {
               type="text"
               name="phone"
               placeholder="Phone (optional)"
-              value={form.phone}
+              value={formData.phone}
               onChange={handleChange}
               className="border rounded-md p-2 w-full"
             />
@@ -106,7 +101,7 @@ export default function ContactForm() {
               name="message"
               placeholder="How can we help?"
               rows={5}
-              value={form.message}
+              value={formData.message}
               onChange={handleChange}
               required
               className="border rounded-md p-2 w-full"
