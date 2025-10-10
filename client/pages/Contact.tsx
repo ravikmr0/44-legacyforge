@@ -8,11 +8,8 @@ export default function Contact() {
     message: "",
   });
 
-  const [status, setStatus] = useState({
-    loading: false,
-    success: "",
-    error: "",
-  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -25,9 +22,10 @@ export default function Contact() {
     setSubmitMessage('');
 
     try {
-      // Send form data to the API endpoint
-      // This will trigger the Gmail SMTP email sending
-      const response = await fetch('/api/contact', {
+      console.log('Submitting form data:', formData); // Debug log
+      
+      // Use the Netlify function endpoint for Gmail SMTP
+      const response = await fetch('/.netlify/functions/api', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +33,10 @@ export default function Contact() {
         body: JSON.stringify(formData),
       });
 
+      console.log('Response status:', response.status); // Debug log
+      
       const result = await response.json();
+      console.log('Response data:', result); // Debug log
 
       if (response.ok && result.success) {
         // Success: Email was sent successfully through Gmail
@@ -109,16 +110,17 @@ export default function Contact() {
 
             <button
               type="submit"
-              disabled={status.loading}
-              className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
+              disabled={isSubmitting}
+              className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition disabled:opacity-50"
             >
-              {status.loading ? "Sending..." : "Send Message"}
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
 
-            {status.success && (
-              <p className="text-green-600 mt-2">{status.success}</p>
+            {submitMessage && (
+              <p className={`mt-2 ${submitMessage.includes('Thank you') ? 'text-green-600' : 'text-red-600'}`}>
+                {submitMessage}
+              </p>
             )}
-            {status.error && <p className="text-red-600 mt-2">{status.error}</p>}
           </form>
         </div>
       </section>

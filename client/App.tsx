@@ -7,6 +7,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import WhyUs from "./pages/WhyUs";
@@ -39,10 +41,14 @@ const queryClient = new QueryClient({
   },
 });
 
-// Simple Layout component since the import was missing
+// Layout component with Header and Footer
 const Layout = ({ children }: { children: React.ReactNode }) => (
-  <div className="min-h-screen bg-white">
-    {children}
+  <div className="min-h-screen bg-white flex flex-col">
+    <Header />
+    <main className="flex-1">
+      {children}
+    </main>
+    <Footer />
   </div>
 );
 
