@@ -1,123 +1,92 @@
-import { z } from "zod";
-import { Resend } from "resend";
+// Import nodemailer for sending emails through Gmail SMTP
+import nodemailer from 'nodemailer';
 
-// Minimal Vercel-compatible serverless handler. Avoids external @vercel/node types so
-// it compiles in any TypeScript setup.
 export default async function handler(req: any, res: any) {
-  // Basic CORS response for preflight and actual responses
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST,OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-
-  if (req.method === "OPTIONS") {
-    return res.status(204).end();
+  // Only allow POST requests for form submissions
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method not allowed' });
   }
-
-  if (req.method !== "POST") {
-    return res.status(405).json({ status: "error", message: "Method Not Allowed" });
-  }
-
-  const contactFormSchema = z.object({
-    name: z.string().min(1, "Name is required"),
-    email: z.string().email("Invalid email address"),
-    phone: z.string().optional().default("") ,
-    message: z.string().min(1, "Message is required"),
-  });
 
   try {
-    const body = req.body ?? {};
-    const validated = contactFormSchema.parse(body);
-    const { name, email, phone, message } = validated;
+    // Extract form data from request body
+    const { name, email, phone, message } = req.body;
 
-    // If RESEND_API_KEY is not configured, try forwarding to a Google Apps Script
-    // webhook (GAS_WEBHOOK_URL). This allows deployments without Resend to still
-    // deliver contact messages via your Apps Script.
-    if (!process.env.RESEND_API_KEY) {
-      const gasUrl = process.env.GAS_WEBHOOK_URL;
-      const devMock = process.env.NODE_ENV !== 'production' && process.env.DEV_EMAIL_MOCK === 'true';
-      if (devMock) {
-        console.log('DEV_EMAIL_MOCK enabled — simulating email send and returning success (non-production only).');
-        console.log({ name, email, phone, message });
-        return res.status(200).json({ status: 'success', message: "Thank you for contacting us! We'll respond within one business day." });
-      }
-      if (gasUrl) {
-        try {
-          console.log("RESEND_API_KEY not configured — forwarding to GAS webhook:", gasUrl);
-          const upstream = await fetch(gasUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, email, phone, message }),
-          });
-
-          const text = await upstream.text().catch(() => "");
-          console.log("GAS upstream response status:", upstream.status, text);
-
-          if (!upstream.ok) {
-            return res.status(502).json({ status: "error", message: "Failed to deliver message via webhook.", upstreamStatus: upstream.status, upstreamBody: text });
-          }
-
-          return res.status(200).json({ status: "success", message: "Thank you for contacting us! We'll respond within one business day." });
-        } catch (err) {
-          console.error("Error forwarding to GAS webhook:", err);
-          return res.status(502).json({ status: "error", message: "Failed to forward message to webhook. Please contact the site administrator." });
-        }
-      }
-
-      console.error("❌ RESEND_API_KEY not configured and no GAS_WEBHOOK_URL provided. Cannot send email.");
-      return res.status(500).json({ status: "error", message: "Email service not configured. Set RESEND_API_KEY or GAS_WEBHOOK_URL in your environment variables." });
+    // Validate required fields
+    if (!name || !email || !message) {
+      return res.status(400).json({ message: 'Missing required fields' });
     }
 
-    // Send email via Resend
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
-    const emailHtml = `
-      <h2>New Contact Form Submission</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
-      <p><strong>Message:</strong></p>
-      <p>${message.replace(/\n/g, '<br>')}</p>
-      <hr>
-      <p><small>Submitted at: ${new Date().toISOString()}</small></p>
-    `;
-
-    const emailText = `New Contact Form Submission\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\n\nMessage:\n${message}\n\n---\nSubmitted at: ${new Date().toISOString()}`;
-
-    const result = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
-      to: "sales@legacyforgegroup.com",
-      replyTo: email,
-      subject: `New Contact Form Submission from ${name}`,
-      html: emailHtml,
-      text: emailText,
+    // Create Gmail SMTP transporter using nodemailer
+    // This uses Gmail's SMTP server with app password authentication
+    const transporter = nodemailer.createTransporter({
+      service: 'gmail', // Use Gmail's SMTP service
+      auth: {
+        user: process.env.GMAIL_USER, // Your Gmail address (himanshu.legacyforge@gmail.com)
+        pass: process.env.GMAIL_APP_PASSWORD, // App password generated from Google Account settings
+      },
     });
 
-    const sendId = (result as any)?.id ?? (result as any)?.data?.id ?? null;
-    console.log("Resend result:", result);
+    // Configure email content and recipients
+    const mailOptions = {
+      from: process.env.GMAIL_USER, // Sender address (your Gmail)
+      to: process.env.GMAIL_USER, // Recipient (same Gmail - you'll receive the contact form submissions)
+      subject: `New Contact Form Submission from ${name}`, // Email subject line
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
+            New Contact Form Submission
+          </h2>
+          
+          <div style="background-color: #f8f9fa; padding: 20px; border-radius: 5px; margin: 20px 0;">
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+          </div>
+          
+          <div style="margin: 20px 0;">
+            <h3 style="color: #333;">Message:</h3>
+            <div style="background-color: #ffffff; padding: 15px; border-left: 4px solid #007bff; border-radius: 3px;">
+              ${message.replace(/\n/g, '<br>')}
+            </div>
+          </div>
+          
+          <hr style="margin: 30px 0; border: none; border-top: 1px solid #dee2e6;">
+          <p style="color: #6c757d; font-size: 12px;">
+            This email was sent from your website contact form.
+          </p>
+        </div>
+      `,
+      // Also include plain text version for email clients that don't support HTML
+      text: `
+        New Contact Form Submission
+        
+        Name: ${name}
+        Email: ${email}
+        Phone: ${phone || 'Not provided'}
+        
+        Message:
+        ${message}
+      `,
+    };
 
-    // Some Resend SDKs / responses may not include a top-level `id` while
-    // still actually delivering the message. Treat a non-throwing send as a
-    // success. Log a warning if no id is present so developers can inspect
-    // the result, but don't return a 500 which shows a misleading message
-    // to end users.
-    if (!sendId) {
-      console.warn("⚠️ Resend send did not return an id but completed without throwing. Treating as success.", result);
-    } else {
-      console.log("✅ Email sent successfully! ID:", sendId);
-    }
+    // Send the email using the configured transporter
+    await transporter.sendMail(mailOptions);
 
-    return res.status(200).json({ status: "success", message: "Thank you for contacting us! We'll respond within one business day.", sendId: sendId ?? undefined });
-  } catch (err: unknown) {
-    console.error("Contact API error:", err);
+    // Return success response to the frontend
+    res.status(200).json({ 
+      message: 'Email sent successfully',
+      success: true 
+    });
 
-    // If it's a Zod validation error, it has an `issues` property (Zod v3)
-    // or `errors` in some cases; check and return 400 with details when present.
-    // Use runtime checks to satisfy TypeScript.
-    const maybeZod = err as { issues?: unknown; errors?: unknown };
-    if (maybeZod && (maybeZod.issues || maybeZod.errors)) {
-      return res.status(400).json({ status: "error", message: "Invalid form data", errors: maybeZod.issues ?? maybeZod.errors });
-    }
-
-    return res.status(500).json({ status: "error", message: "Failed to process your request. Please try again." });
+  } catch (error) {
+    // Log error for debugging (you can check server logs)
+    console.error('Email sending error:', error);
+    
+    // Return error response to frontend
+    res.status(500).json({ 
+      message: 'Failed to send email',
+      success: false,
+      error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error'
+    });
   }
 }
