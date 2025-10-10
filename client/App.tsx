@@ -9,7 +9,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
-import About from "./pages/About";
 import WhyUs from "./pages/WhyUs";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
@@ -40,20 +39,24 @@ const queryClient = new QueryClient({
   },
 });
 
-import { Layout } from "@/components/site/Layout";
+// Simple Layout component since the import was missing
+const Layout = ({ children }: { children: React.ReactNode }) => (
+  <div className="min-h-screen bg-white">
+    {children}
+  </div>
+);
 
 const App = () => (
   <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-  <Toaster />
-  <Sonner />
+        <Toaster />
+        <Sonner />
         <BrowserRouter>
           <Layout>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/services" element={<Services />} />
-              <Route path="/about" element={<About />} />
               <Route path="/why-us" element={<WhyUs />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog" element={<Blog />} />
