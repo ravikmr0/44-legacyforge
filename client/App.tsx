@@ -10,6 +10,7 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import Index from "./pages/Index";
+import About from "./pages/About";
 import Services from "./pages/Services";
 import WhyUs from "./pages/WhyUs";
 import Contact from "./pages/Contact";
@@ -45,9 +46,7 @@ const queryClient = new QueryClient({
 const Layout = ({ children }: { children: React.ReactNode }) => (
   <div className="min-h-screen bg-white flex flex-col">
     <Header />
-    <main className="flex-1">
-      {children}
-    </main>
+    <main className="flex-1">{children}</main>
     <Footer />
   </div>
 );
@@ -62,21 +61,43 @@ const App = () => (
           <Layout>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/why-us" element={<WhyUs />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/projects" element={<Projects />} />
-              
+
               {/* Service Pages */}
-              <Route path="/services/paid-advertising" element={<PaidAdvertising />} />
-              <Route path="/services/website-development" element={<WebsiteDevelopment />} />
-              <Route path="/services/seo-optimization" element={<SEOOptimization />} />
-              <Route path="/services/social-media-management" element={<SocialMediaManagement />} />
-              <Route path="/services/content-writing-graphics" element={<ContentWritingGraphics />} />
-              <Route path="/services/creative-branding" element={<CreativeBranding />} />
-              <Route path="/services/media-production" element={<MediaProduction />} />
-              
+              <Route
+                path="/services/paid-advertising"
+                element={<PaidAdvertising />}
+              />
+              <Route
+                path="/services/website-development"
+                element={<WebsiteDevelopment />}
+              />
+              <Route
+                path="/services/seo-optimization"
+                element={<SEOOptimization />}
+              />
+              <Route
+                path="/services/social-media-management"
+                element={<SocialMediaManagement />}
+              />
+              <Route
+                path="/services/content-writing-graphics"
+                element={<ContentWritingGraphics />}
+              />
+              <Route
+                path="/services/creative-branding"
+                element={<CreativeBranding />}
+              />
+              <Route
+                path="/services/media-production"
+                element={<MediaProduction />}
+              />
+
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
