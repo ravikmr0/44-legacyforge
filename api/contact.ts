@@ -18,7 +18,7 @@ export default async function handler(req: any, res: any) {
 
     // Create Gmail SMTP transporter using nodemailer
     // This uses Gmail's SMTP server with app password authentication
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       service: 'gmail', // Use Gmail's SMTP service
       auth: {
         user: process.env.GMAIL_USER, // Your Gmail address (himanshu.legacyforge@gmail.com)
@@ -78,7 +78,7 @@ export default async function handler(req: any, res: any) {
       success: true 
     });
 
-  } catch (error) {
+  } catch (error: any) {
     // Log error for debugging (you can check server logs)
     console.error('Email sending error:', error);
     
@@ -86,7 +86,7 @@ export default async function handler(req: any, res: any) {
     res.status(500).json({ 
       message: 'Failed to send email',
       success: false,
-      error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error'
+      error: process.env.NODE_ENV === 'development' ? (error?.message || String(error)) : 'Internal server error'
     });
   }
 }

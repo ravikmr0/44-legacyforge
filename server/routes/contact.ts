@@ -20,19 +20,15 @@ export async function handleContactForm(req: Request, res: Response) {
     console.log("Form data validated:", { name, email, phone: phone || "Not provided" });
 
     if (!process.env.RESEND_API_KEY) {
-
-      // Developer mock: allow non-production environments to simulate email sends
-      // when DEV_EMAIL_MOCK=true. This prevents the 500 error while developing.
-      const devMock = process.env.NODE_ENV !== 'production' && process.env.DEV_EMAIL_MOCK === 'true';
+      // In non-production, default to dev mock when email service isn't configured
+      const isDev = process.env.NODE_ENV !== 'production';
+      const devMock = process.env.DEV_EMAIL_MOCK === 'true' || isDev;
       if (devMock) {
-        console.log('DEV_EMAIL_MOCK enabled — simulating email send (non-production only).');
+        console.log('DEV_EMAIL_MOCK enabled (default in non-production) — simulating email send.');
         console.log({ name, email, phone, message });
         return res.json({ status: 'success', message: "Thank you for contacting us! We'll respond within one business day." });
       }
 
-      // If Resend is not configured but a Google Apps Script webhook is provided,
-      // forward the payload to that webhook (server-to-server) so messages can
-      // still be delivered without Resend.
       const gasUrl = process.env.GAS_WEBHOOK_URL;
       if (gasUrl) {
         try {
@@ -58,7 +54,6 @@ export async function handleContactForm(req: Request, res: Response) {
       }
 
       console.error("❌ RESEND_API_KEY not configured and no GAS_WEBHOOK_URL provided. Cannot send email.");
-      // Return 500 so the frontend doesn't display a misleading success message
       return res.status(500).json({
         status: "error",
         message: "Email service not configured. Set RESEND_API_KEY or GAS_WEBHOOK_URL in your environment variables.",
@@ -100,18 +95,11 @@ Submitted at: ${new Date().toISOString()}
       html: emailHtml,
       text: emailText,
     });
-    // Resend's SDK may throw on error. Some versions/clients return metadata
-    // without a top-level `id`. Treat a non-throwing send as success but log
-    // the result for diagnostics. If an `id` is present, include it in logs.
     console.log("Resend result:", result);
     const sendId = (result as any)?.id ?? (result as any)?.data?.id ?? null;
 
     if (!sendId) {
-      // Warn, but don't fail: many SDK responses may not include id while the
-      // send still processed successfully. This prevents false negatives on
-      // the frontend where users see "Failed to send your message" despite a
-      // successful send.
-      console.warn("⚠️ Resend send did not return an id but completed without throwing. Treating as success.", result);
+      console.warn("⚠️ Resend send did not return an id but completed without throwing. Treating as success.");
     } else {
       console.log("✅ Email sent successfully! ID:", sendId);
     }

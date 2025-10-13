@@ -21,40 +21,47 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitMessage('');
 
-    try {
-      console.log('Submitting form data:', formData); // Debug log
-      
-      // Use the Netlify function endpoint for Gmail SMTP
-      const response = await fetch('/.netlify/functions/api', {
+    const sendTo = async (url: string) => {
+      const response = await fetch(url, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
+      let result: any = null;
+      const ct = response.headers.get('content-type') || '';
+      if (ct.includes('application/json')) {
+        try { result = await response.json(); } catch {}
+      }
+      if (!result) {
+        const text = await response.text().catch(() => '');
+        try { result = JSON.parse(text); } catch { result = { message: text }; }
+      }
+      return { response, result } as const;
+    };
 
-      console.log('Response status:', response.status); // Debug log
-      
-      const result = await response.json();
-      console.log('Response data:', result); // Debug log
+    try {
+      console.log('Submitting form data:', formData);
 
-      if (response.ok && result.success) {
-        // Success: Email was sent successfully through Gmail
-        setSubmitMessage('Thank you! Your message has been sent successfully. We\'ll get back to you soon.');
-        
-        // Clear the form after successful submission
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          message: ''
-        });
+      // Try Express route first, then Netlify fallback
+      let attempt = await sendTo('/api/contact');
+      if (!(attempt.response.ok && (attempt.result?.success || attempt.result?.status === 'success'))) {
+        console.warn('Primary /api/contact failed, trying Netlify function fallback');
+        attempt = await sendTo('/.netlify/functions/api');
+      }
+
+      const { response, result } = attempt;
+      console.log('Final response status:', response.status, 'data:', result);
+
+      const isSuccess = response.ok && (result?.success === true || result?.status === 'success');
+
+      if (isSuccess) {
+        setSubmitMessage("Thank you! Your message has been sent successfully. We'll get back to you soon.");
+        setFormData({ name: '', email: '', phone: '', message: '' });
       } else {
-        // Error: Something went wrong with email sending
-        setSubmitMessage(result.message || 'Sorry, there was an error sending your message. Please try again.');
+        const message = result?.message || response.statusText || 'Sorry, there was an error sending your message. Please try again.';
+        setSubmitMessage(message);
       }
     } catch (error) {
-      // Network or other errors
       console.error('Contact form error:', error);
       setSubmitMessage('Sorry, there was an error sending your message. Please check your connection and try again.');
     } finally {
