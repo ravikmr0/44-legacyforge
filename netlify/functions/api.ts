@@ -1,18 +1,18 @@
 import nodemailer from 'nodemailer';
-import { createClient } from 'npm:@supabase/supabase-js@2';
 
 export const handler = async (event: any, context: any) => {
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Content-Type': 'application/json',
   };
 
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 200,
       headers,
-      body: '',
+      body: JSON.stringify({ ok: true }),
     };
   }
 
@@ -25,7 +25,7 @@ export const handler = async (event: any, context: any) => {
   }
 
   try {
-    const { name, email, phone, message } = JSON.parse(event.body);
+    const { name, email, phone, message } = JSON.parse(event.body || '{}');
 
     if (!name || !email || !message) {
       return {
@@ -35,29 +35,8 @@ export const handler = async (event: any, context: any) => {
       };
     }
 
-    const supabase = createClient(
-      process.env.VITE_SUPABASE_URL,
-      process.env.VITE_SUPABASE_ANON_KEY
-    );
-
-    const { data: submission, error: dbError } = await supabase
-      .from('contact_submissions')
-      .insert({
-        name,
-        email,
-        phone: phone || '',
-        message,
-        status: 'pending'
-      })
-      .select()
-      .single();
-
-    if (dbError) {
-      console.error('Database error:', dbError);
-      throw new Error('Failed to save submission to database');
-    }
-
-    const transporter = nodemailer.createTransporter({
+    // Create Gmail SMTP transporter
+    const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.GMAIL_USER,
@@ -90,8 +69,8 @@ export const handler = async (event: any, context: any) => {
 
           <hr style="margin: 30px 0; border: none; border-top: 1px solid #dee2e6;">
           <p style="color: #6c757d; font-size: 12px;">
-            Submission ID: ${submission.id}<br>
-            Submitted at: ${new Date(submission.created_at).toLocaleString()}
+            This email was sent from your website contact form.<br>
+            Submitted at: ${new Date().toLocaleString()}
           </p>
         </div>
       `,
@@ -105,8 +84,7 @@ export const handler = async (event: any, context: any) => {
         Message:
         ${message}
 
-        Submission ID: ${submission.id}
-        Submitted at: ${new Date(submission.created_at).toLocaleString()}
+        Submitted at: ${new Date().toLocaleString()}
       `,
     };
 
@@ -117,12 +95,11 @@ export const handler = async (event: any, context: any) => {
       headers,
       body: JSON.stringify({
         message: 'Email sent successfully',
-        success: true,
-        submissionId: submission.id
+        success: true
       }),
     };
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Contact form error:', error);
 
     return {
@@ -131,7 +108,7 @@ export const handler = async (event: any, context: any) => {
       body: JSON.stringify({
         message: 'Failed to send email',
         success: false,
-        error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error'
+        error: process.env.NODE_ENV === 'development' ? (error?.message || String(error)) : 'Internal server error'
       }),
     };
   }
