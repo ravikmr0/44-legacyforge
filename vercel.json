@@ -1,12 +1,9 @@
 {
   "version": 2,
-  "buildCommand": "pnpm run build",
-  "outputDirectory": "dist/spa",
-  "framework": "vite",
-  "rewrites": [
+  "builds": [
     {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
+      "src": "package.json",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
