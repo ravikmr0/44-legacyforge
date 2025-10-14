@@ -1,12 +1,12 @@
-import type { Request, Response } from "express";
-import { z } from "zod";
+import { Request, Response } from "express";
 import nodemailer from "nodemailer";
+import { z } from "zod";
 
 const contactFormSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
-  phone: z.string().optional().default(""),
-  message: z.string().min(1, "Message is required"),
+  phone: z.string().optional(),
+  message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
 export async function handleContactForm(req: Request, res: Response) {
@@ -23,7 +23,7 @@ export async function handleContactForm(req: Request, res: Response) {
     if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
       console.error("❌ Gmail credentials not configured. Cannot send email.");
       return res.status(500).json({
-        status: "error",
+        success: false,
         message: "Email service not configured. Please contact the site administrator.",
       });
     }
@@ -82,8 +82,8 @@ Submitted at: ${new Date().toISOString()}
     // Configure email options
     const mailOptions = {
       from: process.env.GMAIL_USER,
-      to: process.env.GMAIL_USER, // Send to yourself
-      replyTo: email, // Allow replying directly to the customer
+      to: process.env.GMAIL_USER,
+      replyTo: email,
       subject: `New Contact Form Submission from ${name}`,
       html: emailHtml,
       text: emailText,
@@ -95,9 +95,8 @@ Submitted at: ${new Date().toISOString()}
     console.log("✅ Email sent successfully! Message ID:", result.messageId);
 
     return res.json({ 
-      status: "success", 
-      message: "Thank you for contacting us! We'll respond within one business day.",
-      success: true
+      success: true,
+      message: "Thank you for contacting us! We'll respond within one business day."
     });
   } catch (error) {
     console.error("❌ Contact form error:", error);
@@ -105,14 +104,14 @@ Submitted at: ${new Date().toISOString()}
     if (error instanceof z.ZodError) {
       console.error("Validation errors:", error.errors);
       return res.status(400).json({
-        status: "error",
+        success: false,
         message: "Invalid form data",
         errors: error.errors,
       });
     }
 
     res.status(500).json({
-      status: "error",
+      success: false,
       message: "Failed to process your request. Please try again.",
     });
   }

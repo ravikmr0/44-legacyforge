@@ -1,92 +1,142 @@
 // Import nodemailer for sending emails through Gmail SMTP
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 import nodemailer from 'nodemailer';
+import { z } from 'zod';
 
-export default async function handler(req: any, res: any) {
-  // Only allow POST requests for form submissions
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+const contactFormSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().optional(),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
+
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  // Handle CORS
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+
+  // Handle preflight
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
   }
 
-  try {
-    // Extract form data from request body
-    const { name, email, phone, message } = req.body;
+  // Only allow POST
+  if (req.method !== 'POST') {
+    return res.status(405).json({ 
+      success: false, 
+      message: 'Method not allowed' 
+    });
+  }
 
-    // Validate required fields
-    if (!name || !email || !message) {
-      return res.status(400).json({ message: 'Missing required fields' });
+  console.log("Contact form endpoint hit");
+  console.log("Request body:", req.body);
+
+  try {
+    const validatedData = contactFormSchema.parse(req.body);
+    const { name, email, phone, message } = validatedData;
+
+    console.log("Form data validated:", { name, email, phone: phone || "Not provided" });
+
+    // Check if Gmail credentials are configured
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      console.error("❌ Gmail credentials not configured. Cannot send email.");
+      return res.status(500).json({
+        success: false,
+        message: "Email service not configured. Please contact the site administrator.",
+      });
     }
 
+    console.log("Attempting to send email via Gmail SMTP...");
+    
     // Create Gmail SMTP transporter using nodemailer
-    // This uses Gmail's SMTP server with app password authentication
     const transporter = nodemailer.createTransport({
-      service: 'gmail', // Use Gmail's SMTP service
+      service: 'gmail',
       auth: {
-        user: process.env.GMAIL_USER, // Your Gmail address (himanshu.legacyforge@gmail.com)
-        pass: process.env.GMAIL_APP_PASSWORD, // App password generated from Google Account settings
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
       },
     });
 
-    // Configure email content and recipients
-    const mailOptions = {
-      from: process.env.GMAIL_USER, // Sender address (your Gmail)
-      to: process.env.GMAIL_USER, // Recipient (same Gmail - you'll receive the contact form submissions)
-      subject: `New Contact Form Submission from ${name}`, // Email subject line
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
-            New Contact Form Submission
-          </h2>
-          
-          <div style="background-color: #f8f9fa; padding: 20px; border-radius: 5px; margin: 20px 0;">
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-          </div>
-          
-          <div style="margin: 20px 0;">
-            <h3 style="color: #333;">Message:</h3>
-            <div style="background-color: #ffffff; padding: 15px; border-left: 4px solid #007bff; border-radius: 3px;">
-              ${message.replace(/\n/g, '<br>')}
-            </div>
-          </div>
-          
-          <hr style="margin: 30px 0; border: none; border-top: 1px solid #dee2e6;">
-          <p style="color: #6c757d; font-size: 12px;">
-            This email was sent from your website contact form.
-          </p>
+    const emailHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
+          New Contact Form Submission
+        </h2>
+        
+        <div style="background-color: #f8f9fa; padding: 20px; border-radius: 5px; margin: 20px 0;">
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
         </div>
-      `,
-      // Also include plain text version for email clients that don't support HTML
-      text: `
-        New Contact Form Submission
         
-        Name: ${name}
-        Email: ${email}
-        Phone: ${phone || 'Not provided'}
+        <div style="margin: 20px 0;">
+          <h3 style="color: #333;">Message:</h3>
+          <div style="background-color: #ffffff; padding: 15px; border-left: 4px solid #007bff; border-radius: 3px;">
+            ${message.replace(/\n/g, '<br>')}
+          </div>
+        </div>
         
-        Message:
-        ${message}
-      `,
+        <hr style="margin: 30px 0; border: none; border-top: 1px solid #dee2e6;">
+        <p style="color: #6c757d; font-size: 12px;">
+          This email was sent from your website contact form at ${new Date().toISOString()}
+        </p>
+      </div>
+    `;
+
+    const emailText = `
+New Contact Form Submission
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone || "Not provided"}
+
+Message:
+${message}
+
+---
+Submitted at: ${new Date().toISOString()}
+    `;
+
+    // Configure email options
+    const mailOptions = {
+      from: process.env.GMAIL_USER,
+      to: process.env.GMAIL_USER,
+      replyTo: email,
+      subject: `New Contact Form Submission from ${name}`,
+      html: emailHtml,
+      text: emailText,
     };
 
-    // Send the email using the configured transporter
-    await transporter.sendMail(mailOptions);
+    // Send the email
+    const result = await transporter.sendMail(mailOptions);
+    console.log("Gmail SMTP result:", result);
+    console.log("✅ Email sent successfully! Message ID:", result.messageId);
 
-    // Return success response to the frontend
-    res.status(200).json({ 
-      message: 'Email sent successfully',
-      success: true 
+    return res.status(200).json({ 
+      success: true,
+      message: "Thank you for contacting us! We'll respond within one business day."
     });
+  } catch (error) {
+    console.error("❌ Contact form error:", error);
 
-  } catch (error: any) {
-    // Log error for debugging (you can check server logs)
-    console.error('Email sending error:', error);
-    
-    // Return error response to frontend
-    res.status(500).json({ 
-      message: 'Failed to send email',
+    if (error instanceof z.ZodError) {
+      console.error("Validation errors:", error.errors);
+      return res.status(400).json({
+        success: false,
+        message: "Invalid form data",
+        errors: error.errors,
+      });
+    }
+
+    return res.status(500).json({
       success: false,
-      error: process.env.NODE_ENV === 'development' ? (error?.message || String(error)) : 'Internal server error'
+      message: "Failed to process your request. Please try again.",
     });
   }
 }

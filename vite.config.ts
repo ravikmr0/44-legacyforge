@@ -1,20 +1,79 @@
 // ...existing code...
+import react from "@vitejs/plugin-react";
 import { defineConfig, Plugin } from "vite";
-import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { createServer } from "./server";
 
-// https://vitejs.dev/config/
+function expressPlugin(): Plugin {
+  return {
+    name: "express-plugin",
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        if (req.url?.startsWith("/api/")) {
+          if (req.url === "/api/contact" && req.method === "POST") {
+            try {
+              // Parse JSON body
+              const body = await new Promise<string>((resolve, reject) => {
+                let data = '';
+                req.on('data', chunk => {
+                  data += chunk.toString();
+                });
+                req.on('end', () => resolve(data));
+                req.on('error', reject);
+              });
+
+              console.log('Raw body received:', body);
+              
+              if (!body || body.trim() === '') {
+                res.statusCode = 400;
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify({ success: false, message: "Empty request body" }));
+                return;
+              }
+              
+              try {
+                (req as any).body = JSON.parse(body);
+                console.log('Parsed body:', (req as any).body);
+              } catch (parseError) {
+                console.error("JSON parse error:", parseError);
+                res.statusCode = 400;
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify({ 
+                  success: false, 
+                  message: "Invalid JSON in request body",
+                  error: parseError instanceof Error ? parseError.message : String(parseError)
+                }));
+                return;
+              }
+
+              const { handleContactForm } = await import("./server/routes/contact");
+              await handleContactForm(req as any, res as any);
+              
+            } catch (error) {
+              console.error("API error:", error);
+              res.statusCode = 500;
+              res.setHeader('Content-Type', 'application/json');
+              res.end(JSON.stringify({ 
+                success: false, 
+                message: "Internal server error",
+                error: error instanceof Error ? error.message : String(error)
+              }));
+            }
+            return;
+          }
+        }
+        next();
+      });
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
-    // @ts-ignore
-    allowedHosts: process.env.TEMPO === "true" ? true : undefined,
     fs: {
-      // Allow Vite to serve files from the repo root so index.html can be served
       allow: ["./", "./client", "./shared"],
-      deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "server/**"],
+      deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**"],
     },
   },
   build: {
@@ -28,17 +87,4 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }));
-
-function expressPlugin(): Plugin {
-  return {
-    name: "express-plugin",
-    apply: "serve", // Only apply during development (serve mode)
-    configureServer(server) {
-      const app = createServer();
-
-      // Add Express app as middleware to Vite dev server
-      server.middlewares.use(app);
-    },
-  };
-}
 // ...existing code...
