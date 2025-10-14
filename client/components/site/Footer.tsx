@@ -5,13 +5,13 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   const services = [
-    { name: "Paid Advertising", href: "/services" },
-    { name: "Website Development", href: "/services" },
-    { name: "SEO Optimization", href: "/services" },
-    { name: "Social Media Management", href: "/services" },
-    { name: "Content Writing & Graphics", href: "/services" },
-    { name: "Creative Branding", href: "/services" },
-    { name: "Media Production", href: "/services" },
+    { name: "Paid Advertising", href: "/services/paid-advertising" },
+    { name: "Website Development", href: "/services/website-development" },
+    { name: "SEO Optimization", href: "/services/seo-optimization" },
+    { name: "Social Media Management", href: "/services/social-media-management" },
+    { name: "Content Writing & Graphics", href: "/services/content-writing-graphics" },
+    { name: "Creative Branding", href: "/services/creative-branding" },
+    { name: "Media Production", href: "/services/media-production" },
   ];
 
   const company = [
