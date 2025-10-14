@@ -101,6 +101,11 @@ export const handler = async (event: any, context: any) => {
 
   } catch (error: any) {
     console.error('Contact form error:', error);
+    console.error('Environment check:', {
+      hasGmailUser: !!process.env.GMAIL_USER,
+      hasGmailPassword: !!process.env.GMAIL_APP_PASSWORD,
+      nodeEnv: process.env.NODE_ENV
+    });
 
     return {
       statusCode: 500,
@@ -108,7 +113,10 @@ export const handler = async (event: any, context: any) => {
       body: JSON.stringify({
         message: 'Failed to send email',
         success: false,
-        error: process.env.NODE_ENV === 'development' ? (error?.message || String(error)) : 'Internal server error'
+        error: process.env.NODE_ENV === 'development' ? (error?.message || String(error)) : 'Internal server error',
+        debug: {
+          envConfigured: !!(process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD)
+        }
       }),
     };
   }
