@@ -1,4 +1,3 @@
-// ...existing code...
 import react from "@vitejs/plugin-react";
 import { defineConfig, Plugin } from "vite";
 import path from "path";
@@ -71,6 +70,8 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    // @ts-ignore
+    allowedHosts: process.env.TEMPO === "true" ? true : undefined,
     fs: {
       allow: ["./", "./client", "./shared"],
       deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**"],
@@ -87,4 +88,3 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }));
-// ...existing code...
