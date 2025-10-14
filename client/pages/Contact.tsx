@@ -34,7 +34,7 @@ export default function Contact() {
         body: JSON.stringify(formData),
       });
 
-      let result: { message?: string; success?: boolean } | null = null;
+      let result: { message?: string; success?: boolean; errors?: any[] } | null = null;
 
       // Try to parse JSON response
       try {
@@ -48,16 +48,19 @@ export default function Contact() {
       console.log("Response status:", response.status, "data:", result);
 
       if (response.ok) {
-        setSubmitMessage(
-          "Thank you! Your message has been sent successfully. We'll get back to you soon."
-        );
+        setSubmitMessage(result?.message || "Thank you! Your message has been sent successfully. We'll get back to you soon.");
         setFormData({ name: "", email: "", phone: "", message: "" });
       } else {
-        const message =
-          result?.message ||
-          response.statusText ||
-          "Sorry, there was an error sending your message. Please try again.";
-        setSubmitMessage(message);
+        if (result?.errors) {
+          // Handle validation errors
+          const errorMessages = result.errors.map((error: any) => `${error.field}: ${error.message}`).join(', ');
+          setSubmitMessage(`Please correct the following errors: ${errorMessages}`);
+        } else if (response.status === 503) {
+          setSubmitMessage("Our contact form is temporarily unavailable. Please try again later or contact us directly.");
+        } else {
+          const message = result?.message || response.statusText || "Sorry, there was an error sending your message. Please try again.";
+          setSubmitMessage(message);
+        }
       }
     } catch (error) {
       console.error("Contact form error:", error);

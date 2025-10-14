@@ -1,3 +1,4 @@
+
 import { Request, Response } from "express";
 import nodemailer from "nodemailer";
 import { z } from "zod";
@@ -22,9 +23,9 @@ export async function handleContactForm(req: Request, res: Response) {
     // Check if Gmail credentials are configured
     if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
       console.error("❌ Gmail credentials not configured. Cannot send email.");
-      return res.status(500).json({
+      return res.status(503).json({
         success: false,
-        message: "Email service not configured. Please contact the site administrator.",
+        message: "Email service is temporarily unavailable. Please try again later or contact the site administrator.",
       });
     }
 
@@ -94,7 +95,7 @@ Submitted at: ${new Date().toISOString()}
     console.log("Gmail SMTP result:", result);
     console.log("✅ Email sent successfully! Message ID:", result.messageId);
 
-    return res.json({ 
+    return res.status(200).json({ 
       success: true,
       message: "Thank you for contacting us! We'll respond within one business day."
     });
@@ -106,13 +107,13 @@ Submitted at: ${new Date().toISOString()}
       return res.status(400).json({
         success: false,
         message: "Invalid form data",
-        errors: error.errors,
+        errors: error.errors.map(e => ({ field: e.path.join('.'), message: e.message })),
       });
     }
 
     res.status(500).json({
       success: false,
-      message: "Failed to process your request. Please try again.",
+      message: "Failed to process your request. Please try again later.",
     });
   }
 }
