@@ -10,6 +10,7 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import Index from "./pages/Index";
+import About from "./pages/About";
 import WhyUs from "./pages/WhyUs";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
@@ -60,6 +61,7 @@ const App = () => (
           <Layout>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/why-us" element={<WhyUs />} />
               <Route path="/contact" element={<Contact />} />
