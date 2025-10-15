@@ -53,7 +53,7 @@
     "@types/three": "^0.171.0",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
-    "@vercel/node": "^5.3.26",
+    "@vercel/node": "^2.15.3",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitejs/plugin-react-swc": "^4.1.0",
     "autoprefixer": "^10.4.20",
