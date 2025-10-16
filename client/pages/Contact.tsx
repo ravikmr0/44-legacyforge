@@ -93,7 +93,7 @@ export default function Contact() {
                 id="name"
                 type="text"
                 name="name"
-                placeholder="John Doe"
+                placeholder="Enter Your Full Name"
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -112,7 +112,7 @@ export default function Contact() {
                 id="email"
                 type="email"
                 name="email"
-                placeholder="john@example.com"
+                placeholder="Enter Your Email Address"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -131,7 +131,7 @@ export default function Contact() {
                 id="phone"
                 type="tel"
                 name="phone"
-                placeholder="+1 (555) 000-0000"
+                placeholder="Enter Your Phone Number"
                 value={formData.phone}
                 onChange={handleChange}
                 className="border border-gray-300 rounded-md p-3 w-full focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
