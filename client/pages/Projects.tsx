@@ -1,8 +1,10 @@
+
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/site/Badge";
 import { ExternalLink, Calendar, TrendingUp, Users, Target } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const projects = [
   {
@@ -122,6 +124,87 @@ const projects = [
 ];
 
 const industries = ["All", "Manufacturing", "Construction", "Retail", "Design", "Real Estate"];
+
+const ImageSlider = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [images, setImages] = useState<string[]>([]);
+
+  useEffect(() => {
+    const imageUrls = [
+      '/images/social-media/1.jpg',
+      '/images/social-media/2.jpg',
+      '/images/social-media/3.jpg',
+      '/images/social-media/4.jpg',
+      '/images/social-media/5.jpg',
+    ];
+    setImages(imageUrls);
+  }, []);
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  return (
+    <div className="relative w-full max-w-5xl mx-auto">
+      <div className="overflow-hidden rounded-xl shadow-2xl aspect-[16/9]">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="absolute inset-0"
+        >
+          <img
+            src={images[currentIndex]}
+            alt={`Social media success ${currentIndex + 1}`}
+            className="w-full h-full object-cover rounded-xl"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent rounded-xl">
+            <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 text-white p-3 sm:p-4 bg-black/40 backdrop-blur-sm rounded-lg">
+              <h3 className="text-base sm:text-lg font-semibold mb-1">Campaign {currentIndex + 1}</h3>
+              <p className="text-xs sm:text-sm leading-tight">Increased engagement by 250% for our client's social media presence.</p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+      
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute top-1/2 left-2 sm:left-4 transform -translate-y-1/2 bg-white/80 text-gray-800 p-1.5 sm:p-2 rounded-full shadow-md hover:bg-white transition-colors"
+        aria-label="Previous image"
+      >
+        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute top-1/2 right-2 sm:right-4 transform -translate-y-1/2 bg-white/80 text-gray-800 p-1.5 sm:p-2 rounded-full shadow-md hover:bg-white transition-colors"
+        aria-label="Next image"
+      >
+        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+      </button>
+      
+      {/* Dots Indicator */}
+      <div className="absolute -bottom-6 sm:-bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-colors ${
+              index === currentIndex ? 'bg-blue-600' : 'bg-gray-300'
+            }`}
+            aria-label={`Go to image ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default function Projects() {
   // preload hero background to reduce chance of FOUC / late load
@@ -407,6 +490,25 @@ export default function Projects() {
         </div>
       </section>
 
+      {/* Social Media Slider */}
+<section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+  <div className="container">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+        Social Media Success Stories
+      </h2>
+      <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        See how we've helped brands grow their online presence</p>
+    </div>
+    <ImageSlider />
+    <div className="mt-12 text-center">
+      <Button asChild className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700">
+        <a href="/contact">Start Your Social Media Journey</a>
+      </Button>
+    </div>
+  </div>
+</section>
+
       {/* Stats Section */}
       <section className="container pb-16 md:pb-24">
         <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-[#5170FF] to-[#5D17EB] p-[1px]">
@@ -420,7 +522,7 @@ export default function Projects() {
               </p>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-[#5170FF] mb-2">50+</div>
                 <div className="text-sm text-muted-foreground">Projects Completed</div>
