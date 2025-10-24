@@ -4,10 +4,79 @@ import {
   Megaphone,
   PenTool,
   ShieldCheck,
+  Camera,
+  Palette,
 } from "lucide-react";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+
+function ServiceSection({
+  eyebrow,
+  title,
+  desc,
+  points,
+  image,
+  right = false,
+}: {
+  eyebrow: string;
+  title: string;
+  desc: string;
+  points: string[];
+  image: string;
+  right?: boolean;
+}) {
+  return (
+    <section className="container">
+      <div
+        className={cn(
+          "grid md:grid-cols-2 gap-8 md:gap-12 items-center",
+          right && "md:grid-flow-col-dense"
+        )}
+      >
+        <div className={cn(right && "md:col-start-2")}>
+          <motion.div
+            initial={{ opacity: 0, x: right ? 50 : -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <span className="text-sm font-bold uppercase tracking-wider text-primary">
+              {eyebrow}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-2">
+              {title}
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">{desc}</p>
+            <ul className="mt-6 space-y-3">
+              {points.map((point, i) => (
+                <li key={i} className="flex items-start">
+                  <CheckCircle2 className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-muted-foreground">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+        <motion.div
+          className="relative h-80 md:h-full rounded-2xl overflow-hidden shadow-2xl"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <img
+            src={image}
+            alt={title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 
 export default function Services() {
   return (
@@ -237,12 +306,12 @@ export default function Services() {
           title="Guiding Leads to Conversion"
           desc="Bridge the gap between leads and deals with our powerful sales calling team trained to share your client's details, build trust, and drive immediate contact."
           points={[
-            "Daily Lead Contact & Follow-Ups",
-            "Detailed Client Information Sharing",
-            "Customized, High-Conversion Call Scripts",
-            "Call Reporting & Lead Feedback for Optimization",
+            "Immediate Lead Follow-Up",
+            "Product/Service Education",
+            "Appointment Setting",
+            "Building Rapport & Trust",
           ]}
-          image="https://wpmanageninja.com/wp-content/uploads/2022/08/Pre_sales_service_and_After_sales_support_both_are_equally_important-min.png"
+          image="https://images.pexels.com/photos/8867432/pexels-photo-8867432.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         />
         <ServiceSection
           right
@@ -262,77 +331,55 @@ export default function Services() {
           title="Video Production & Photography"
           desc="Bring your brand to life with professional visuals that captivate and convert. From product shoots to event coverage, we create content that tells your story with impact."
           points={[
-            "Product Photography & Reels",
-            "Expo & Event Coverage",
-            "Promotional & Corporate Videos",
-            "Editing, Motion Graphics & AI Videos",
-            "Social Media-Ready Visuals",
+            "Corporate Videos & Commercials",
+            "Product Photography & Videography",
+            "Event Coverage (Photo & Video)",
+            "Motion Graphics & Animation",
           ]}
-          image="https://kdsolutions.in/wp-content/uploads/2025/01/Grow-your-Industrial-Business-with-Digital-Markting-Agency.jpg"
+          image="https://images.pexels.com/photos/716276/pexels-photo-716276.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        />
+        <ServiceSection
+          right
+          eyebrow="Creative Branding & Identity"
+          title="Crafting Brands That Resonate"
+          desc="Build a powerful brand identity that connects with your audience and sets you apart from the competition. We create memorable brands from strategy to visual execution."
+          points={[
+            "Visual Identity & Logo Design",
+            "Comprehensive Brand Strategy",
+            "Cohesive Brand Experience Design",
+            "Premium Quality & Implementation",
+          ]}
+          image="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80"
         />
       </div>
-    </div>
-  );
-}
 
-function ServiceSection({
-  eyebrow,
-  title,
-  desc,
-  points,
-  image,
-  right,
-}: {
-  eyebrow: string;
-  title: string;
-  desc: string;
-  points: string[];
-  image: string;
-  right?: boolean;
-}) {
-  return (
-    <section className="grid items-center gap-8 md:grid-cols-12 md:gap-12">
-      <div
-        className={`${right ? "md:order-2 md:col-span-6" : "md:col-span-6"}`}
-      >
-        <div className="relative overflow-hidden rounded-xl border bg-gradient-to-br from-[#5170FF] to-[#5D17EB] p-[1px] shadow-sm">
-          <div className="relative rounded-xl">
-            <img
-              src={image}
-              alt=""
-              className="h-64 w-full object-cover md:h-80"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+      {/* CTA Section */}
+      <section className="container my-24 md:my-32">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 p-[1px] shadow-2xl">
+          <div className="relative rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 md:p-12 overflow-hidden">
+            <div className="absolute inset-0 opacity-20">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500 rounded-full blur-3xl" />
+            </div>
+            <div className="relative text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                Ready to Elevate Your Brand?
+              </h2>
+              <p className="mt-4 text-white/80 text-lg max-w-2xl mx-auto">
+                Let's discuss how our tailored services can help you achieve your business goals. Schedule a free consultation with our experts today.
+              </p>
+              <div className="mt-8">
+                <Button
+                  asChild
+                  className="h-12 px-8 bg-white text-slate-900 hover:bg-slate-200 shadow-xl hover:shadow-2xl transition-all duration-300 text-lg font-semibold"
+                >
+                  <a href="/contact">Book a Free Consultation</a>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className={`${right ? "md:order-1 md:col-span-6" : "md:col-span-6"}`}
-      >
-        <p className="text-xl uppercase tracking-wider text-[#5170FF]">
-          {eyebrow}
-        </p>
-        <h2 className="mt-2 text-2xl md:text-3xl font-bold tracking-tight">
-          {title}
-        </h2>
-        <p className="mt-3 text-muted-foreground">{desc}</p>
-        <ul className="mt-4 space-y-2">
-          {points.map((p) => (
-            <li key={p} className="flex items-start gap-3 text-sm md:text-base">
-              <CheckCircle2 className="mt-0.5 h-5 w-5 text-[#5170FF]" />
-              <span>{p}</span>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-5">
-          <Button
-            asChild
-            className="h-10 px-5 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white hover:from-[#3C72FC] hover:to-[#5D17EB]"
-          >
-            <a href="/contact">Start now</a>
-          </Button>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
