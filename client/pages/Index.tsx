@@ -2,8 +2,22 @@ import { Button } from "@/components/ui/button";
 import { Activity, BanknoteArrowUp, Camera, CircleCheck as CheckCircle2, ChevronsLeftRightEllipsis, Headset, ChartLine as LineChart, Megaphone, NotebookPen, PenTool, ShieldCheck, Target, TextSelect, ArrowRight, MoveRight } from "lucide-react";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { ServicesCarousel } from "@/components/site/ServicesCarousel";
+import React from "react";
 
 export default function Index() {
+  const clients = [
+    { name: "AluK", logo: "/images/clients/1.png" },
+    { name: "Deceuninck", logo: "/images/clients/2.png" },
+    { name: "Encraft", logo: "/images/clients/3.png" },
+    { name: "Lesso", logo: "/images/clients/4.png" },
+    { name: "Lingel", logo: "/images/clients/5.png" },
+    { name: "NCL Veka", logo: "/images/clients/6.png" },
+    { name: "Profine", logo: "/images/clients/7.png" },
+    { name: "Rehau", logo: "/images/clients/8.png" },
+    { name: "Rehau", logo: "/images/clients/9.png" },
+    { name: "Rehau", logo: "/images/clients/10.png" },
+  ];
+
   return (
     <div className="bg-background text-foreground">
       {/* Hero with image slider */}
@@ -136,7 +150,7 @@ export default function Index() {
                 title: "PRINT DESIGNING",
                 desc: "We offer Catalogue, Brochure, PPT, Trifold, Sample box, and other print designs.",
                 image:
-                  "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                  "https://images.unsplash.com/photo-1561070794-2526d30994b5?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 ctaHref: "/services",
                 ctaLabel: "See Details",
               },
@@ -185,19 +199,76 @@ export default function Index() {
               <div className="relative">
                 <p className="font-semibold">Our approach</p>
                 <p className="mt-2 text-muted-foreground">
-                  From strategy to execution, we build end-to-end digital systems that attract your ideal customers and drive measurable business growth.
+                  We combine data-driven insights with creative strategies to deliver measurable results. Our focus is on building sustainable growth and a powerful brand legacy for our clients.
                 </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <Badge>Qualified Leads</Badge>
-                  <Badge>Revenue Growth</Badge>
-                  <Badge>Brand Authority</Badge>
-                  <Badge>Market Expansion</Badge>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Trusted by */}
+      <section className="container py-16 md:py-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+            Trusted by Industry Leaders
+          </h2>
+          <p className="mt-3 text-muted-foreground">
+            We're proud to partner with innovators in the building materials sector.
+          </p>
+        </div>
+        <div className="mt-12 relative overflow-hidden">
+          <div className="flex gap-12 animate-scroll group">
+            {[...clients, ...clients].map((client, i) => (
+              <div key={i} className="flex-shrink-0 flex items-center justify-center">
+                <img
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  className="h-20 w-auto object-contain transition-all duration-300 rounded-lg"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="container py-16 md:py-24">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#5170FF] to-[#5D17EB] p-8 md:p-12 text-center shadow-xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
+            Ready to Forge Your Legacy?
+          </h2>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-white/90">
+            Let's build something great together. Contact us today to discuss your project and discover how we can help you achieve your business goals.
+          </p>
+          <div className="mt-8">
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-[#5170FF] hover:bg-gray-100"
+            >
+              <a href="/contact">
+                Get in Touch <ArrowRight />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function ClientLogo({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="flex-shrink-0 w-48 mx-6 flex items-center justify-center">
+      <img
+        src={src}
+        alt={alt}
+        className="h-10 object-contain aspect-[3/2] transition-transform duration-300 hover:scale-110 grayscale hover:grayscale-0 opacity-60 hover:opacity-100"
+        loading="lazy"
+      />
     </div>
   );
 }
