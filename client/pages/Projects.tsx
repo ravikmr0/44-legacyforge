@@ -1,18 +1,21 @@
-
+import React, { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/site/Badge";
 import { ExternalLink, Calendar, TrendingUp, Users, Target } from "lucide-react";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+/* --------------------------
+   Data (projects, industries)
+   -------------------------- */
 const projects = [
   {
     id: 1,
     title: "uPVC Windows Manufacturer - Complete Digital Transformation",
     client: "Premium Windows Co.",
     industry: "Manufacturing",
-    description: "Complete digital marketing overhaul for a leading uPVC windows manufacturer, including website redesign, lead generation campaigns, and social media management.",
+    description:
+      "Complete digital marketing overhaul for a leading uPVC windows manufacturer, including website redesign, lead generation campaigns, and social media management.",
     image: "https://ideogram.ai/assets/image/lossless/response/aCUm57SuRjixEuDo7wQIFQ",
     results: [
       { metric: "Lead Generation", value: "300%", description: "increase in qualified leads" },
@@ -31,7 +34,8 @@ const projects = [
     title: "Aluminium Fabricator - Lead Generation Campaign",
     client: "Modern Aluminium Solutions",
     industry: "Construction",
-    description: "Targeted lead generation campaign for an aluminium fabricator focusing on residential and commercial projects across North India.",
+    description:
+      "Targeted lead generation campaign for an aluminium fabricator focusing on residential and commercial projects across North India.",
     image: "https://ideogram.ai/assets/image/lossless/response/f_kP0Ih3Rw2nvbpk4lUMog",
     results: [
       { metric: "Qualified Leads", value: "180", description: "leads generated in 3 months" },
@@ -50,7 +54,8 @@ const projects = [
     title: "Building Materials Supplier - E-commerce Platform",
     client: "BuildMart Supplies",
     industry: "Retail",
-    description: "Development of a comprehensive e-commerce platform for building materials with integrated inventory management and customer portal.",
+    description:
+      "Development of a comprehensive e-commerce platform for building materials with integrated inventory management and customer portal.",
     image: "https://ideogram.ai/assets/image/lossless/response/w7fXQ864SYOffc6xADilcA",
     results: [
       { metric: "Online Sales", value: "500%", description: "growth in online revenue" },
@@ -69,8 +74,10 @@ const projects = [
     title: "Interior Design Firm - Brand Building & Social Media",
     client: "Elegant Interiors",
     industry: "Design",
-    description: "Complete brand identity development and social media strategy for a premium interior design firm targeting high-end residential projects.",
-    image: "https://media.istockphoto.com/id/1340683883/photo/large-office-interior-a-reception-desk-a-lounge-corner-with-copy-space-and-wordesks-behind.webp?a=1&b=1&s=612x612&w=0&k=20&c=WH91H5D0inDh4lKoO-cuKSjNHuXwkhbJxhuQI5B_3Ug=",
+    description:
+      "Complete brand identity development and social media strategy for a premium interior design firm targeting high-end residential projects.",
+    image:
+      "https://media.istockphoto.com/id/1340683883/photo/large-office-interior-a-reception-desk-a-lounge-corner-with-copy-space-and-wordesks-behind.webp?a=1&b=1&s=612x612&w=0&k=20&c=WH91H5D0inDh4lKoO-cuKSjNHuXwkhbJxhuQI5B_3Ug=",
     results: [
       { metric: "Brand Recognition", value: "300%", description: "increase in brand mentions" },
       { metric: "Instagram Followers", value: "5000+", description: "organic follower growth" },
@@ -88,7 +95,8 @@ const projects = [
     title: "Construction Company - Digital Marketing Strategy",
     client: "BuildRight Construction",
     industry: "Construction",
-    description: "Comprehensive digital marketing strategy for a mid-size construction company focusing on residential and commercial projects.",
+    description:
+      "Comprehensive digital marketing strategy for a mid-size construction company focusing on residential and commercial projects.",
     image: "https://ideogram.ai/assets/image/lossless/response/vdqit3VnRRygGxrb5ZV3qg",
     results: [
       { metric: "Project Leads", value: "200%", description: "increase in project inquiries" },
@@ -107,8 +115,10 @@ const projects = [
     title: "Real Estate Developer - Lead Nurturing System",
     client: "Prime Properties",
     industry: "Real Estate",
-    description: "Implementation of automated lead nurturing system with CRM integration for a real estate developer focusing on premium residential projects.",
-    image: "https://media.istockphoto.com/id/2155457708/photo/group-of-businessmen-and-investors-discuss-investing-in-real-estate-and-jointly-plan.webp?a=1&b=1&s=612x612&w=0&k=20&c=JpzfGjeQBQNiYdcGMGB7CQpKUs5YACqLQO-9PgvmEo0=",
+    description:
+      "Implementation of automated lead nurturing system with CRM integration for a real estate developer focusing on premium residential projects.",
+    image:
+      "https://media.istockphoto.com/id/2155457708/photo/group-of-businessmen-and-investors-discuss-investing-in-real-estate-and-jointly-plan.webp?a=1&b=1&s=612x612&w=0&k=20&c=JpzfGjeQBQNiYdcGMGB7CQpKUs5YACqLQO-9PgvmEo0=",
     results: [
       { metric: "Lead Conversion", value: "45%", description: "improvement in conversion rate" },
       { metric: "Sales Cycle", value: "30%", description: "reduction in average sales time" },
@@ -125,80 +135,162 @@ const projects = [
 
 const industries = ["All", "Manufacturing", "Construction", "Retail", "Design", "Real Estate"];
 
+/* --------------------------
+   Reels-style Image Slider
+   -------------------------- */
 const ImageSlider = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [images, setImages] = useState<string[]>([]);
 
+  // load images (local public folder)
   useEffect(() => {
     const imageUrls = [
-      '/images/social-media/1.jpg',
-      '/images/social-media/2.jpg',
-      '/images/social-media/3.jpg',
-      '/images/social-media/4.jpg',
-      '/images/social-media/5.jpg',
+      "/images/social-media/1.jpg",
+      "/images/social-media/2.jpg",
+      "/images/social-media/3.jpg",
+      "/images/social-media/4.jpg",
+      "/images/social-media/5.jpg"
     ];
     setImages(imageUrls);
   }, []);
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  // autoplay
+  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const startAutoplay = () => {
+      clearAutoplay();
+      autoplayRef.current = setInterval(() => {
+        setCurrentIndex((p) => (p + 1) % images.length);
+      }, 4500);
+    };
+    const clearAutoplay = () => {
+      if (autoplayRef.current) clearInterval(autoplayRef.current);
+    };
+    startAutoplay();
+    return () => {
+      if (autoplayRef.current) clearInterval(autoplayRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [images.length]);
+
+  // swipe handling (vertical swipe for reels-like)
+  const startYRef = useRef<number | null>(null);
+  const isDraggingRef = useRef(false);
+
+  const onPointerDown = (clientY: number) => {
+    isDraggingRef.current = true;
+    startYRef.current = clientY;
+  };
+  const onPointerUp = (clientY: number) => {
+    if (!isDraggingRef.current || startYRef.current == null) return;
+    const diff = startYRef.current - clientY;
+    const threshold = 60;
+    if (diff > threshold) {
+      // swipe up => next
+      setCurrentIndex((p) => (p + 1) % images.length);
+    } else if (diff < -threshold) {
+      // swipe down => prev
+      setCurrentIndex((p) => (p === 0 ? images.length - 1 : p - 1));
+    }
+    isDraggingRef.current = false;
+    startYRef.current = null;
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-  };
+  // keyboard navigation
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowUp") {
+        setCurrentIndex((p) => (p === 0 ? images.length - 1 : p - 1));
+      } else if (e.key === "ArrowDown") {
+        setCurrentIndex((p) => (p + 1) % images.length);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [images.length]);
+
+  if (!images.length) {
+    return (
+      <div className="w-full max-w-5xl mx-auto p-6 text-center">Loading images…</div>
+    );
+  }
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto">
-      <div className="overflow-hidden rounded-xl shadow-2xl aspect-[16/9]">
+    <div
+      className="relative w-full max-w-5xl mx-auto bg-black rounded-xl shadow-2xl overflow-hidden min-h-[60vh] md:min-h-[70vh] md:h-[80vh]"
+      onMouseDown={(e) => onPointerDown(e.clientY)}
+      onMouseUp={(e) => onPointerUp(e.clientY)}
+      onTouchStart={(e) => onPointerDown(e.touches[0].clientY)}
+      onTouchEnd={(e) => onPointerUp(e.changedTouches[0].clientY)}
+      role="region"
+      aria-label="Social media reels slider"
+    >
+      <AnimatePresence initial={false} mode="wait">
         <motion.div
           key={currentIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 120, scale: 1.04 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -120, scale: 0.98 }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           <img
             src={images[currentIndex]}
             alt={`Social media success ${currentIndex + 1}`}
-            className="w-full h-full object-cover rounded-xl"
+            className="w-full h-full object-cover select-none"
+            draggable={false}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent rounded-xl">
-            <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 text-white p-3 sm:p-4 bg-black/40 backdrop-blur-sm rounded-lg">
-              <h3 className="text-base sm:text-lg font-semibold mb-1">Campaign {currentIndex + 1}</h3>
-              <p className="text-xs sm:text-sm leading-tight">Increased engagement by 250% for our client's social media presence.</p>
-            </div>
+
+          {/* overlay caption */}
+          <div className="absolute left-6 bottom-6 text-left text-sm md:text-base text-white/95">
+            <div className="font-semibold text-lg md:text-xl">Social Media Success Stories</div>
+            <div className="mt-1 text-white/70 text-xs md:text-sm">#{currentIndex + 1} • Designed to Impress</div>
           </div>
         </motion.div>
+      </AnimatePresence>
+
+      {/* Prev / Next Buttons (visible on desktop) */}
+      <button
+        aria-label="Previous"
+        onClick={() => setCurrentIndex((p) => (p === 0 ? images.length - 1 : p - 1))}
+        className="hidden sm:flex absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 p-2 rounded-full shadow-md hover:bg-white transition-colors"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+
+      <button
+        aria-label="Next"
+        onClick={() => setCurrentIndex((p) => (p + 1) % images.length)}
+        className="hidden sm:flex absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 p-2 rounded-full shadow-md hover:bg-white transition-colors"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+
+      {/* Top progress bars like stories */}
+      <div className="absolute top-4 left-4 right-4 flex gap-2 px-2">
+        {images.map((_, idx) => (
+          <div key={idx} className="flex-1 h-1 rounded overflow-hidden bg-white/20">
+            <div
+              className="h-full bg-white"
+              style={{
+                width: idx === currentIndex ? "100%" : "0%",
+                transition: "width 0.45s linear"
+              }}
+              aria-hidden
+            />
+          </div>
+        ))}
       </div>
-      
-      {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute top-1/2 left-2 sm:left-4 transform -translate-y-1/2 bg-white/80 text-gray-800 p-1.5 sm:p-2 rounded-full shadow-md hover:bg-white transition-colors"
-        aria-label="Previous image"
-      >
-        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-2 sm:right-4 transform -translate-y-1/2 bg-white/80 text-gray-800 p-1.5 sm:p-2 rounded-full shadow-md hover:bg-white transition-colors"
-        aria-label="Next image"
-      >
-        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-      </button>
-      
-      {/* Dots Indicator */}
-      <div className="absolute -bottom-6 sm:-bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {images.map((_, index) => (
+
+      {/* Dots (mobile) */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 bottom-4 flex gap-2 sm:hidden">
+        {images.map((_, idx) => (
           <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-colors ${
-              index === currentIndex ? 'bg-blue-600' : 'bg-gray-300'
-            }`}
-            aria-label={`Go to image ${index + 1}`}
+            key={idx}
+            onClick={() => setCurrentIndex(idx)}
+            className={`w-2 h-2 rounded-full transition-colors ${idx === currentIndex ? "bg-white" : "bg-white/40"}`}
+            aria-label={`Go to image ${idx + 1}`}
           />
         ))}
       </div>
@@ -206,17 +298,20 @@ const ImageSlider = () => {
   );
 };
 
+/* --------------------------
+   Page: Projects
+   -------------------------- */
 export default function Projects() {
   // preload hero background to reduce chance of FOUC / late load
   useEffect(() => {
-    // preload a high-quality hero image (external) and keep local office.png as fallback
-    const heroExternal = 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=9f4c5e6a6b7d8c1b9f0c';
-    const hrefs = [heroExternal, '/images/office.png'];
+    const heroExternal =
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=9f4c5e6a6b7d8c1b9f0c";
+    const hrefs = [heroExternal, "/images/office.png"];
     hrefs.forEach((href) => {
       if (!document.querySelector(`link[rel="preload"][href="${href}"]`)) {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'image';
+        const link = document.createElement("link");
+        link.rel = "preload";
+        link.as = "image";
         link.href = href;
         document.head.appendChild(link);
       }
@@ -224,35 +319,33 @@ export default function Projects() {
     return () => {};
   }, []);
 
-  const featuredProjects = projects.filter(project => project.featured);
+  const featuredProjects = projects.filter((project) => project.featured);
   const allProjects = projects;
 
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-  <section className="relative overflow-hidden bg-[color:var(--bg-muted,#f6f8fb)]">
-  <div className="absolute inset-0 z-0">
-          {/* Use a background-image div that points to a local public image so it reliably loads in dev/build */}
+      <section className="relative overflow-hidden bg-[color:var(--bg-muted,#f6f8fb)]">
+        <div className="absolute inset-0 z-0">
           <motion.div
-            // use an attractive high-res external hero image, fall back to local office.png
             className="absolute inset-0 bg-center bg-cover bg-fixed"
             style={{
-              backgroundImage: "linear-gradient(90deg, rgba(8,10,15,0.06), rgba(255,255,255,0.02)), url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=9f4c5e6a6b7d8c1b9f0c'), url('/images/office.png')",
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
+              backgroundImage:
+                "linear-gradient(90deg, rgba(8,10,15,0.06), rgba(255,255,255,0.02)), url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=9f4c5e6a6b7d8c1b9f0c'), url('/images/office.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat"
             }}
             role="img"
             aria-label="Successful business projects"
             initial={{ scale: 1, x: 0, y: 0 }}
             animate={{ scale: 1.05, x: -10, y: -6 }}
-            transition={{ duration: 20, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+            transition={{ duration: 20, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
           />
-          {/* semi-transparent overlay so the background image is still visible; increased contrast for readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/30 to-black/10 pointer-events-none z-10" />
         </div>
 
-        {/* Decorative animated blobs between the image and content */}
+        {/* Decorative blobs */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <motion.div
             className="absolute left-1/4 top-10 w-72 h-72 rounded-full bg-gradient-to-br from-[#5170FF]/40 to-[#5D17EB]/30 blur-2xl opacity-70"
@@ -260,51 +353,36 @@ export default function Projects() {
             animate={{ y: -20, scale: 1.05, opacity: 0.7 }}
             transition={{ duration: 6, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
           />
-
           <motion.div
             className="absolute right-1/4 top-28 w-56 h-56 rounded-full bg-gradient-to-tr from-[#FF8A00]/30 to-[#FF3CAC]/20 blur-3xl opacity-60"
             initial={{ y: 0, scale: 1 }}
             animate={{ y: 18, scale: 0.95 }}
             transition={{ duration: 8, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
           />
-
           <motion.div
             className="absolute left-10 bottom-6 w-40 h-40 rounded-full bg-gradient-to-r from-[#17E0B2]/20 to-[#5170FF]/20 blur-2xl opacity-60"
             initial={{ x: 0, scale: 1 }}
             animate={{ x: -16, scale: 1.02 }}
             transition={{ duration: 7, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
           />
-
-          {/* subtle animated spotlight behind hero content */}
           <motion.div
             aria-hidden
             className="absolute left-12 top-16 w-[520px] h-[520px] rounded-full pointer-events-none bg-[radial-gradient(closest-side,rgba(81,112,255,0.18),rgba(81,112,255,0.04)_40%,rgba(255,255,255,0)_70%)] blur-[64px]"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: [0, 0.7, 0.45, 0.7, 0], scale: [0.95, 1.02, 1, 1.03, 0.98], y: [0, -6, 0, -4, 0] }}
-            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           />
         </div>
-        
-          <div className="container py-16 md:py-24 relative min-h-[320px]">
-          <motion.div 
-            className="max-w-3xl relative z-20"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            {/* Glass panel behind hero text for better contrast */}
+
+        <div className="container py-16 md:py-24 relative min-h-[320px]">
+          <motion.div className="max-w-3xl relative z-20" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="backdrop-blur-md bg-black/35 rounded-2xl p-6 md:p-8 shadow-xl border border-white/10">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/90 text-slate-900 px-3 py-1 text-xs font-medium">
                 <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#5170FF] to-[#5D17EB]" />
                 Success Stories
               </span>
 
-              <motion.h1
-                className="mt-4 text-3xl md:text-5xl font-extrabold tracking-tight text-white drop-shadow-lg"
-                initial={{ y: 12, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.15 }}
-              >
+              <motion.h1 className="mt-4 text-3xl md:text-5xl font-extrabold tracking-tight text-white drop-shadow-lg" initial={{ y: 12, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.7, delay: 0.15 }}>
                 Projects That{" "}
                 <span className="bg-gradient-to-r from-[#6EE7B7] to-[#6366F1] bg-clip-text text-transparent">
                   Drive Results
@@ -325,58 +403,37 @@ export default function Projects() {
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Featured Success Stories</h2>
           <p className="mt-2 text-muted-foreground">Our most impactful client transformations</p>
         </div>
-        
+
         <div className="space-y-16">
           {featuredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              className="grid gap-8 md:grid-cols-12 items-center"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true }}
-            >
-              <div className={`md:col-span-6 ${index % 2 === 1 ? 'md:order-2' : ''}`}>
+            <motion.div key={project.id} className="grid gap-8 md:grid-cols-12 items-center" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: index * 0.2 }} viewport={{ once: true }}>
+              <div className={`md:col-span-6 ${index % 2 === 1 ? "md:order-2" : ""}`}>
                 <div className="relative overflow-hidden rounded-xl border bg-gradient-to-br from-[#5170FF] to-[#5D17EB] p-[1px] shadow-lg">
                   <div className="relative rounded-xl">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="h-64 w-full object-cover md:h-80"
-                    />
+                    <img src={project.image} alt={project.title} className="h-64 w-full object-cover md:h-80" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
-                    <Badge className="absolute top-4 left-4 bg-white/90 text-foreground">
-                      {project.industry}
-                    </Badge>
+                    <Badge className="absolute top-4 left-4 bg-white/90 text-foreground">{project.industry}</Badge>
                   </div>
                 </div>
               </div>
-              
-              <div className={`md:col-span-6 ${index % 2 === 1 ? 'md:order-1' : ''}`}>
+
+              <div className={`md:col-span-6 ${index % 2 === 1 ? "md:order-1" : ""}`}>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-4">
-                      {project.description}
-                    </p>
+                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">{project.title}</h3>
+                    <p className="text-muted-foreground mb-4">{project.description}</p>
                   </div>
-                  
+
                   {/* Results Grid */}
                   <div className="grid grid-cols-2 gap-4">
                     {project.results.map((result, idx) => (
                       <div key={idx} className="text-center p-3 rounded-lg border bg-card">
-                        <div className="text-2xl font-bold text-[#5170FF] mb-1">
-                          {result.value}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          {result.description}
-                        </div>
+                        <div className="text-2xl font-bold text-[#5170FF] mb-1">{result.value}</div>
+                        <div className="text-xs text-muted-foreground">{result.description}</div>
                       </div>
                     ))}
                   </div>
-                  
+
                   {/* Services */}
                   <div className="flex flex-wrap gap-2">
                     {project.services.map((service) => (
@@ -385,15 +442,13 @@ export default function Projects() {
                       </Badge>
                     ))}
                   </div>
-                  
+
                   {/* Testimonial */}
                   <blockquote className="border-l-4 border-[#5170FF] pl-4 italic text-muted-foreground">
                     "{project.testimonial}"
-                    <footer className="mt-2 text-sm font-medium text-foreground">
-                      — {project.clientName}
-                    </footer>
+                    <footer className="mt-2 text-sm font-medium text-foreground">— {project.clientName}</footer>
                   </blockquote>
-                  
+
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
@@ -407,16 +462,29 @@ export default function Projects() {
         </div>
       </section>
 
+      {/* Social Media Slider */}
+      <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Social Media Success Stories</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">See how we've helped brands grow their online presence</p>
+          </div>
+
+          <ImageSlider />
+
+          <div className="mt-12 text-center">
+            <Button asChild className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700">
+              <a href="/contact">Start Your Social Media Journey</a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Industry Filter */}
       <section className="container py-8">
         <div className="flex flex-wrap gap-2 justify-center">
           {industries.map((industry) => (
-            <Button
-              key={industry}
-              variant={industry === "All" ? "default" : "outline"}
-              size="sm"
-              className={industry === "All" ? "bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white" : ""}
-            >
+            <Button key={industry} variant={industry === "All" ? "default" : "outline"} size="sm" className={industry === "All" ? "bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white" : ""}>
               {industry}
             </Button>
           ))}
@@ -428,57 +496,32 @@ export default function Projects() {
         <div className="mb-8">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">All Projects</h2>
         </div>
-        
+
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {allProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              className="group cursor-pointer"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
+            <motion.div key={project.id} className="group cursor-pointer" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: index * 0.1 }} viewport={{ once: true }}>
               <div className="relative overflow-hidden rounded-xl border bg-card shadow-sm hover:shadow-md transition-shadow">
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition-transform group-hover:scale-105"
-                  />
+                  <img src={project.image} alt={project.title} className="h-full w-full object-cover transition-transform group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
-                  <Badge className="absolute top-3 left-3 bg-white/90 text-foreground text-xs">
-                    {project.industry}
-                  </Badge>
-                  {project.featured && (
-                    <Badge className="absolute top-3 right-3 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white text-xs">
-                      Featured
-                    </Badge>
-                  )}
+                  <Badge className="absolute top-3 left-3 bg-white/90 text-foreground text-xs">{project.industry}</Badge>
+                  {project.featured && <Badge className="absolute top-3 right-3 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white text-xs">Featured</Badge>}
                 </div>
-                
+
                 <div className="p-5">
-                  <h3 className="text-lg font-semibold mb-2 group-hover:text-[#5170FF] transition-colors line-clamp-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-                    {project.description}
-                  </p>
-                  
+                  <h3 className="text-lg font-semibold mb-2 group-hover:text-[#5170FF] transition-colors line-clamp-2">{project.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{project.description}</p>
+
                   {/* Key Results */}
                   <div className="grid grid-cols-2 gap-2 mb-4">
                     {project.results.slice(0, 2).map((result, idx) => (
                       <div key={idx} className="text-center p-2 rounded bg-muted/50">
-                        <div className="text-sm font-bold text-[#5170FF]">
-                          {result.value}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          {result.metric}
-                        </div>
+                        <div className="text-sm font-bold text-[#5170FF]">{result.value}</div>
+                        <div className="text-xs text-muted-foreground">{result.metric}</div>
                       </div>
                     ))}
                   </div>
-                  
+
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-muted-foreground">{project.duration}</span>
                     <ExternalLink className="h-4 w-4 text-[#5170FF] group-hover:translate-x-1 transition-transform" />
@@ -490,38 +533,15 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* Social Media Slider */}
-<section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
-  <div className="container">
-    <div className="text-center mb-12">
-      <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-        Social Media Success Stories
-      </h2>
-      <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-        See how we've helped brands grow their online presence</p>
-    </div>
-    <ImageSlider />
-    <div className="mt-12 text-center">
-      <Button asChild className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700">
-        <a href="/contact">Start Your Social Media Journey</a>
-      </Button>
-    </div>
-  </div>
-</section>
-
       {/* Stats Section */}
       <section className="container pb-16 md:pb-24">
         <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-[#5170FF] to-[#5D17EB] p-[1px]">
           <div className="relative rounded-2xl bg-background p-8 md:p-12">
             <div className="text-center mb-8">
-              <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
-                Our Impact in Numbers
-              </h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                These results represent real transformations across various industries and business sizes.
-              </p>
+              <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">Our Impact in Numbers</h3>
+              <p className="text-muted-foreground max-w-2xl mx-auto">These results represent real transformations across various industries and business sizes.</p>
             </div>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-[#5170FF] mb-2">50+</div>
@@ -547,16 +567,9 @@ export default function Projects() {
       {/* CTA Section */}
       <section className="container pb-16 md:pb-24">
         <div className="text-center">
-          <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
-            Ready to Be Our Next Success Story?
-          </h3>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Let's discuss how we can help transform your business with proven digital marketing strategies.
-          </p>
-          <Button
-            asChild
-            className="h-12 px-8 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white hover:from-[#3C72FC] hover:to-[#5D17EB] text-lg"
-          >
+          <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">Ready to Be Our Next Success Story?</h3>
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">Let's discuss how we can help transform your business with proven digital marketing strategies.</p>
+          <Button asChild className="h-12 px-8 bg-gradient-to-r from-[#5170FF] to-[#5D17EB] text-white hover:from-[#3C72FC] hover:to-[#5D17EB] text-lg">
             <a href="/contact">Start Your Project</a>
           </Button>
         </div>
