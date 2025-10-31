@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/site/Badge";
-import { ExternalLink, Calendar, TrendingUp, Users, Target } from "lucide-react";
+import { ExternalLink, Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -136,125 +136,128 @@ const projects = [
 const industries = ["All", "Manufacturing", "Construction", "Retail", "Design", "Real Estate"];
 
 /* --------------------------
-   Reels-style Image Slider
+   Reels-style Image Slider (9:16, NO ZOOM)
    -------------------------- */
 const ImageSlider = () => {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [images, setImages] = useState<string[]>([]);
 
-  // load images (local public folder)
   useEffect(() => {
-    const imageUrls = [
+    // local public images (vertical 1080x1920 ideally)
+    setImages([
       "/images/social-media/1.jpg",
       "/images/social-media/2.jpg",
       "/images/social-media/3.jpg",
       "/images/social-media/4.jpg",
       "/images/social-media/5.jpg"
-    ];
-    setImages(imageUrls);
+    ]);
   }, []);
 
-  // autoplay
-  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+  // autoplay (optional)
+  const autoplayRef = useRef<number | null>(null);
   useEffect(() => {
     if (images.length <= 1) return;
-    const startAutoplay = () => {
-      clearAutoplay();
-      autoplayRef.current = setInterval(() => {
-        setCurrentIndex((p) => (p + 1) % images.length);
-      }, 4500);
-    };
-    const clearAutoplay = () => {
-      if (autoplayRef.current) clearInterval(autoplayRef.current);
-    };
-    startAutoplay();
+    const id = window.setInterval(() => {
+      setCurrentIndex((p) => (p + 1) % images.length);
+    }, 4200);
+    autoplayRef.current = id;
     return () => {
-      if (autoplayRef.current) clearInterval(autoplayRef.current);
+      if (autoplayRef.current) window.clearInterval(autoplayRef.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [images.length]);
 
-  // swipe handling (vertical swipe for reels-like)
+  // swipe vertical handling
   const startYRef = useRef<number | null>(null);
-  const isDraggingRef = useRef(false);
+  const draggingRef = useRef(false);
 
-  const onPointerDown = (clientY: number) => {
-    isDraggingRef.current = true;
+  const onStart = (clientY: number) => {
+    draggingRef.current = true;
     startYRef.current = clientY;
+    // pause autoplay while dragging
+    if (autoplayRef.current) window.clearInterval(autoplayRef.current);
   };
-  const onPointerUp = (clientY: number) => {
-    if (!isDraggingRef.current || startYRef.current == null) return;
+
+  const onEnd = (clientY: number) => {
+    if (!draggingRef.current || startYRef.current == null) {
+      draggingRef.current = false;
+      return;
+    }
     const diff = startYRef.current - clientY;
     const threshold = 60;
     if (diff > threshold) {
-      // swipe up => next
       setCurrentIndex((p) => (p + 1) % images.length);
     } else if (diff < -threshold) {
-      // swipe down => prev
       setCurrentIndex((p) => (p === 0 ? images.length - 1 : p - 1));
     }
-    isDraggingRef.current = false;
+    draggingRef.current = false;
     startYRef.current = null;
+    // resume autoplay
+    if (images.length > 1) {
+      autoplayRef.current = window.setInterval(() => {
+        setCurrentIndex((p) => (p + 1) % images.length);
+      }, 4200);
+    }
   };
 
-  // keyboard navigation
+  // keyboard nav
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowUp") {
-        setCurrentIndex((p) => (p === 0 ? images.length - 1 : p - 1));
-      } else if (e.key === "ArrowDown") {
-        setCurrentIndex((p) => (p + 1) % images.length);
-      }
+      if (e.key === "ArrowUp") setCurrentIndex((p) => (p === 0 ? images.length - 1 : p - 1));
+      if (e.key === "ArrowDown") setCurrentIndex((p) => (p + 1) % images.length);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [images.length]);
 
-  if (!images.length) {
-    return (
-      <div className="w-full max-w-5xl mx-auto p-6 text-center">Loading images…</div>
-    );
-  }
+  if (!images.length) return <div className="text-center py-8">Loading images…</div>;
 
   return (
     <div
-      className="relative w-full max-w-5xl mx-auto bg-black rounded-xl shadow-2xl overflow-hidden min-h-[60vh] md:min-h-[70vh] md:h-[80vh]"
-      onMouseDown={(e) => onPointerDown(e.clientY)}
-      onMouseUp={(e) => onPointerUp(e.clientY)}
-      onTouchStart={(e) => onPointerDown(e.touches[0].clientY)}
-      onTouchEnd={(e) => onPointerUp(e.changedTouches[0].clientY)}
-      role="region"
+      className="relative flex justify-center items-center w-full"
+      // pointer/touch handlers for vertical swipe
+      onMouseDown={(e) => onStart(e.clientY)}
+      onMouseUp={(e) => onEnd(e.clientY)}
+      onTouchStart={(e) => onStart(e.touches[0].clientY)}
+      onTouchEnd={(e) => onEnd(e.changedTouches[0].clientY)}
       aria-label="Social media reels slider"
+      role="region"
     >
-      <AnimatePresence initial={false} mode="wait">
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0, y: 120, scale: 1.04 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: -120, scale: 0.98 }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
-          className="absolute inset-0"
-        >
-          <img
-            src={images[currentIndex]}
-            alt={`Social media success ${currentIndex + 1}`}
-            className="w-full h-full object-cover select-none"
-            draggable={false}
-          />
+      {/* 9:16 frame - responsive:
+          - aspect-[9/16] keeps ratio
+          - max-h constrains on desktop so it doesn't blow up */}
+      <div className="relative aspect-[9/16] w-[min(420px,52vh)] md:w-[min(520px,68vh)] rounded-2xl overflow-hidden shadow-2xl bg-black">
+        <AnimatePresence initial={false} mode="wait">
+          <motion.div
+            key={currentIndex}
+            // ONLY vertical motion + opacity. NO scale to avoid zoom effect.
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -40 }}
+            transition={{ duration: 0.45, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            {/* object-contain ensures full image visible within 9:16 frame (no zoom) */}
+            <img
+              src={images[currentIndex]}
+              alt={`Social media success ${currentIndex + 1}`}
+              className="w-full h-full object-contain bg-black"
+              draggable={false}
+            />
 
-          {/* overlay caption */}
-          <div className="absolute left-6 bottom-6 text-left text-sm md:text-base text-white/95">
-            <div className="font-semibold text-lg md:text-xl">Social Media Success Stories</div>
-            <div className="mt-1 text-white/70 text-xs md:text-sm">#{currentIndex + 1} • Designed to Impress</div>
-          </div>
-        </motion.div>
-      </AnimatePresence>
+            {/* subtle overlay caption */}
+            <div className="absolute left-4 bottom-4 text-white">
+              <div className="font-semibold text-base md:text-lg">Social Media Success Stories</div>
+              <div className="text-xs opacity-80">#{currentIndex + 1} • Designed to Impress</div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-      {/* Prev / Next Buttons (visible on desktop) */}
+      {/* prev/next buttons for desktop */}
       <button
         aria-label="Previous"
         onClick={() => setCurrentIndex((p) => (p === 0 ? images.length - 1 : p - 1))}
-        className="hidden sm:flex absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 p-2 rounded-full shadow-md hover:bg-white transition-colors"
+        className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 bg-white/90 text-gray-900 p-2 rounded-full shadow hover:bg-white transition"
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
@@ -262,36 +265,36 @@ const ImageSlider = () => {
       <button
         aria-label="Next"
         onClick={() => setCurrentIndex((p) => (p + 1) % images.length)}
-        className="hidden sm:flex absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 p-2 rounded-full shadow-md hover:bg-white transition-colors"
+        className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 bg-white/90 text-gray-900 p-2 rounded-full shadow hover:bg-white transition"
       >
         <ChevronRight className="w-5 h-5" />
       </button>
 
-      {/* Top progress bars like stories */}
-      <div className="absolute top-4 left-4 right-4 flex gap-2 px-2">
-        {images.map((_, idx) => (
-          <div key={idx} className="flex-1 h-1 rounded overflow-hidden bg-white/20">
+      {/* progress dots below frame for mobile */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 md:hidden">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            aria-label={`Go to image ${i + 1}`}
+            onClick={() => setCurrentIndex(i)}
+            className={`h-1.5 w-6 rounded-full ${i === currentIndex ? "bg-white" : "bg-white/40"}`}
+          />
+        ))}
+      </div>
+
+      {/* top thin progress bars like stories (desktop) */}
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 hidden md:flex gap-2 px-2 w-[min(520px,80%)]">
+        {images.map((_, i) => (
+          <div key={i} className="flex-1 h-1 rounded overflow-hidden bg-white/20">
             <div
               className="h-full bg-white"
               style={{
-                width: idx === currentIndex ? "100%" : "0%",
+                width: i === currentIndex ? "100%" : "0%",
                 transition: "width 0.45s linear"
               }}
               aria-hidden
             />
           </div>
-        ))}
-      </div>
-
-      {/* Dots (mobile) */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 bottom-4 flex gap-2 sm:hidden">
-        {images.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrentIndex(idx)}
-            className={`w-2 h-2 rounded-full transition-colors ${idx === currentIndex ? "bg-white" : "bg-white/40"}`}
-            aria-label={`Go to image ${idx + 1}`}
-          />
         ))}
       </div>
     </div>
@@ -339,39 +342,10 @@ export default function Projects() {
             role="img"
             aria-label="Successful business projects"
             initial={{ scale: 1, x: 0, y: 0 }}
-            animate={{ scale: 1.05, x: -10, y: -6 }}
+            animate={{ scale: 1.02, x: -6, y: -4 }}
             transition={{ duration: 20, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/30 to-black/10 pointer-events-none z-10" />
-        </div>
-
-        {/* Decorative blobs */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <motion.div
-            className="absolute left-1/4 top-10 w-72 h-72 rounded-full bg-gradient-to-br from-[#5170FF]/40 to-[#5D17EB]/30 blur-2xl opacity-70"
-            initial={{ y: 0, scale: 0.9, opacity: 0 }}
-            animate={{ y: -20, scale: 1.05, opacity: 0.7 }}
-            transition={{ duration: 6, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute right-1/4 top-28 w-56 h-56 rounded-full bg-gradient-to-tr from-[#FF8A00]/30 to-[#FF3CAC]/20 blur-3xl opacity-60"
-            initial={{ y: 0, scale: 1 }}
-            animate={{ y: 18, scale: 0.95 }}
-            transition={{ duration: 8, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute left-10 bottom-6 w-40 h-40 rounded-full bg-gradient-to-r from-[#17E0B2]/20 to-[#5170FF]/20 blur-2xl opacity-60"
-            initial={{ x: 0, scale: 1 }}
-            animate={{ x: -16, scale: 1.02 }}
-            transition={{ duration: 7, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
-          />
-          <motion.div
-            aria-hidden
-            className="absolute left-12 top-16 w-[520px] h-[520px] rounded-full pointer-events-none bg-[radial-gradient(closest-side,rgba(81,112,255,0.18),rgba(81,112,255,0.04)_40%,rgba(255,255,255,0)_70%)] blur-[64px]"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: [0, 0.7, 0.45, 0.7, 0], scale: [0.95, 1.02, 1, 1.03, 0.98], y: [0, -6, 0, -4, 0] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          />
         </div>
 
         <div className="container py-16 md:py-24 relative min-h-[320px]">
@@ -424,7 +398,6 @@ export default function Projects() {
                     <p className="text-muted-foreground mb-4">{project.description}</p>
                   </div>
 
-                  {/* Results Grid */}
                   <div className="grid grid-cols-2 gap-4">
                     {project.results.map((result, idx) => (
                       <div key={idx} className="text-center p-3 rounded-lg border bg-card">
@@ -434,16 +407,12 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  {/* Services */}
                   <div className="flex flex-wrap gap-2">
                     {project.services.map((service) => (
-                      <Badge key={service} className="text-xs">
-                        {service}
-                      </Badge>
+                      <Badge key={service} className="text-xs">{service}</Badge>
                     ))}
                   </div>
 
-                  {/* Testimonial */}
                   <blockquote className="border-l-4 border-[#5170FF] pl-4 italic text-muted-foreground">
                     "{project.testimonial}"
                     <footer className="mt-2 text-sm font-medium text-foreground">— {project.clientName}</footer>
@@ -470,7 +439,9 @@ export default function Projects() {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">See how we've helped brands grow their online presence</p>
           </div>
 
-          <ImageSlider />
+          <div className="flex justify-center">
+            <ImageSlider />
+          </div>
 
           <div className="mt-12 text-center">
             <Button asChild className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700">
@@ -512,7 +483,6 @@ export default function Projects() {
                   <h3 className="text-lg font-semibold mb-2 group-hover:text-[#5170FF] transition-colors line-clamp-2">{project.title}</h3>
                   <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{project.description}</p>
 
-                  {/* Key Results */}
                   <div className="grid grid-cols-2 gap-2 mb-4">
                     {project.results.slice(0, 2).map((result, idx) => (
                       <div key={idx} className="text-center p-2 rounded bg-muted/50">
