@@ -207,14 +207,14 @@ export default function About() {
             email="ishita@legacyforgegroup.com"
           />
           
-          <TeamMember
+          {/* <TeamMember
             name="Ravi Kumar"
             role="Website Development Lead"
             image="/images/ravi.png"
             bio="Ravi is an expert in HTML, CSS, React.js, Node.js, and Express, crafting customized, dynamic website solutions that meet each client’s unique needs"
             linkedin="https://www.linkedin.com/in/ravi-kumar0/"
             email="ravi@legacyforgegroup.com"
-          />
+          /> */}
         </div>
       </section>
 
